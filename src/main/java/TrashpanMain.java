@@ -1,6 +1,14 @@
 import java.util.Scanner;
 
 public class TrashpanMain {
+    
+    /**
+     * Parses the input string into an integer.
+     * Returns null if the string is not an integer.
+     *
+     * @param input Input string.
+     * @return Integer corresponding to string, null if string is not an integer.
+     */
     public static Integer tryParse(String input) {
         try {
             return Integer.parseInt(input);
@@ -11,20 +19,20 @@ public class TrashpanMain {
 
     public static void main(String[] args) {
         String logo = """
-             ⠀⠀⠀⢠⠤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣄⠀⠀
-             ⠀⠀⠀⢸⣿⣎⢛⡶⠤⣤⣤⣤⣀⣀⡴⠞⣩⣵⣾⡇⠀
-             ⠀⠀⠀⠘⣞⡟⠁⠀⠘⠉⠀⠀⠀⠙⠁⣾⣿⣿⣹⠀⠀
-             ⠀⠀⠀⣴⢋⣦⡄⢀⠀⠀⢀⣀⣀⠀⠀⠙⢿⣡⠃⠀⠀
-             ⠀⣠⡞⣡⣿⠟⣻⡆⣠⣾⠿⠿⣷⣍⠀⠀⠈⢳⡄⠀⠀
-             ⢾⣯⠘⣿⡿⣿⣿⡿⢿⣿⣀⣿⣿⣿⣿⡦⠀⠀⠹⣆⠀
-             ⠀⠙⢧⣿⣿⣿⠀⠀⠈⠻⢿⣿⣿⣿⡿⠋⠀⠀⢀⣘⣧
-             ⠀⠀⠈⠻⣯⣅⠀⠀⣐⣤⠀⠉⠉⠉⠀⢀⣠⡴⠟⠋⠁
-             ⠀⠀⠀⠀⠈⢿⣭⣉⣁⣤⠴⠾⠶⠒⠛⠉⠁⠀⠀⠀⠀
-             """;
+                ⠀⠀⠀⢠⠤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣄⠀⠀
+                ⠀⠀⠀⢸⣿⣎⢛⡶⠤⣤⣤⣤⣀⣀⡴⠞⣩⣵⣾⡇⠀
+                ⠀⠀⠀⠘⣞⡟⠁⠀⠘⠉⠀⠀⠀⠙⠁⣾⣿⣿⣹⠀⠀
+                ⠀⠀⠀⣴⢋⣦⡄⢀⠀⠀⢀⣀⣀⠀⠀⠙⢿⣡⠃⠀⠀
+                ⠀⣠⡞⣡⣿⠟⣻⡆⣠⣾⠿⠿⣷⣍⠀⠀⠈⢳⡄⠀⠀
+                ⢾⣯⠘⣿⡿⣿⣿⡿⢿⣿⣀⣿⣿⣿⣿⡦⠀⠀⠹⣆⠀
+                ⠀⠙⢧⣿⣿⣿⠀⠀⠈⠻⢿⣿⣿⣿⡿⠋⠀⠀⢀⣘⣧
+                ⠀⠀⠈⠻⣯⣅⠀⠀⣐⣤⠀⠉⠉⠉⠀⢀⣠⡴⠟⠋⠁
+                ⠀⠀⠀⠀⠈⢿⣭⣉⣁⣤⠴⠾⠶⠒⠛⠉⠁⠀⠀⠀⠀
+                """;
         Scanner in = new Scanner(System.in);
         String input;
         String command = "";
-        Task[] task = new Task[100];
+        Task[] tasks = new Task[100];
         int listCounter = 0;
 
         System.out.println(logo);
@@ -33,16 +41,16 @@ public class TrashpanMain {
         System.out.println("__________________________________________________");
 
         System.out.println("""
-             Current Mode: To-do List
-             A functional to-do list, storing up to 100 tasks.
-             Note: This program does not store tasks after exiting.
-             
-             Commands:
-             "list": Displays full list of tasks
-             "mark <number>": Marks the task labelled with the number as done
-             "unmark <number>": Marks the task labelled with the number as not done
-             "bye": Exits the program
-             Any other input: Adds the input to the list""");
+                Current Mode: To-do List
+                A functional to-do list, storing up to 100 tasks.
+                Note: This program does not store tasks after exiting.
+                
+                Commands:
+                "list": Displays full list of tasks
+                "mark <number>": Marks the task labelled with the number as done
+                "unmark <number>": Marks the task labelled with the number as not done
+                "bye": Exits the program
+                Any other input: Adds the input to the list""");
 
         while (!command.equals("bye")) {
             System.out.println("__________________________________________________");
@@ -54,8 +62,8 @@ public class TrashpanMain {
             case "list":
                 System.out.println("Here's your list:");
                 for (int i = 1; i <= listCounter; i++) {
-                    System.out.print(i + ".[" + task[i - 1].getStatusIcon() + "] ");
-                    System.out.println(task[i - 1].getDescription());
+                    System.out.print(i + ".[" + tasks[i - 1].getStatusIcon() + "] ");
+                    System.out.println(tasks[i - 1].getDescription());
                 }
                 break;
 
@@ -66,9 +74,9 @@ public class TrashpanMain {
                 } else if (index1 > listCounter) {
                     System.out.println("Oops! That's not in the list.");
                 } else {
-                    task[--index1].setDone(true);
+                    tasks[--index1].setDone(true);
                     System.out.println("Yay! I've marked this task as done:");
-                    System.out.println("[X] " + task[index1].getDescription());
+                    System.out.println("[X] " + tasks[index1].getDescription());
                 }
                 break;
 
@@ -79,9 +87,9 @@ public class TrashpanMain {
                 } else if (index2 > listCounter) {
                     System.out.println("Oops! That's not in the list.");
                 } else {
-                    task[--index2].setDone(false);
+                    tasks[--index2].setDone(false);
                     System.out.println("Ganbaraki! I've unmarked this task as not done:");
-                    System.out.println("[ ] " + task[index2].getDescription());
+                    System.out.println("[ ] " + tasks[index2].getDescription());
                 }
                 break;
 
@@ -92,7 +100,7 @@ public class TrashpanMain {
                 if (listCounter > 99) {
                     System.out.println("Sorry! The list is full!");
                 } else {
-                    task[listCounter] = new Task(command);
+                    tasks[listCounter] = new Task(command);
                     listCounter++;
                     System.out.println("Okay! Added \"" + command + "\" to the list.");
                 }
