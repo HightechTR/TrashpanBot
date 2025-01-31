@@ -1,36 +1,8 @@
 import java.util.Scanner;
 
 public class TrashpanMain {
-
     static int listCounter = 0;
     static Task[] tasks = new Task[100];
-
-    static final String TEXT_LOGO = """
-            ⠀⠀⠀⢠⠤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣄⠀⠀
-            ⠀⠀⠀⢸⣿⣎⢛⡶⠤⣤⣤⣤⣀⣀⡴⠞⣩⣵⣾⡇⠀
-            ⠀⠀⠀⠘⣞⡟⠁⠀⠘⠉⠀⠀⠀⠙⠁⣾⣿⣿⣹⠀⠀
-            ⠀⠀⠀⣴⢋⣦⡄⢀⠀⠀⢀⣀⣀⠀⠀⠙⢿⣡⠃⠀⠀
-            ⠀⣠⡞⣡⣿⠟⣻⡆⣠⣾⠿⠿⣷⣍⠀⠀⠈⢳⡄⠀⠀
-            ⢾⣯⠘⣿⡿⣿⣿⡿⢿⣿⣀⣿⣿⣿⣿⡦⠀⠀⠹⣆⠀
-            ⠀⠙⢧⣿⣿⣿⠀⠀⠈⠻⢿⣿⣿⣿⡿⠋⠀⠀⢀⣘⣧
-            ⠀⠀⠈⠻⣯⣅⠀⠀⣐⣤⠀⠉⠉⠉⠀⢀⣠⡴⠟⠋⠁
-            ⠀⠀⠀⠀⠈⢿⣭⣉⣁⣤⠴⠾⠶⠒⠛⠉⠁⠀⠀⠀⠀
-            """;
-
-    static final String TEXT_TASK_LIST = """
-            Current Mode: To-do List
-            A functional to-do list, storing up to 100 tasks.
-            Note: This program does not store tasks after exiting.
-            
-            Commands:
-            "list": Displays full list of tasks
-            "mark <number>": Marks the task labelled with the number as done
-            "unmark <number>": Marks the task labelled with the number as not done
-            "bye": Exits the program
-            Any other input: Adds the input to the list""";
-
-    static final String TEXT_LINE =
-            "__________________________________________________";
 
     /**
      * Parses the input string into an integer.
@@ -56,10 +28,10 @@ public class TrashpanMain {
         Scanner in = new Scanner(System.in);
 
         while (true) {
-            System.out.println(TEXT_LINE);
+            System.out.println(TrashpanText.TEXT_LINE);
             input = in.nextLine();
             command = input.contains(" ") ? input.substring(0, input.indexOf(" ")) : input;
-            System.out.println(TEXT_LINE);
+            System.out.println(TrashpanText.TEXT_LINE);
 
             switch (command) {
             case "list":
@@ -148,17 +120,12 @@ public class TrashpanMain {
     }
 
     public static void main(String[] args) {
+        System.out.println(TrashpanText.TEXT_INTRO);
 
-        System.out.println(TEXT_LOGO);
-        System.out.println("Raah! I'm TrashpanBot!");
-        System.out.println("What can I do for you today?");
-        System.out.println(TEXT_LINE);
-
-        System.out.println(TEXT_TASK_LIST);
+        System.out.println(TrashpanText.TEXT_TASK_LIST);
 
         parseInput();
 
-        System.out.println("Otsuraki! See you soon!");
-        System.out.println(TEXT_LINE);
+        System.out.println(TrashpanText.TEXT_BYE);
     }
 }
