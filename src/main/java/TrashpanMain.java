@@ -47,6 +47,9 @@ public class TrashpanMain {
         }
     }
 
+    /**
+     * Parses input into a command to be interpreted.
+     */
     public static void parseInput() {
         String input;
         String command;
@@ -80,6 +83,9 @@ public class TrashpanMain {
         }
     }
 
+    /**
+     * Displays task list to the output.
+     */
     public static void displayList() {
         System.out.println("Here's your list:");
         for (int i = 1; i <= listCounter; i++) {
@@ -88,6 +94,11 @@ public class TrashpanMain {
         }
     }
 
+    /**
+     * Adds a task to the task list.
+     *
+     * @param input The task to be added to the list.
+     */
     public static void addTask(String input) {
         if (listCounter > 99) {
             System.out.println("Sorry! The list is full!");
@@ -98,6 +109,12 @@ public class TrashpanMain {
         }
     }
 
+    /**
+     * Marks a task as done in the list.
+     *
+     * @param input The command containing the task index to be marked done;
+     *              must contain "mark".
+     */
     public static void markDone(String input) {
         Integer index = tryParse(input.substring(input.indexOf(" ") + 1));
         if (index == null) {
@@ -111,6 +128,12 @@ public class TrashpanMain {
         }
     }
 
+    /**
+     * Marks a task as not done in the list.
+     *
+     * @param input The command containing the task index to be marked not done;
+     *              must contain "unmark".
+     */
     public static void markNotDone(String input) {
         Integer index = tryParse(input.substring(input.indexOf(" ") + 1));
         if (index == null) {
