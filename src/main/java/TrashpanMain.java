@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class TrashpanMain {
+    static String input;
     static int listCounter = 0;
     static Task[] tasks = new Task[100];
 
@@ -20,18 +21,29 @@ public class TrashpanMain {
     }
 
     /**
-     * Parses input into a command to be interpreted.
+     * Reads an input, extracts and returns first word as a command.
+     *
+     * @return The first word of the input.
      */
-    public static void parseInput() {
-        String input;
-        String command;
+    private static String getCommand() {
         Scanner in = new Scanner(System.in);
+        String command;
+
+        input = in.nextLine();
+        command = input.contains(" ") ? input.substring(0, input.indexOf(" ")) : input;
+        return command;
+    }
+
+    /**
+     * Calls methods for the task list based on the command inputted.
+     */
+    public static void parseTaskListCommand() {
+        String command;
 
         while (true) {
-            System.out.println(TrashpanText.TEXT_LINE);
-            input = in.nextLine();
-            command = input.contains(" ") ? input.substring(0, input.indexOf(" ")) : input;
-            System.out.println(TrashpanText.TEXT_LINE);
+            System.out.println(Text.TEXT_LINE);
+            command = getCommand();
+            System.out.println(Text.TEXT_LINE);
 
             switch (command) {
             case "list":
@@ -120,12 +132,11 @@ public class TrashpanMain {
     }
 
     public static void main(String[] args) {
-        System.out.println(TrashpanText.TEXT_INTRO);
+        System.out.println(Text.TEXT_INTRO);
 
-        System.out.println(TrashpanText.TEXT_TASK_LIST);
+        System.out.println(Text.TEXT_TASK_LIST);
+        parseTaskListCommand();
 
-        parseInput();
-
-        System.out.println(TrashpanText.TEXT_BYE);
+        System.out.println(Text.TEXT_BYE);
     }
 }
