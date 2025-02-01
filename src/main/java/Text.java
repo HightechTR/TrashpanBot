@@ -1,5 +1,5 @@
-public final class TrashpanText {
-    private TrashpanText() {
+public final class Text {
+    private Text() {
     }
 
     public static final String TEXT_TASK_LIST = """
