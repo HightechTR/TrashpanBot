@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class TrashpanMain {
     static String input;
     static int listCounter = 0;
-    static Todo[] tasks = new Todo[100];
+    static Task[] tasks = new Task[100];
 
     /**
      * Parses the input string into an integer.
@@ -46,7 +46,7 @@ public class TrashpanMain {
      *
      * @return True if the list is full.
      */
-    public static boolean checkIfListIsNotFull() {
+    public static boolean isListNotFull() {
         if (listCounter > 99) {
             System.out.println("Sorry! The list is full!");
         }
@@ -159,10 +159,13 @@ public class TrashpanMain {
      */
     public static void addTodo(String input) {
         String description = getParameter(input);
+
+        // check if parameter is non-empty
         if (isInvalidParameter(input)) {
             System.out.println("Oops, you didn't say what to add!");
             System.out.println("Command format: todo <description>");
-        } else if (checkIfListIsNotFull()) {
+
+        } else if (isListNotFull()) {
             tasks[listCounter] = new Todo(description);
             listCounter++;
             printAddedText();
@@ -176,15 +179,22 @@ public class TrashpanMain {
      */
     public static void addDeadline(String input) {
         String parameter = getParameter(input);
-        String deadline = parameter.substring(parameter.indexOf("/by") + 3);
+
+        // check if parameter is non-empty
         if (isInvalidParameter(input)) {
             System.out.println("Oops, you didn't say what to add!");
             System.out.println("Command format: deadline <description> /by <due date>");
-        } else if (!parameter.contains("/by") || deadline.length() < 2) {
+            return;
+        }
+
+        String deadline = parameter.substring(parameter.indexOf("/by") + 3);
+
+        // check if due date is valid
+        if (!parameter.contains("/by") || deadline.length() < 2) {
             System.out.println("Oops, you didn't give me a date!");
             System.out.println("Command format: deadline <description> /by <due date>");
 
-        } else if (checkIfListIsNotFull()) {
+        } else if (isListNotFull()) {
             String description = parameter.substring(0, parameter.indexOf("/by"));
             tasks[listCounter] = new Deadline(description, deadline.substring(1));
             listCounter++;
@@ -199,19 +209,26 @@ public class TrashpanMain {
      */
     public static void addEvent(String input) {
         String parameter = getParameter(input);
-        String from = parameter.substring(parameter.indexOf("/from") + 5);
-        String to = parameter.substring(parameter.indexOf("/to") + 3);
+
+        // check if parameter is non-empty
         if (isInvalidParameter(input)) {
             System.out.println("Oops, you didn't say what to add!");
             System.out.println("Command format: event <description> /from <start date> /to <end date>");
-        } else if (!parameter.contains("/from") || from.length() < 2) {
+            return;
+        }
+
+        String from = parameter.substring(parameter.indexOf("/from") + 5);
+        String to = parameter.substring(parameter.indexOf("/to") + 3);
+
+        // check if start and end date is valid
+        if (!parameter.contains("/from") || from.length() < 2) {
             System.out.println("Oops, you didn't give me the start date!");
             System.out.println("Command format: event <description> /from <start date> /to <end date>");
         } else if (!parameter.contains("/to") || to.length() < 2) {
             System.out.println("Oops, you didn't give me the end date!");
             System.out.println("Command format: event <description> /from <start date> /to <end date>");
 
-        } else if (checkIfListIsNotFull()) {
+        } else if (isListNotFull()) {
             String description = parameter.substring(0, parameter.indexOf("/from"));
             tasks[listCounter] = new Event(description, from.substring(1, from.indexOf("/to") - 1), to.substring(1));
             listCounter++;
@@ -251,9 +268,9 @@ public class TrashpanMain {
         } else if (index > listCounter) {
             System.out.println("Oops! That's not in the list.");
         } else {
-            tasks[--index].setDone(false);
+            tasks[index - 1].setDone(false);
             System.out.println("Ganbaraki! I've unmarked this task as not done:");
-            System.out.println("[ ] " + tasks[index].getDescription());
+            printTask(index);
         }
     }
 

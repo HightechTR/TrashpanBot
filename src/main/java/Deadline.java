@@ -1,9 +1,9 @@
-public class Deadline extends Todo {
+public class Deadline extends Task {
     protected String deadline;
 
     public Deadline(String description, String deadline) {
         super(description);
-        super.setDone(false);
+        super.isDone = false;
         this.deadline = deadline;
     }
 
