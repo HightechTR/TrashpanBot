@@ -1,0 +1,10 @@
+todo task 1
+todo task 2
+mark 1
+deadline task 3 /by Who cares?
+event trip 1 /from 13 June 2025 /to 16 June 2025
+list
+mark 3
+unmark 1
+list
+bye

@@ -1,7 +1,77 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
+This bot is based on the personality of Raki Kazuki from PixelLink.
+⣿⣿⣿⡟⣛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠻⣿⣿
+⣿⣿⣿⡇⠀⠱⡤⢉⣛⠛⠛⠛⠿⠿⢋⣡⠖⠊⠁⢸⣿
+⣿⣿⣿⣧⠡⢠⣾⣿⣧⣶⣿⣿⣿⣦⣾⠁⠀⠀⠆⣿⣿
+⣿⣿⣿⠋⡴⠙⢻⡿⣿⣿⡿⠿⠿⣿⣿⣦⡀⠞⣼⣿⣿
+⣿⠟⢡⠞⠀⣠⠄⢹⠟⠁⣀⣀⠈⠲⣿⣿⣷⡌⢻⣿⣿
+⡁⠐⣧⠀⢀⠀⠀⢀⡀⠀⠿⠀⠀⠀⠀⢙⣿⣿⣆⠹⣿⣿
+⣿⣦⡘⠀⠀⠀⣿⣿⣷⣄⡀⠀⠀⠀⢀⣴⣿⣿⡿⠧⠘
+⣿⣿⣷⣄⠐⠺⣿⣿⠯⠛⣿⣶⣶⣶⣿⡿⠟⢋⣠⣴⣾
+⣿⣿⣿⣿⣷⡀⠒⠶⠾⠛⣋⣁⣉⣭⣤⣶⣾⣿⣿⣿⣿
 
+Raah! I'm TrashpanBot!
+What can I do for you today?
+__________________________________________________
+
+Current Mode: To-do List
+A functional to-do list, storing up to 100 tasks.
+Note: This program does not store tasks after exiting.
+Commands:
+"todo <description>": Adds a todo task to the list
+"deadline <description> /by <due date>": Adds a deadline task to the list
+"event <description> /from <start date> /to <end date>": Adds a event task to the list
+"list": Displays full list of tasks
+"mark <number>": Marks the task labelled with the number as done
+"unmark <number>": Marks the task labelled with the number as not done
+"help": Displays this command list
+"bye": Exits the program
+__________________________________________________
+__________________________________________________
+Okay! Added this to the list:
+1.[T][ ] task 1
+You have 1 task now!
+__________________________________________________
+__________________________________________________
+Okay! Added this to the list:
+2.[T][ ] task 2
+You have 2 tasks now!
+__________________________________________________
+__________________________________________________
+Yay! I've marked this task as done:
+1.[T][X] task 1
+__________________________________________________
+__________________________________________________
+Okay! Added this to the list:
+3.[D][ ] task 3 (by: Who cares?)
+You have 3 tasks now!
+__________________________________________________
+__________________________________________________
+Okay! Added this to the list:
+4.[E][ ] trip 1 (from: 13 June 2025 to: 16 June 2025)
+You have 4 tasks now!
+__________________________________________________
+__________________________________________________
+Okay, here's your list:
+1.[T][X] task 1
+2.[T][ ] task 2
+3.[D][ ] task 3 (by: Who cares?)
+4.[E][ ] trip 1 (from: 13 June 2025 to: 16 June 2025)
+__________________________________________________
+__________________________________________________
+Yay! I've marked this task as done:
+3.[D][X] task 3 (by: Who cares?)
+__________________________________________________
+__________________________________________________
+Ganbaraki! I've unmarked this task as not done:
+1.[T][ ] task 1
+__________________________________________________
+__________________________________________________
+Okay, here's your list:
+1.[T][ ] task 1
+2.[T][ ] task 2
+3.[D][X] task 3 (by: Who cares?)
+4.[E][ ] trip 1 (from: 13 June 2025 to: 16 June 2025)
+__________________________________________________
+__________________________________________________
+Otsuraki! See you soon!
+__________________________________________________
