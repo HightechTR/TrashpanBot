@@ -2,78 +2,80 @@ import java.util.Scanner;
 
 public class TrashpanMain {
     static String userInput;
+    static Scanner in = new Scanner(System.in);
 
     /**
-     * Reads an input, extracts and returns first word as a command.
+     * Reads in an input and parses it into command and parameter.
      *
-     * @return The first word of the input.
+     * @return The string array containing the command and parameter
      */
-    private static String getCommand() {
-        Scanner in = new Scanner(System.in);
-        String command;
-
+    public static String[] readInput() {
         userInput = in.nextLine();
-        command = userInput.contains(" ") ? userInput.substring(0, userInput.indexOf(" ")) : userInput;
-        return command;
+        return userInput.split(" ", 2);
     }
 
     /**
-     * Calls methods for the task list based on the command inputted.
+     * Calls methods for the task list application based on the command inputted.
      */
     public static void parseTaskListCommand() {
+        String[] inputParts;
         String command;
 
         while (true) {
-            System.out.println(Text.TEXT_LINE);
-            command = getCommand();
-            System.out.println(Text.TEXT_LINE);
+            System.out.println(Text.LINE);
+            inputParts = readInput();
+            command = inputParts[0];
+            System.out.println(Text.LINE);
 
             switch (command) {
             case "todo":
-                Todo.addTodo(userInput);
+                Todo.addTodo(inputParts);
                 break;
 
             case "deadline":
-                Deadline.addDeadline(userInput);
+                Deadline.addDeadline(inputParts);
                 break;
 
             case "event":
-                Event.addEvent(userInput);
+                Event.addEvent(inputParts);
                 break;
 
             case "list":
+                // ignores any parameters
                 Task.displayList();
                 break;
 
             case "mark":
-                Task.markDone(userInput);
+                Task.markDone(inputParts, true);
                 break;
 
             case "unmark":
-                Task.markNotDone(userInput);
+                Task.markDone(inputParts, false);
                 break;
 
             case "help":
-                System.out.println(Text.TEXT_TASK_LIST_COMMANDS);
+                // ignores any parameters
+                System.out.println(Text.TASK_LIST_COMMANDS);
                 break;
 
             case "bye":
+                // ignores any parameters
                 return;
 
             default:
-                System.out.println("I don't recognise that command!");
+                System.out.println(Text.COMMAND_INVALID);
                 break;
             }
         }
     }
 
     public static void main(String[] args) {
-        System.out.println(Text.TEXT_INTRO);
+        System.out.println(Text.INTRO);
 
-        System.out.println(Text.TEXT_TASK_LIST);
-        System.out.println(Text.TEXT_TASK_LIST_COMMANDS);
+        System.out.println(Text.TASK_LIST);
+        System.out.println(Text.TASK_LIST_COMMANDS);
         parseTaskListCommand();
 
-        System.out.println(Text.TEXT_BYE);
+        System.out.println(Text.BYE);
     }
 }

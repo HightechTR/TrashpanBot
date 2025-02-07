@@ -1,11 +1,12 @@
 public class Task {
     static int listCounter = 0;
-    static Task[] tasks = new Task[100];
+    static final Task[] tasks = new Task[100];
     protected String description;
     protected boolean isDone;
 
-    public Task (String description) {
+    public Task(String description) {
         this.description = description;
+        this.isDone = false;
     }
 
     public String getDescription() {
@@ -48,11 +49,11 @@ public class Task {
      *
      * @return True if the list is full.
      */
-    public static boolean isListNotFull() {
+    public static boolean isListFull() {
         if (listCounter > 99) {
-            System.out.println("Sorry! The list is full!");
+            System.out.println(Text.TASK_LIST_FULL);
         }
-        return listCounter <= 99;
+        return listCounter > 99;
     }
 
     /**
@@ -71,9 +72,9 @@ public class Task {
      */
     public static void displayList() {
         if (listCounter == 0) {
-            System.out.println("Your list is empty!");
+            System.out.println(Text.TASK_LIST_EMPTY);
         } else {
-            System.out.println("Okay, here's your list:");
+            System.out.println(Text.TASK_LIST_DISPLAY);
             for (int i = 1; i <= listCounter; i++) {
                 printTask(i);
             }
@@ -84,46 +85,30 @@ public class Task {
      * Prints most recent task after adding.
      */
     static void printAddedText() {
-        System.out.println("Okay! Added this to the list:");
+        System.out.println(Text.TASK_ADDED);
         printTask(listCounter);
         System.out.print("You have " + listCounter + " ");
         System.out.println(listCounter == 1 ? "task now!" : "tasks now!");
     }
 
     /**
-     * Marks a task as done in the list.
+     * Marks a task as done or not done in the list.
      *
-     * @param input The command containing the task index to be marked done;
-     *              must contain "mark".
+     * @param inputParts The input string array containing the task index to be marked.
+     * @param isDone Boolean to set the task as done or not done.
      */
-    public static void markDone(String input) {
-        Integer index = tryParseInteger(input.substring(input.indexOf(" ") + 1));
-        if (index == null) {
-            System.out.println("Oops! That's not a number.");
-        } else if (index > listCounter) {
-            System.out.println("Oops! That's not in the list.");
-        } else {
-            tasks[index - 1].setDone(true);
-            System.out.println("Yay! I've marked this task as done:");
-            printTask(index);
-        }
-    }
+    public static void markDone(String[] inputParts, boolean isDone) {
+        Integer index = tryParseInteger(inputParts[1]);
 
-    /**
-     * Marks a task as not done in the list.
-     *
-     * @param input The command containing the task index to be marked not done;
-     *              must contain "unmark".
-     */
-    public static void markNotDone(String input) {
-        Integer index = tryParseInteger(input.substring(input.indexOf(" ") + 1));
-        if (index == null) {
-            System.out.println("Oops! That's not a number.");
-        } else if (index > listCounter) {
-            System.out.println("Oops! That's not in the list.");
+        if (index == null) { // check if number is valid
+            System.out.println(Text.TASK_MARK_NO_NUM);
+
+        } else if (index > listCounter) { // check if number is in bounds
+            System.out.println(Text.TASK_MARK_OOB);
+
         } else {
-            tasks[index - 1].setDone(false);
-            System.out.println("Ganbaraki! I've unmarked this task as not done:");
+            tasks[index - 1].setDone(isDone);
+            System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
             printTask(index);
         }
     }

@@ -20,30 +20,32 @@ public class Deadline extends Task {
     /**
      * Adds a deadline to the task list.
      *
-     * @param input The input string containing the task to be added to the list.
+     * @param inputParts The input string array containing the task to be added to the list.
      */
-    public static void addDeadline(String input) {
-        String parameter = Todo.getParameter(input);
-
-        // check if parameter is non-empty
-        if (Todo.isInvalidParameter(input)) {
-            System.out.println("Oops, you didn't say what to add!");
-            System.out.println("Command format: deadline <description> /by <due date>");
+    public static void addDeadline(String[] inputParts) {
+        // check if list is full
+        if (isListFull()) {
             return;
         }
 
-        String deadline = parameter.substring(parameter.indexOf("/by") + 3);
+        // check if parameter is non-empty
+        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
+            System.out.println(Text.DEADLINE_NO_DESC);
+            return;
+        }
+
+        String[] parameterParts = inputParts[1].split(" /by ", 2);
 
         // check if due date is valid
-        if (!parameter.contains("/by") || deadline.length() < 2) {
-            System.out.println("Oops, you didn't give me a date!");
-            System.out.println("Command format: deadline <description> /by <due date>");
-
-        } else if (isListNotFull()) {
-            String description = parameter.substring(0, parameter.indexOf("/by"));
-            tasks[listCounter] = new Deadline(description, deadline.substring(1));
-            listCounter++;
-            printAddedText();
+        if (parameterParts.length != 2 || parameterParts[1].isEmpty()) {
+            System.out.println(Text.DEADLINE_NO_DATE);
+            return;
         }
+
+        String description = parameterParts[0];
+        String deadline = parameterParts[1];
+        tasks[listCounter] = new Deadline(description, deadline);
+        listCounter++;
+        printAddedText();
     }
 }

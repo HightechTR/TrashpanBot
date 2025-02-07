@@ -10,43 +10,25 @@ public class Todo extends Task {
     }
 
     /**
-     * Extracts task description from command.
+     * Adds a to-do to the task list.
      *
-     * @param input The input string.
-     * @return The description of the task.
+     * @param inputParts The input string array containing the task to be added to the list.
      */
-    static String getParameter(String input) {
-        return input.substring(input.indexOf(" ") + 1);
-    }
-
-    /**
-     * Checks if input parameters are non-empty.
-     *
-     * @param input The input string containing command and parameter.
-     * @return True if parameter is non-empty.
-     */
-    public static boolean isInvalidParameter(String input) {
-        String parameter = getParameter(input);
-        return !input.contains(" ") || parameter.isEmpty();
-    }
-
-    /**
-     * Adds a task to the task list.
-     *
-     * @param input The input string containing the task to be added to the list.
-     */
-    public static void addTodo(String input) {
-        String description = getParameter(input);
+    public static void addTodo(String[] inputParts) {
+        // check if list is full
+        if (isListFull()) {
+            return;
+        }
 
         // check if parameter is non-empty
-        if (isInvalidParameter(input)) {
-            System.out.println("Oops, you didn't say what to add!");
-            System.out.println("Command format: todo <description>");
-
-        } else if (isListNotFull()) {
-            tasks[listCounter] = new Todo(description);
-            listCounter++;
-            printAddedText();
+        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
+            System.out.println(Text.TODO_NO_DESC);
+            return;
         }
+
+        String description = inputParts[1];
+        tasks[listCounter] = new Todo(description);
+        listCounter++;
+        printAddedText();
     }
 }
