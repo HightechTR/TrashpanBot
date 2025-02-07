@@ -48,8 +48,8 @@ public class Event extends Task {
         String from = parameterParts[1];
         String to = parameterParts[2];
 
-        tasks[listCounter] = new Event(description, from, to);
-        listCounter++;
+        TrashpanMain.tasks[TrashpanMain.listCounter] = new Event(description, from, to);
+        TrashpanMain.listCounter++;
         printAddedText();
     }
 }

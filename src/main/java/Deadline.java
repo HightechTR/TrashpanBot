@@ -44,8 +44,8 @@ public class Deadline extends Task {
 
         String description = parameterParts[0];
         String deadline = parameterParts[1];
-        tasks[listCounter] = new Deadline(description, deadline);
-        listCounter++;
+        TrashpanMain.tasks[TrashpanMain.listCounter] = new Deadline(description, deadline);
+        TrashpanMain.listCounter++;
         printAddedText();
     }
 }

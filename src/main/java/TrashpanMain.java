@@ -1,8 +1,12 @@
 import java.util.Scanner;
 
 public class TrashpanMain {
+    static final int MAX_TASKS = 100;
+    static final Task[] tasks = new Task[MAX_TASKS];
+
     static String userInput;
     static Scanner in = new Scanner(System.in);
+    static int listCounter = 0;
 
     /**
      * Reads in an input and parses it into command and parameter.
@@ -46,11 +50,11 @@ public class TrashpanMain {
                 break;
 
             case "mark":
-                Task.markDone(inputParts, true);
+                Task.markTask(inputParts, true);
                 break;
 
             case "unmark":
-                Task.markDone(inputParts, false);
+                Task.markTask(inputParts, false);
                 break;
 
             case "help":

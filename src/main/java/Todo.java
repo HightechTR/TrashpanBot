@@ -27,8 +27,8 @@ public class Todo extends Task {
         }
 
         String description = inputParts[1];
-        tasks[listCounter] = new Todo(description);
-        listCounter++;
+        TrashpanMain.tasks[TrashpanMain.listCounter] = new Todo(description);
+        TrashpanMain.listCounter++;
         printAddedText();
     }
 }
