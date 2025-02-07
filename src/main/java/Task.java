@@ -1,6 +1,7 @@
 public class Task {
+    static final int MAX_TASKS = 100;
+    static final Task[] tasks = new Task[MAX_TASKS];
     static int listCounter = 0;
-    static final Task[] tasks = new Task[100];
     protected String description;
     protected boolean isDone;
 
