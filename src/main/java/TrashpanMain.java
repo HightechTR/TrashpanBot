@@ -6,6 +6,7 @@ public class TrashpanMain {
 
     static String userInput;
     static Scanner in = new Scanner(System.in);
+    static boolean isRunning = true;
     static int listCounter = 0;
 
     /**
@@ -18,6 +19,12 @@ public class TrashpanMain {
         return userInput.split(" ", 2);
     }
 
+    public static void exitProgram() {
+        System.out.println(Text.BYE);
+        isRunning = false;
+        System.exit(0);
+    }
+
     /**
      * Calls methods for the task list application based on the command inputted.
      */
@@ -25,50 +32,21 @@ public class TrashpanMain {
         String[] inputParts;
         String command;
 
-        while (true) {
+        while (isRunning) {
             System.out.println(Text.LINE);
             inputParts = readInput();
             command = inputParts[0];
             System.out.println(Text.LINE);
 
             switch (command) {
-            case "todo":
-                Todo.addTodo(inputParts);
-                break;
-
-            case "deadline":
-                Deadline.addDeadline(inputParts);
-                break;
-
-            case "event":
-                Event.addEvent(inputParts);
-                break;
-
-            case "list":
-                // ignores any parameters
-                Task.displayList();
-                break;
-
-            case "mark":
-                Task.markTask(inputParts, true);
-                break;
-
-            case "unmark":
-                Task.markTask(inputParts, false);
-                break;
-
-            case "help":
-                // ignores any parameters
-                System.out.println(Text.TASK_LIST_COMMANDS);
-                break;
-
-            case "bye":
-                // ignores any parameters
-                return;
-
-            default:
-                System.out.println(Text.COMMAND_INVALID);
-                break;
+            case "todo" -> Todo.addTodo(inputParts);
+            case "event" -> Event.addEvent(inputParts);
+            case "list" -> Task.displayList();
+            case "mark" -> Task.markTask(inputParts, true);
+            case "unmark" -> Task.markTask(inputParts, false);
+            case "help" -> System.out.println(Text.TASK_LIST_COMMANDS);
+            case "bye" -> exitProgram();
+            default -> System.out.println(Text.COMMAND_INVALID);
             }
         }
     }
@@ -79,7 +57,5 @@ public class TrashpanMain {
         System.out.println(Text.TASK_LIST);
         System.out.println(Text.TASK_LIST_COMMANDS);
         parseTaskListCommand();
-
-        System.out.println(Text.BYE);
     }
 }
