@@ -27,9 +27,12 @@ public final class Text {
     public static final String TASK_ADDED = "Okay! Added this to the list:";
 
     public static final String TASK_MARK_NO_NUM = """
+            Oops, you didn't say which task to mark!
+            Command format: mark <number>;""";
+
+    public static final String TASK_MARK_NOT_NUM = """
             Oops! That's not a number.
-            Command format: mark <number>
-            """;
+            Command format: mark <number>""";
 
     public static final String TASK_MARK_OOB = "Oops! That's not in the list.";
 
@@ -57,10 +60,11 @@ public final class Text {
             Oops, you didn't give me the start or end date!
             Command format: event <description> /from <start date> /to <end date>""";
 
-    public static final String COMMAND_INVALID = "I don't recognise that command!";
+    public static final String COMMAND_INVALID = "Eh? I don't know what that means...";
 
     public static final String INTRO = """
             This bot is based on the personality of Raki Kazuki from PixelLink.
+            
             ⣿⣿⣿⡟⣛⠻⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠿⠻⣿⣿
             ⣿⣿⣿⡇⠀⠱⡤⢉⣛⠛⠛⠛⠿⠿⢋⣡⠖⠊⠁⢸⣿
             ⣿⣿⣿⣧⠡⢠⣾⣿⣧⣶⣿⣿⣿⣦⣾⠁⠀⠀⠆⣿⣿
@@ -75,6 +79,8 @@ public final class Text {
             What can I do for you today?
             __________________________________________________
             """;
+
+    // todo: new logo
 
     public static final String BYE = """
             Otsuraki! See you soon!
