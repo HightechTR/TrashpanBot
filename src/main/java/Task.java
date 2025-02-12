@@ -96,10 +96,16 @@ public class Task {
      * @param isDone Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
+        // check if parameter is non-empty
+        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
+            System.out.println(Text.TASK_MARK_NO_NUM);
+            return;
+        }
+
         Integer index = tryParseInteger(inputParts[1]);
 
         if (index == null) { // check if number is valid
-            System.out.println(Text.TASK_MARK_NO_NUM);
+            System.out.println(Text.TASK_MARK_NOT_NUM);
 
         } else if (index > TrashpanMain.listCounter) { // check if number is in bounds
             System.out.println(Text.TASK_MARK_OOB);
