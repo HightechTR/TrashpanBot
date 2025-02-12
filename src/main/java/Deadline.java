@@ -28,22 +28,28 @@ public class Deadline extends Task {
             return;
         }
 
+        String[] parameterParts;
+        String description;
+
         // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
+        try {
+            parameterParts = inputParts[1].split(" /by ", 2);
+            description = checkEmpty(parameterParts[0]);
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(Text.DEADLINE_NO_DESC);
             return;
         }
 
-        String[] parameterParts = inputParts[1].split(" /by ", 2);
+        String deadline;
 
         // check if due date is valid
-        if (parameterParts.length != 2 || parameterParts[1].isEmpty()) {
+        try {
+            deadline = checkEmpty(parameterParts[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(Text.DEADLINE_NO_DATE);
             return;
         }
 
-        String description = parameterParts[0];
-        String deadline = parameterParts[1];
         TrashpanMain.tasks[TrashpanMain.listCounter] = new Deadline(description, deadline);
         TrashpanMain.listCounter++;
         printAddedText();

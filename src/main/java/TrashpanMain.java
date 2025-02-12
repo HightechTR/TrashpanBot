@@ -19,6 +19,9 @@ public class TrashpanMain {
         return userInput.split(" ", 2);
     }
 
+    /**
+     * Exits the program.dd
+     */
     public static void exitProgram() {
         System.out.println(Text.BYE);
         isRunning = false;

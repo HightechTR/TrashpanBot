@@ -28,6 +28,20 @@ public class Task {
     }
 
     /**
+     * Checks if a string is empty before returning it.
+     *
+     * @param input The input string to be checked.
+     * @throws ArrayIndexOutOfBoundsException if string is empty.
+     * @return The input string if it is not empty.
+     */
+    public static String checkEmpty (String input) {
+        if (input.isEmpty()) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return input;
+    }
+
+    /**
      * Checks if the list is full (100 tasks).
      *
      * @return True if the list is full.
@@ -81,19 +95,15 @@ public class Task {
      * @param isDone     Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
-        // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
-            System.out.println(Text.TASK_MARK_NO_NUM);
-            return;
-        }
-
         int index;
 
-        // check if index is a valid integer
         try {
-            index = Integer.parseInt(inputParts[1]);
-        } catch (NumberFormatException e) {
+            index = Integer.parseInt(checkEmpty(inputParts[1]));
+        } catch (NumberFormatException e) { // check if index is a valid integer
             System.out.println(Text.TASK_MARK_NOT_NUM);
+            return;
+        } catch (ArrayIndexOutOfBoundsException e) { // check if parameter is non-empty
+            System.out.println(Text.TASK_MARK_NO_NUM);
             return;
         }
 

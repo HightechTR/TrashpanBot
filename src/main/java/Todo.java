@@ -9,6 +9,9 @@ public class Todo extends Task {
         return "T";
     }
 
+    @Override
+    public String getDate() { return ""; }
+
     /**
      * Adds a to-do to the task list.
      *
@@ -20,13 +23,15 @@ public class Todo extends Task {
             return;
         }
 
-        // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
+        String description;
+
+        try {
+            description = checkEmpty(inputParts[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println(Text.TODO_NO_DESC);
             return;
         }
 
-        String description = inputParts[1];
         TrashpanMain.tasks[TrashpanMain.listCounter] = new Todo(description);
         TrashpanMain.listCounter++;
         printAddedText();
