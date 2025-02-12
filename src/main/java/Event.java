@@ -16,7 +16,7 @@ public class Event extends Task {
 
     @Override
     public String getDate() {
-        return "(from: " + from + " to: " + to + ")";
+        return " (from: " + from + " to: " + to + ")";
     }
 
     /**

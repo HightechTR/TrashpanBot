@@ -40,6 +40,7 @@ public class TrashpanMain {
 
             switch (command) {
             case "todo" -> Todo.addTodo(inputParts);
+            case "deadline" -> Deadline.addDeadline(inputParts);
             case "event" -> Event.addEvent(inputParts);
             case "list" -> Task.displayList();
             case "mark" -> Task.markTask(inputParts, true);
