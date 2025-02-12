@@ -31,7 +31,7 @@ public final class Text {
             Command format: mark <number>;""";
 
     public static final String TASK_MARK_NOT_NUM = """
-            Oops! That's not a number.
+            Oops, that's not a valid number!
             Command format: mark <number>""";
 
     public static final String TASK_MARK_OOB = "Oops! That's not in the list.";

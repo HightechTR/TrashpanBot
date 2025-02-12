@@ -28,21 +28,6 @@ public class Task {
     }
 
     /**
-     * Parses the input string into an integer.
-     * Returns null if the string is not an integer.
-     *
-     * @param input Input string.
-     * @return Integer corresponding to string, null if string is not an integer.
-     */
-    public static Integer tryParseInteger(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
-    /**
      * Checks if the list is full (100 tasks).
      *
      * @return True if the list is full.
@@ -93,7 +78,7 @@ public class Task {
      * Marks a task as done or not done in the list.
      *
      * @param inputParts The input string array containing the task index to be marked.
-     * @param isDone Boolean to set the task as done or not done.
+     * @param isDone     Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
         // check if parameter is non-empty
@@ -102,12 +87,18 @@ public class Task {
             return;
         }
 
-        Integer index = tryParseInteger(inputParts[1]);
+        int index;
 
-        if (index == null) { // check if number is valid
+        // check if index is a valid integer
+        try {
+            index = Integer.parseInt(inputParts[1]);
+        } catch (NumberFormatException e) {
             System.out.println(Text.TASK_MARK_NOT_NUM);
+            return;
+        }
 
-        } else if (index > TrashpanMain.listCounter) { // check if number is in bounds
+        // check if number is in bounds
+        if (index > TrashpanMain.listCounter) {
             System.out.println(Text.TASK_MARK_OOB);
 
         } else {
