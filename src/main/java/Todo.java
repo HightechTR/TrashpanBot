@@ -9,6 +9,10 @@ public class Todo extends Task {
         return "T";
     }
 
+    public String getDate() {
+        return "";
+    }
+
     /**
      * Adds a to-do to the task list.
      *

@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -15,13 +15,9 @@ public class Task {
         return isDone ? "X" : " ";
     }
 
-    public String getTypeIcon() {
-        return "";
-    }
+    public abstract String getTypeIcon();
 
-    public String getDate() {
-        return "";
-    }
+    public abstract String getDate();
 
     public void setDone(boolean done) {
         this.isDone = done;
