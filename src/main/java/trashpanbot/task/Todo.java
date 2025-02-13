@@ -32,7 +32,7 @@ public class Todo extends Task {
         // check if parameter is non-empty
         try {
             description = checkEmpty(inputParts[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println(Text.TODO_MISSING);
             return;
         }

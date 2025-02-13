@@ -44,11 +44,11 @@ public abstract class Task {
      *
      * @param input The input string to be checked.
      * @return The input string if it is non-empty.
-     * @throws ArrayIndexOutOfBoundsException if string is empty.
+     * @throws StringArrayEmptyException if string is empty.
      */
     public static String checkEmpty(String input) {
         if (input.isEmpty()) {
-            throw new ArrayIndexOutOfBoundsException();
+            throw new StringArrayEmptyException();
         }
         return input;
     }
@@ -102,7 +102,7 @@ public abstract class Task {
         } catch (NumberFormatException e) { // check if number is valid
             System.out.println(Text.TASK_MARK_NOT_NUM);
             return;
-        } catch (ArrayIndexOutOfBoundsException e) { // check if parameter is non-empty
+        } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
             System.out.println(Text.TASK_MARK_NO_NUM);
             return;
         }

@@ -40,7 +40,7 @@ public class Deadline extends Task {
             parameterParts = inputParts[1].split(" /by ", 2);
             description = checkEmpty(parameterParts[0]);
             deadline = checkEmpty(parameterParts[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println(Text.DEADLINE_MISSING);
             return;
         }

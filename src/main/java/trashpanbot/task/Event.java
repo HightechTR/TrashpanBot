@@ -43,7 +43,7 @@ public class Event extends Task {
             description = checkEmpty(parameterParts[0]);
             from = checkEmpty(parameterParts[1]);
             to = checkEmpty(parameterParts[2]);
-        } catch (ArrayIndexOutOfBoundsException e) {
+        } catch (IndexOutOfBoundsException e) {
             System.out.println(Text.EVENT_MISSING);
             return;
         }
