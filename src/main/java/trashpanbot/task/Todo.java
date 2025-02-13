@@ -27,13 +27,16 @@ public class Todo extends Task {
             return;
         }
 
+        String description;
+
         // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
-            System.out.println(Text.TODO_NO_DESC);
+        try {
+            description = checkEmpty(inputParts[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(Text.TODO_MISSING);
             return;
         }
 
-        String description = inputParts[1];
         TrashpanMain.tasks[TrashpanMain.listCounter] = new Todo(description);
         TrashpanMain.listCounter++;
         printAddedText();

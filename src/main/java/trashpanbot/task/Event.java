@@ -3,8 +3,8 @@ package trashpanbot.task;
 import trashpanbot.*;
 
 public class Event extends Task {
-    protected String from;
-    protected String to;
+    private final String from;
+    private final String to;
 
     public Event(String description, String from, String to) {
         super(description);
@@ -33,23 +33,20 @@ public class Event extends Task {
             return;
         }
 
-        // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
-            System.out.println(Text.EVENT_NO_DESC);
+        String[] parameterParts;
+        String description;
+        String from;
+        String to;
+
+        try {
+            parameterParts = inputParts[1].split(" /from | /to ", 3);
+            description = checkEmpty(parameterParts[0]);
+            from = checkEmpty(parameterParts[1]);
+            to = checkEmpty(parameterParts[2]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(Text.EVENT_MISSING);
             return;
         }
-
-        String[] parameterParts = inputParts[1].split(" /from | /to ", 3);
-
-        // check if start and end date is valid
-        if (parameterParts.length != 3 || parameterParts[1].isEmpty() || parameterParts[2].isEmpty()) {
-            System.out.println(Text.EVENT_NO_DATE);
-            return;
-        }
-
-        String description = parameterParts[0];
-        String from = parameterParts[1];
-        String to = parameterParts[2];
 
         TrashpanMain.tasks[TrashpanMain.listCounter] = new Event(description, from, to);
         TrashpanMain.listCounter++;

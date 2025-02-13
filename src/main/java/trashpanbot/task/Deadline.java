@@ -3,7 +3,7 @@ package trashpanbot.task;
 import trashpanbot.*;
 
 public class Deadline extends Task {
-    protected String deadline;
+    private final String deadline;
 
     public Deadline(String description, String deadline) {
         super(description);
@@ -31,22 +31,20 @@ public class Deadline extends Task {
             return;
         }
 
-        // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
-            System.out.println(Text.DEADLINE_NO_DESC);
+        String[] parameterParts;
+        String description;
+        String deadline;
+
+        // check if parameters are non-empty
+        try {
+            parameterParts = inputParts[1].split(" /by ", 2);
+            description = checkEmpty(parameterParts[0]);
+            deadline = checkEmpty(parameterParts[1]);
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println(Text.DEADLINE_MISSING);
             return;
         }
 
-        String[] parameterParts = inputParts[1].split(" /by ", 2);
-
-        // check if due date is valid
-        if (parameterParts.length != 2 || parameterParts[1].isEmpty()) {
-            System.out.println(Text.DEADLINE_NO_DATE);
-            return;
-        }
-
-        String description = parameterParts[0];
-        String deadline = parameterParts[1];
         TrashpanMain.tasks[TrashpanMain.listCounter] = new Deadline(description, deadline);
         TrashpanMain.listCounter++;
         printAddedText();

@@ -28,21 +28,6 @@ public abstract class Task {
     }
 
     /**
-     * Parses the input string into an integer.
-     * Returns null if the string is not an integer.
-     *
-     * @param input Input string.
-     * @return Integer corresponding to string, null if string is not an integer.
-     */
-    public static Integer tryParseInteger(String input) {
-        try {
-            return Integer.parseInt(input);
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
-    /**
      * Checks if the list is full (100 tasks).
      *
      * @return True if the list is full.
@@ -52,6 +37,20 @@ public abstract class Task {
             System.out.println(Text.TASK_LIST_FULL);
         }
         return TrashpanMain.listCounter > 99;
+    }
+
+    /**
+     * Checks if a string is empty.
+     *
+     * @param input The input string to be checked.
+     * @return The input string if it is non-empty.
+     * @throws ArrayIndexOutOfBoundsException if string is empty.
+     */
+    public static String checkEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new ArrayIndexOutOfBoundsException();
+        }
+        return input;
     }
 
     /**
@@ -96,20 +95,21 @@ public abstract class Task {
      * @param isDone     Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
-        // check if parameter is non-empty
-        if (inputParts.length != 2 || inputParts[1].isEmpty()) {
+        int index;
+
+        try {
+            index = Integer.parseInt(checkEmpty(inputParts[1]));
+        } catch (NumberFormatException e) { // check if number is valid
+            System.out.println(Text.TASK_MARK_NOT_NUM);
+            return;
+        } catch (ArrayIndexOutOfBoundsException e) { // check if parameter is non-empty
             System.out.println(Text.TASK_MARK_NO_NUM);
             return;
         }
 
-        Integer index = tryParseInteger(inputParts[1]);
-
-        if (index == null) { // check if number is valid
-            System.out.println(Text.TASK_MARK_NOT_NUM);
-
-        } else if (index > TrashpanMain.listCounter) { // check if number is in bounds
+        // check if number is in bounds
+        if (index > TrashpanMain.listCounter) {
             System.out.println(Text.TASK_MARK_OOB);
-
         } else {
             TrashpanMain.tasks[index - 1].setDone(isDone);
             System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);

@@ -29,11 +29,11 @@ public final class Text {
     public static final String TASK_ADDED = "Okay! Added this to the list:";
 
     public static final String TASK_MARK_NO_NUM = """
-            Oops, you didn't say which task to mark!
-            Command format: mark <number>;""";
+            Oops, something is missing!
+            Command format: mark <number>""";
 
     public static final String TASK_MARK_NOT_NUM = """
-            Oops! That's not a number.
+            Oops, that's not a number!
             Command format: mark <number>""";
 
     public static final String TASK_MARK_OOB = "Oops! That's not in the list.";
@@ -42,27 +42,21 @@ public final class Text {
 
     public static final String TASK_MARK_UNDONE = "Ganbaraki! I've unmarked this task as not done:";
 
-    public static final String TODO_NO_DESC = """
-            Oops, you didn't say what to add!
+    public static final String TODO_MISSING = """
+            Oops, something is missing!
             Command format: todo <description>""";
 
-    public static final String DEADLINE_NO_DESC = """
-            Oops, you didn't say what to add!
+    public static final String DEADLINE_MISSING = """
+            Oops, something is missing!
             Command format: deadline <description> /by <due date>""";
 
-    public static final String DEADLINE_NO_DATE = """
-            Oops, you didn't give me a date!
-            Command format: deadline <description> /by <due date>""";
-
-    public static final String EVENT_NO_DESC = """
-            Oops, you didn't say what to add!
+    public static final String EVENT_MISSING = """
+            Oops, something is missing!
             Command format: event <description> /from <start date> /to <end date>""";
 
-    public static final String EVENT_NO_DATE = """
-            Oops, you didn't give me the start or end date!
-            Command format: event <description> /from <start date> /to <end date>""";
-
-    public static final String COMMAND_INVALID = "Eh? I don't know what that means...";
+    public static final String COMMAND_INVALID = """
+            Eh? I don't know what that means...
+            Try running help for the list of commands!""";
 
     public static final String INTRO = """
             This bot is based on the personality of Raki Kazuki from PixelLink.
