@@ -1,3 +1,5 @@
+package trashpanbot;
+
 public final class Text {
     private Text() {
     }

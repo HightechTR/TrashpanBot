@@ -1,6 +1,10 @@
+package trashpanbot.task;
+
+import trashpanbot.*;
+
 public abstract class Task {
-    protected String description;
-    protected boolean isDone;
+    private final String description;
+    private boolean isDone;
 
     public Task(String description) {
         this.description = description;
@@ -67,11 +71,11 @@ public abstract class Task {
     public static void displayList() {
         if (TrashpanMain.listCounter == 0) {
             System.out.println(Text.TASK_LIST_EMPTY);
-        } else {
-            System.out.println(Text.TASK_LIST_DISPLAY);
-            for (int i = 1; i <= TrashpanMain.listCounter; i++) {
-                printTask(i);
-            }
+            return;
+        }
+        System.out.println(Text.TASK_LIST_DISPLAY);
+        for (int i = 1; i <= TrashpanMain.listCounter; i++) {
+            printTask(i);
         }
     }
 
@@ -89,7 +93,7 @@ public abstract class Task {
      * Marks a task as done or not done in the list.
      *
      * @param inputParts The input string array containing the task index to be marked.
-     * @param isDone Boolean to set the task as done or not done.
+     * @param isDone     Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
         // check if parameter is non-empty

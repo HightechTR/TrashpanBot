@@ -1,7 +1,10 @@
+package trashpanbot.task;
+
+import trashpanbot.*;
+
 public class Todo extends Task {
     public Todo(String description) {
         super(description);
-        super.isDone = false;
     }
 
     @Override
