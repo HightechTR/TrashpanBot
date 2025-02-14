@@ -1,6 +1,7 @@
 package trashpanbot.task;
 
 import trashpanbot.*;
+import trashpanbot.exception.*;
 
 public abstract class Task {
     private final String description;
