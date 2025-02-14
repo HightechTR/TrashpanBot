@@ -1,7 +1,10 @@
+package trashpanbot.task;
+
+import trashpanbot.*;
+
 public class Todo extends Task {
     public Todo(String description) {
         super(description);
-        super.isDone = false;
     }
 
     @Override
@@ -9,8 +12,9 @@ public class Todo extends Task {
         return "T";
     }
 
-    @Override
-    public String getDate() { return ""; }
+    public String getDate() {
+        return "";
+    }
 
     /**
      * Adds a to-do to the task list.
@@ -25,10 +29,11 @@ public class Todo extends Task {
 
         String description;
 
+        // check if parameter is non-empty
         try {
             description = checkEmpty(inputParts[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(Text.TODO_NO_DESC);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(Text.TODO_MISSING);
             return;
         }
 

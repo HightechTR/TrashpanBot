@@ -1,6 +1,10 @@
-public class Task {
-    protected String description;
-    protected boolean isDone;
+package trashpanbot.task;
+
+import trashpanbot.*;
+
+public abstract class Task {
+    private final String description;
+    private boolean isDone;
 
     public Task(String description) {
         this.description = description;
@@ -15,30 +19,12 @@ public class Task {
         return isDone ? "X" : " ";
     }
 
-    public String getTypeIcon() {
-        return "";
-    }
+    public abstract String getTypeIcon();
 
-    public String getDate() {
-        return "";
-    }
+    public abstract String getDate();
 
     public void setDone(boolean done) {
         this.isDone = done;
-    }
-
-    /**
-     * Checks if a string is empty before returning it.
-     *
-     * @param input The input string to be checked.
-     * @throws ArrayIndexOutOfBoundsException if string is empty.
-     * @return The input string if it is not empty.
-     */
-    public static String checkEmpty (String input) {
-        if (input.isEmpty()) {
-            throw new ArrayIndexOutOfBoundsException();
-        }
-        return input;
     }
 
     /**
@@ -51,6 +37,20 @@ public class Task {
             System.out.println(Text.TASK_LIST_FULL);
         }
         return TrashpanMain.listCounter > 99;
+    }
+
+    /**
+     * Checks if a string is empty.
+     *
+     * @param input The input string to be checked.
+     * @return The input string if it is non-empty.
+     * @throws StringArrayEmptyException if string is empty.
+     */
+    public static String checkEmpty(String input) {
+        if (input.isEmpty()) {
+            throw new StringArrayEmptyException();
+        }
+        return input;
     }
 
     /**
@@ -70,11 +70,11 @@ public class Task {
     public static void displayList() {
         if (TrashpanMain.listCounter == 0) {
             System.out.println(Text.TASK_LIST_EMPTY);
-        } else {
-            System.out.println(Text.TASK_LIST_DISPLAY);
-            for (int i = 1; i <= TrashpanMain.listCounter; i++) {
-                printTask(i);
-            }
+            return;
+        }
+        System.out.println(Text.TASK_LIST_DISPLAY);
+        for (int i = 1; i <= TrashpanMain.listCounter; i++) {
+            printTask(i);
         }
     }
 
@@ -99,10 +99,10 @@ public class Task {
 
         try {
             index = Integer.parseInt(checkEmpty(inputParts[1]));
-        } catch (NumberFormatException e) { // check if index is a valid integer
+        } catch (NumberFormatException e) { // check if number is valid
             System.out.println(Text.TASK_MARK_NOT_NUM);
             return;
-        } catch (ArrayIndexOutOfBoundsException e) { // check if parameter is non-empty
+        } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
             System.out.println(Text.TASK_MARK_NO_NUM);
             return;
         }
@@ -110,7 +110,6 @@ public class Task {
         // check if number is in bounds
         if (index > TrashpanMain.listCounter) {
             System.out.println(Text.TASK_MARK_OOB);
-
         } else {
             TrashpanMain.tasks[index - 1].setDone(isDone);
             System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);

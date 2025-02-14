@@ -1,13 +1,17 @@
+package trashpanbot;
+
 import java.util.Scanner;
 
-public class TrashpanMain {
-    static final int MAX_TASKS = 100;
-    static final Task[] tasks = new Task[MAX_TASKS];
+import trashpanbot.task.*;
 
+public class TrashpanMain {
     static String userInput;
     static Scanner in = new Scanner(System.in);
     static boolean isRunning = true;
-    static int listCounter = 0;
+
+    public static final int MAX_TASKS = 100;
+    public static final Task[] tasks = new Task[MAX_TASKS];
+    public static int listCounter = 0;
 
     /**
      * Reads in an input and parses it into command and parameter.

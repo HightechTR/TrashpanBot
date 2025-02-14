@@ -1,9 +1,12 @@
+package trashpanbot.task;
+
+import trashpanbot.*;
+
 public class Deadline extends Task {
-    protected String deadline;
+    private final String deadline;
 
     public Deadline(String description, String deadline) {
         super(description);
-        super.isDone = false;
         this.deadline = deadline;
     }
 
@@ -30,23 +33,15 @@ public class Deadline extends Task {
 
         String[] parameterParts;
         String description;
+        String deadline;
 
-        // check if parameter is non-empty
+        // check if parameters are non-empty
         try {
             parameterParts = inputParts[1].split(" /by ", 2);
             description = checkEmpty(parameterParts[0]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(Text.DEADLINE_NO_DESC);
-            return;
-        }
-
-        String deadline;
-
-        // check if due date is valid
-        try {
             deadline = checkEmpty(parameterParts[1]);
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.out.println(Text.DEADLINE_NO_DATE);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(Text.DEADLINE_MISSING);
             return;
         }
 
