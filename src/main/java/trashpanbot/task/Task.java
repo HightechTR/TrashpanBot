@@ -29,18 +29,6 @@ public abstract class Task {
     }
 
     /**
-     * Checks if the list is full (100 tasks).
-     *
-     * @return True if the list is full.
-     */
-    public static boolean isListFull() {
-        if (TrashpanMain.listCounter > 99) {
-            System.out.println(Text.TASK_LIST_FULL);
-        }
-        return TrashpanMain.listCounter > 99;
-    }
-
-    /**
      * Checks if a string is empty.
      *
      * @param input The input string to be checked.
@@ -60,21 +48,22 @@ public abstract class Task {
      * @param i The index of the task to be printed.
      */
     private static void printTask(int i) {
-        System.out.print(i + ".[" + TrashpanMain.tasks[i - 1].getTypeIcon() + "]");
-        System.out.print("[" + TrashpanMain.tasks[i - 1].getStatusIcon() + "] ");
-        System.out.println(TrashpanMain.tasks[i - 1].getDescription() + TrashpanMain.tasks[i - 1].getDate());
+        System.out.print(i + ".[" + TrashpanMain.tasks.get(i - 1).getTypeIcon() + "]");
+        System.out.print("[" + TrashpanMain.tasks.get(i - 1).getStatusIcon() + "] ");
+        System.out.println(TrashpanMain.tasks.get(i - 1).getDescription()
+                + TrashpanMain.tasks.get(i - 1).getDate());
     }
 
     /**
      * Displays task list to the output.
      */
     public static void displayList() {
-        if (TrashpanMain.listCounter == 0) {
+        if (TrashpanMain.tasks.isEmpty()) {
             System.out.println(Text.TASK_LIST_EMPTY);
             return;
         }
         System.out.println(Text.TASK_LIST_DISPLAY);
-        for (int i = 1; i <= TrashpanMain.listCounter; i++) {
+        for (int i = 1; i <= TrashpanMain.tasks.size(); i++) {
             printTask(i);
         }
     }
@@ -84,9 +73,9 @@ public abstract class Task {
      */
     static void printAddedText() {
         System.out.println(Text.TASK_ADDED);
-        printTask(TrashpanMain.listCounter);
-        System.out.print("You have " + TrashpanMain.listCounter + " ");
-        System.out.println(TrashpanMain.listCounter == 1 ? "task now!" : "tasks now!");
+        printTask(TrashpanMain.tasks.size());
+        System.out.print("You have " + TrashpanMain.tasks.size() + " ");
+        System.out.println(TrashpanMain.tasks.size() == 1 ? "task now!" : "tasks now!");
     }
 
     /**
@@ -109,10 +98,10 @@ public abstract class Task {
         }
 
         // check if number is in bounds
-        if (index > TrashpanMain.listCounter) {
+        if (index > TrashpanMain.tasks.size()) {
             System.out.println(Text.TASK_MARK_OOB);
         } else {
-            TrashpanMain.tasks[index - 1].setDone(isDone);
+            TrashpanMain.tasks.get(index - 1).setDone(isDone);
             System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
             printTask(index);
         }

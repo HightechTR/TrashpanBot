@@ -20,8 +20,6 @@ public final class Text {
             "help": Displays this command list
             "bye": Exits the program""";
 
-    public static final String TASK_LIST_FULL = "Sorry! The list is full!";
-
     public static final String TASK_LIST_EMPTY = "Your list is empty!";
 
     public static final String TASK_LIST_DISPLAY = "Okay, here's your list:";
