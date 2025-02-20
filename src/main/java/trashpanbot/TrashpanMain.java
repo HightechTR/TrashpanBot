@@ -49,6 +49,7 @@ public class TrashpanMain {
             case "todo" -> Todo.addTodo(inputParts);
             case "deadline" -> Deadline.addDeadline(inputParts);
             case "event" -> Event.addEvent(inputParts);
+            case "remove" -> Task.removeTask(inputParts);
             case "list" -> Task.displayList();
             case "mark" -> Task.markTask(inputParts, true);
             case "unmark" -> Task.markTask(inputParts, false);

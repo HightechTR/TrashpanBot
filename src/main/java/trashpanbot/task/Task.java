@@ -79,21 +79,62 @@ public abstract class Task {
     }
 
     /**
+     * Prints most recent task after adding.
+     */
+    static void printRemovedText(int index) {
+        System.out.println(Text.TASK_REMOVED);
+        printTask(index);
+        System.out.print("You have " + (TrashpanMain.tasks.size() - 1) + " ");
+        System.out.println(TrashpanMain.tasks.size() - 1 == 1 ? "task now!" : "tasks now!");
+    }
+
+    /**
+     * Parses an integer value from input, returns the integer inputted
+     * Displays message and returns null if no integer inputted or input is not an integer
+     *
+     * @param inputParts The input string array containing the integer
+     * @return The integer inputted, null if not an integer or no integer inputted
+     */
+    static Integer tryParseInt(String[] inputParts) {
+        try {
+            return Integer.parseInt(checkEmpty(inputParts[1]));
+        } catch (NumberFormatException e) { // check if number is valid
+            System.out.println(Text.TASK_MARK_NOT_NUM);
+            return null;
+        } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
+            System.out.println(Text.TASK_MARK_NO_NUM);
+            return null;
+        }
+    }
+
+    public static void removeTask(String[] inputParts) {
+        Integer index = tryParseInt(inputParts);
+
+        // check if index is valid
+        if (index == null) {
+            return;
+        }
+
+        // check if number is in bounds
+        if (index > TrashpanMain.tasks.size()) {
+            System.out.println(Text.TASK_MARK_OOB);
+        } else {
+            printRemovedText(index);
+            TrashpanMain.tasks.remove(index - 1);
+        }
+    }
+
+    /**
      * Marks a task as done or not done in the list.
      *
      * @param inputParts The input string array containing the task index to be marked.
      * @param isDone     Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
-        int index;
+        Integer index = tryParseInt(inputParts);
 
-        try {
-            index = Integer.parseInt(checkEmpty(inputParts[1]));
-        } catch (NumberFormatException e) { // check if number is valid
-            System.out.println(Text.TASK_MARK_NOT_NUM);
-            return;
-        } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
-            System.out.println(Text.TASK_MARK_NO_NUM);
+        // check if index is valid
+        if (index == null) {
             return;
         }
 

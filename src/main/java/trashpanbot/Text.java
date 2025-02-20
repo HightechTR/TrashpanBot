@@ -15,6 +15,7 @@ public final class Text {
             "deadline <description> /by <due date>": Adds a deadline task to the list
             "event <description> /from <start date> /to <end date>": Adds a event task to the list
             "list": Displays full list of tasks
+            "remove <number>": Removes the task labelled with the number
             "mark <number>": Marks the task labelled with the number as done
             "unmark <number>": Marks the task labelled with the number as not done
             "help": Displays this command list
@@ -24,7 +25,9 @@ public final class Text {
 
     public static final String TASK_LIST_DISPLAY = "Okay, here's your list:";
 
-    public static final String TASK_ADDED = "Okay! Added this to the list:";
+    public static final String TASK_ADDED = "Okay! I added this to the list:";
+
+    public static final String TASK_REMOVED = "Okay! I threw this task into the bin:";
 
     public static final String TASK_MARK_NO_NUM = """
             Oops, something is missing!
