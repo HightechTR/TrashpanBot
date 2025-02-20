@@ -1,7 +1,10 @@
 package trashpanbot.task;
 
+import java.io.IOException;
+
 import trashpanbot.*;
 import trashpanbot.exception.*;
+import trashpanbot.save.Save;
 
 public abstract class Task {
     private final String description;
@@ -18,6 +21,18 @@ public abstract class Task {
 
     public String getStatusIcon() {
         return isDone ? "X" : " ";
+    }
+
+    public String getDeadline() {
+        return "";
+    };
+
+    public String getFrom() {
+        return "";
+    }
+
+    public String getTo() {
+        return "";
     }
 
     public abstract String getTypeIcon();
@@ -95,16 +110,25 @@ public abstract class Task {
      * @param inputParts The input string array containing the task index to be marked.
      * @param isDone     Boolean to set the task as done or not done.
      */
-    public static void markTask(String[] inputParts, boolean isDone) {
+    public static void markTask(String[] inputParts,
+                                boolean isDone, boolean isNotSaveLoad) throws IOException {
         int index;
 
         try {
             index = Integer.parseInt(checkEmpty(inputParts[1]));
         } catch (NumberFormatException e) { // check if number is valid
-            System.out.println(Text.TASK_MARK_NOT_NUM);
+            if (isNotSaveLoad) {
+                System.out.println(Text.TASK_MARK_NOT_NUM);
+            } else {
+                throw new IOException();
+            }
             return;
         } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
-            System.out.println(Text.TASK_MARK_NO_NUM);
+            if (isNotSaveLoad) {
+                System.out.println(Text.TASK_MARK_NO_NUM);
+            } else {
+                throw new IOException();
+            }
             return;
         }
 
@@ -113,8 +137,11 @@ public abstract class Task {
             System.out.println(Text.TASK_MARK_OOB);
         } else {
             TrashpanMain.tasks[index - 1].setDone(isDone);
-            System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
-            printTask(index);
+            if (isNotSaveLoad) {
+                System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
+                printTask(index);
+                Save.updateFile(TrashpanMain.filePath);
+            }
         }
     }
 }

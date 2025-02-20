@@ -7,7 +7,9 @@ public final class Text {
     public static final String TASK_LIST = """
             Current Mode: To-do List
             A functional to-do list, storing up to 100 tasks.
-            Note: This program does not store tasks after exiting.""";
+            Note: This program does not store tasks after exiting.
+            __________________________________________________
+            """;
 
     public static final String TASK_LIST_COMMANDS = """
             Commands:
@@ -57,6 +59,27 @@ public final class Text {
     public static final String COMMAND_INVALID = """
             Eh? I don't know what that means...
             Try running help for the list of commands!""";
+
+    public static final String FILE_READING = """
+            I found a save file!
+            Loading it for you...
+            """;
+
+    public static final String FILE_CREATE = """
+            I couldn't find a save file...
+            No worries, I'll create one for you!
+            """;
+
+    public static final String FILE_READ_ERROR = """
+            Uh oh, I couldn't read the save file!
+            Please check if the file is corrupted and delete it if you have to.""";
+
+    public static final String FILE_WRITE_ERROR = """
+            Uh oh, I couldn't save the task list!
+            Please check if the file is corrupted and delete it if you have to.""";
+
+    public static final String COMMAND_READ_ERROR = """
+            Uh oh, something wrong happened and I don't know what!""";
 
     public static final String INTRO = """
             This bot is based on the personality of Raki Kazuki from PixelLink.

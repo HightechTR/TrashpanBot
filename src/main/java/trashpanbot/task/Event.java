@@ -1,6 +1,9 @@
 package trashpanbot.task;
 
+import java.io.IOException;
+
 import trashpanbot.*;
+import trashpanbot.save.Save;
 
 public class Event extends Task {
     private final String from;
@@ -10,6 +13,16 @@ public class Event extends Task {
         super(description);
         this.from = from;
         this.to = to;
+    }
+
+    @Override
+    public String getFrom() {
+        return from;
+    }
+
+    @Override
+    public String getTo() {
+        return to;
     }
 
     @Override
@@ -27,7 +40,7 @@ public class Event extends Task {
      *
      * @param inputParts The input string array containing the task to be added to the list.
      */
-    public static void addEvent(String[] inputParts) {
+    public static void addEvent(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         // check if list is full
         if (isListFull()) {
             return;
@@ -44,12 +57,20 @@ public class Event extends Task {
             from = checkEmpty(parameterParts[1]);
             to = checkEmpty(parameterParts[2]);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println(Text.EVENT_MISSING);
+            if (isNotSaveLoad) {
+                System.out.println(Text.EVENT_MISSING);
+            } else {
+                throw new IOException();
+            }
             return;
         }
 
         TrashpanMain.tasks[TrashpanMain.listCounter] = new Event(description, from, to);
         TrashpanMain.listCounter++;
-        printAddedText();
+
+        if (isNotSaveLoad) {
+            printAddedText();
+            Save.updateFile(TrashpanMain.filePath);
+        }
     }
 }
