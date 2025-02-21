@@ -83,6 +83,7 @@ public final class Text {
             Uh oh, something wrong happened and I don't know what!""";
 
     public static final String INTRO = """
+            __________________________________________________
             This bot is based on the personality of Raki Kazuki from PixelLink.
             
                    .##+-                         -####
