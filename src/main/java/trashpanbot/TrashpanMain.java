@@ -44,18 +44,16 @@ public class TrashpanMain {
 
         while (isRunning) {
             System.out.println(Text.LINE);
+            System.out.print("> ");
             inputParts = readInput();
             command = inputParts[0];
             System.out.println(Text.LINE);
 
             switch (command) {
-            case "todo" -> Todo.addTodo(inputParts);
-            case "deadline" -> Deadline.addDeadline(inputParts);
-            case "event" -> Event.addEvent(inputParts);
-            case "remove" -> Task.removeTask(inputParts);
             case "todo" -> Todo.addTodo(inputParts, true);
             case "deadline" -> Deadline.addDeadline(inputParts, true);
             case "event" -> Event.addEvent(inputParts, true);
+            case "remove" -> Task.removeTask(inputParts);
             case "list" -> Task.displayList();
             case "mark" -> Task.markTask(inputParts, true, true);
             case "unmark" -> Task.markTask(inputParts, false, true);
@@ -73,7 +71,6 @@ public class TrashpanMain {
 
         try {
             Save.readFile(filePath);
-            System.out.println(Text.FILE_READING);
         } catch (IOException | ArrayIndexOutOfBoundsException e) {
             System.out.println(Text.FILE_READ_ERROR);
             return;

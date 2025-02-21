@@ -25,7 +25,7 @@ public abstract class Task {
 
     public String getDeadline() {
         return "";
-    };
+    }
 
     public String getFrom() {
         return "";

@@ -20,6 +20,7 @@ public class Save {
             return;
         }
 
+        System.out.println(Text.FILE_READING);
         Scanner s = new Scanner(saveFile);
 
         while (s.hasNextLine()) {
@@ -40,7 +41,7 @@ public class Save {
             }
 
             // mark task done if status icon is X
-            String[] mark = {"mark", Integer.toString(TrashpanMain.listCounter)};
+            String[] mark = {"mark", Integer.toString(TrashpanMain.tasks.size())};
             if (parameter[0].equals("X")) {
                 Task.markTask(mark, true, false);
             }
@@ -50,19 +51,19 @@ public class Save {
     public static void writeToFile(String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
 
-        for (int i = 0; i < TrashpanMain.listCounter; i++) {
-            fw.write(TrashpanMain.tasks[i].getTypeIcon() + " | ");
-            fw.write(TrashpanMain.tasks[i].getStatusIcon() + " | ");
-            fw.write(TrashpanMain.tasks[i].getDescription());
+        for (int i = 0; i < TrashpanMain.tasks.size(); i++) {
+            fw.write(TrashpanMain.tasks.get(i).getTypeIcon() + " | ");
+            fw.write(TrashpanMain.tasks.get(i).getStatusIcon() + " | ");
+            fw.write(TrashpanMain.tasks.get(i).getDescription());
 
             // save deadline for deadline class
-            fw.write(TrashpanMain.tasks[i].getClass() == Deadline.class
-                    ? " /by " + TrashpanMain.tasks[i].getDeadline()
+            fw.write(TrashpanMain.tasks.get(i).getClass() == Deadline.class
+                    ? " /by " + TrashpanMain.tasks.get(i).getDeadline()
                     : "");
 
             // save dates for event class
-            fw.write(TrashpanMain.tasks[i].getClass() == Event.class
-                    ? " /from " + TrashpanMain.tasks[i].getFrom() + " /to " + TrashpanMain.tasks[i].getTo()
+            fw.write(TrashpanMain.tasks.get(i).getClass() == Event.class
+                    ? " /from " + TrashpanMain.tasks.get(i).getFrom() + " /to " + TrashpanMain.tasks.get(i).getTo()
                     : "");
 
             fw.write(System.lineSeparator());
