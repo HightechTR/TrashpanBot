@@ -11,7 +11,7 @@ public class TrashpanMain {
     static Scanner in = new Scanner(System.in);
     static boolean isRunning = true;
 
-    public static final ArrayList<Task> tasks = new ArrayList<>();
+    public static ArrayList<Task> tasks = new ArrayList<>();
 
     /**
      * Reads in an input and parses it into command and parameter.
