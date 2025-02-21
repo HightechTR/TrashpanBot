@@ -1,6 +1,11 @@
-# Duke project template
+# TrashpanBot
 
-This is a project template for a greenfield Java project. It's named after the Java mascot _Duke_. Given below are instructions on how to use it.
+This is the CS2113 Individual Project from Joel Chin.
+It is a Command Line Interface (CLI) chatbot and task list tracker based on the Java project _Duke_.
+
+This chatbot's name and personality is based on Raki Kazuki from PixelLink.
+
+https://www.pixel-link.com/talent/raki-kazuki
 
 ## Setting up in Intellij
 
