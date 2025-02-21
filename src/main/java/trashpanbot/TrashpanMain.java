@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 import trashpanbot.task.*;
 
+import java.util.ArrayList;
+
 public class TrashpanMain {
     static String userInput;
     static Scanner in = new Scanner(System.in);
     static boolean isRunning = true;
 
-    public static final int MAX_TASKS = 100;
-    public static final Task[] tasks = new Task[MAX_TASKS];
-    public static int listCounter = 0;
+    public static final ArrayList<Task> tasks = new ArrayList<>();
 
     /**
      * Reads in an input and parses it into command and parameter.
@@ -49,6 +49,7 @@ public class TrashpanMain {
             case "todo" -> Todo.addTodo(inputParts);
             case "deadline" -> Deadline.addDeadline(inputParts);
             case "event" -> Event.addEvent(inputParts);
+            case "remove" -> Task.removeTask(inputParts);
             case "list" -> Task.displayList();
             case "mark" -> Task.markTask(inputParts, true);
             case "unmark" -> Task.markTask(inputParts, false);

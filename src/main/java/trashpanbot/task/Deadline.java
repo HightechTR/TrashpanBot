@@ -26,11 +26,6 @@ public class Deadline extends Task {
      * @param inputParts The input string array containing the task to be added to the list.
      */
     public static void addDeadline(String[] inputParts) {
-        // check if list is full
-        if (isListFull()) {
-            return;
-        }
-
         String[] parameterParts;
         String description;
         String deadline;
@@ -45,8 +40,7 @@ public class Deadline extends Task {
             return;
         }
 
-        TrashpanMain.tasks[TrashpanMain.listCounter] = new Deadline(description, deadline);
-        TrashpanMain.listCounter++;
+        TrashpanMain.tasks.add(new Deadline(description, deadline));
         printAddedText();
     }
 }

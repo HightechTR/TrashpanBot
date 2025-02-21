@@ -29,18 +29,6 @@ public abstract class Task {
     }
 
     /**
-     * Checks if the list is full (100 tasks).
-     *
-     * @return True if the list is full.
-     */
-    public static boolean isListFull() {
-        if (TrashpanMain.listCounter > 99) {
-            System.out.println(Text.TASK_LIST_FULL);
-        }
-        return TrashpanMain.listCounter > 99;
-    }
-
-    /**
      * Checks if a string is empty.
      *
      * @param input The input string to be checked.
@@ -60,21 +48,22 @@ public abstract class Task {
      * @param i The index of the task to be printed.
      */
     private static void printTask(int i) {
-        System.out.print(i + ".[" + TrashpanMain.tasks[i - 1].getTypeIcon() + "]");
-        System.out.print("[" + TrashpanMain.tasks[i - 1].getStatusIcon() + "] ");
-        System.out.println(TrashpanMain.tasks[i - 1].getDescription() + TrashpanMain.tasks[i - 1].getDate());
+        System.out.print(i + ".[" + TrashpanMain.tasks.get(i - 1).getTypeIcon() + "]");
+        System.out.print("[" + TrashpanMain.tasks.get(i - 1).getStatusIcon() + "] ");
+        System.out.println(TrashpanMain.tasks.get(i - 1).getDescription()
+                + TrashpanMain.tasks.get(i - 1).getDate());
     }
 
     /**
      * Displays task list to the output.
      */
     public static void displayList() {
-        if (TrashpanMain.listCounter == 0) {
+        if (TrashpanMain.tasks.isEmpty()) {
             System.out.println(Text.TASK_LIST_EMPTY);
             return;
         }
         System.out.println(Text.TASK_LIST_DISPLAY);
-        for (int i = 1; i <= TrashpanMain.listCounter; i++) {
+        for (int i = 1; i <= TrashpanMain.tasks.size(); i++) {
             printTask(i);
         }
     }
@@ -84,9 +73,55 @@ public abstract class Task {
      */
     static void printAddedText() {
         System.out.println(Text.TASK_ADDED);
-        printTask(TrashpanMain.listCounter);
-        System.out.print("You have " + TrashpanMain.listCounter + " ");
-        System.out.println(TrashpanMain.listCounter == 1 ? "task now!" : "tasks now!");
+        printTask(TrashpanMain.tasks.size());
+        System.out.print("You have " + TrashpanMain.tasks.size() + " ");
+        System.out.println(TrashpanMain.tasks.size() == 1 ? "task now!" : "tasks now!");
+    }
+
+    /**
+     * Prints most recent task after adding.
+     */
+    static void printRemovedText(int index) {
+        System.out.println(Text.TASK_REMOVED);
+        printTask(index);
+        System.out.print("You have " + (TrashpanMain.tasks.size() - 1) + " ");
+        System.out.println(TrashpanMain.tasks.size() - 1 == 1 ? "task now!" : "tasks now!");
+    }
+
+    /**
+     * Parses an integer value from input, returns the integer inputted
+     * Displays message and returns null if no integer inputted or input is not an integer
+     *
+     * @param inputParts The input string array containing the integer
+     * @return The integer inputted, null if not an integer or no integer inputted
+     */
+    static Integer tryParseInt(String[] inputParts) {
+        try {
+            return Integer.parseInt(checkEmpty(inputParts[1]));
+        } catch (NumberFormatException e) { // check if number is valid
+            System.out.println(Text.TASK_MARK_NOT_NUM);
+            return null;
+        } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
+            System.out.println(Text.TASK_MARK_NO_NUM);
+            return null;
+        }
+    }
+
+    public static void removeTask(String[] inputParts) {
+        Integer index = tryParseInt(inputParts);
+
+        // check if index is valid
+        if (index == null) {
+            return;
+        }
+
+        // check if number is in bounds
+        if (index > TrashpanMain.tasks.size()) {
+            System.out.println(Text.TASK_MARK_OOB);
+        } else {
+            printRemovedText(index);
+            TrashpanMain.tasks.remove(index - 1);
+        }
     }
 
     /**
@@ -96,23 +131,18 @@ public abstract class Task {
      * @param isDone     Boolean to set the task as done or not done.
      */
     public static void markTask(String[] inputParts, boolean isDone) {
-        int index;
+        Integer index = tryParseInt(inputParts);
 
-        try {
-            index = Integer.parseInt(checkEmpty(inputParts[1]));
-        } catch (NumberFormatException e) { // check if number is valid
-            System.out.println(Text.TASK_MARK_NOT_NUM);
-            return;
-        } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
-            System.out.println(Text.TASK_MARK_NO_NUM);
+        // check if index is valid
+        if (index == null) {
             return;
         }
 
         // check if number is in bounds
-        if (index > TrashpanMain.listCounter) {
+        if (index > TrashpanMain.tasks.size()) {
             System.out.println(Text.TASK_MARK_OOB);
         } else {
-            TrashpanMain.tasks[index - 1].setDone(isDone);
+            TrashpanMain.tasks.get(index - 1).setDone(isDone);
             System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
             printTask(index);
         }
