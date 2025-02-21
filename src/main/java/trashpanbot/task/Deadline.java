@@ -1,6 +1,9 @@
 package trashpanbot.task;
 
+import java.io.IOException;
+
 import trashpanbot.*;
+import trashpanbot.save.Save;
 
 public class Deadline extends Task {
     private final String deadline;
@@ -8,6 +11,11 @@ public class Deadline extends Task {
     public Deadline(String description, String deadline) {
         super(description);
         this.deadline = deadline;
+    }
+
+    @Override
+    public String getDeadline() {
+        return deadline;
     }
 
     @Override
@@ -25,7 +33,7 @@ public class Deadline extends Task {
      *
      * @param inputParts The input string array containing the task to be added to the list.
      */
-    public static void addDeadline(String[] inputParts) {
+    public static void addDeadline(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String[] parameterParts;
         String description;
         String deadline;
@@ -36,11 +44,19 @@ public class Deadline extends Task {
             description = checkEmpty(parameterParts[0]);
             deadline = checkEmpty(parameterParts[1]);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println(Text.DEADLINE_MISSING);
-            return;
+            if (isNotSaveLoad) {
+                System.out.println(Text.DEADLINE_MISSING);
+                return;
+            } else {
+                throw new IOException();
+            }
         }
 
         TrashpanMain.tasks.add(new Deadline(description, deadline));
-        printAddedText();
+
+        if (isNotSaveLoad) {
+            printAddedText();
+            Save.updateFile(TrashpanMain.filePath);
+        }
     }
 }

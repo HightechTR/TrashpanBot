@@ -1,6 +1,9 @@
 package trashpanbot.task;
 
+import java.io.IOException;
+
 import trashpanbot.*;
+import trashpanbot.save.Save;
 
 public class Todo extends Task {
     public Todo(String description) {
@@ -21,18 +24,26 @@ public class Todo extends Task {
      *
      * @param inputParts The input string array containing the task to be added to the list.
      */
-    public static void addTodo(String[] inputParts) {
+    public static void addTodo(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String description;
 
         // check if parameter is non-empty
         try {
             description = checkEmpty(inputParts[1]);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println(Text.TODO_MISSING);
-            return;
+            if (isNotSaveLoad) {
+                System.out.println(Text.TODO_MISSING);
+                return;
+            } else {
+                throw new IOException();
+            }
         }
 
         TrashpanMain.tasks.add(new Todo(description));
-        printAddedText();
+
+        if (isNotSaveLoad) {
+            printAddedText();
+            Save.updateFile(TrashpanMain.filePath);
+        }
     }
 }

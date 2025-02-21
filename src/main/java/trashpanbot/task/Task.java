@@ -1,7 +1,10 @@
 package trashpanbot.task;
 
+import java.io.IOException;
+
 import trashpanbot.*;
 import trashpanbot.exception.*;
+import trashpanbot.save.Save;
 
 public abstract class Task {
     private final String description;
@@ -18,6 +21,18 @@ public abstract class Task {
 
     public String getStatusIcon() {
         return isDone ? "X" : " ";
+    }
+
+    public String getDeadline() {
+        return "";
+    };
+
+    public String getFrom() {
+        return "";
+    }
+
+    public String getTo() {
+        return "";
     }
 
     public abstract String getTypeIcon();
@@ -95,20 +110,28 @@ public abstract class Task {
      * @param inputParts The input string array containing the integer
      * @return The integer inputted, null if not an integer or no integer inputted
      */
-    static Integer tryParseInt(String[] inputParts) {
+    static Integer tryParseInt(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         try {
             return Integer.parseInt(checkEmpty(inputParts[1]));
         } catch (NumberFormatException e) { // check if number is valid
-            System.out.println(Text.TASK_MARK_NOT_NUM);
-            return null;
+            if (isNotSaveLoad) {
+                System.out.println(Text.TASK_MARK_NOT_NUM);
+                return null;
+            } else {
+                throw new IOException();
+            }
         } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
-            System.out.println(Text.TASK_MARK_NO_NUM);
-            return null;
+            if (isNotSaveLoad) {
+                System.out.println(Text.TASK_MARK_NO_NUM);
+                return null;
+            } else {
+                throw new IOException();
+            }
         }
     }
 
-    public static void removeTask(String[] inputParts) {
-        Integer index = tryParseInt(inputParts);
+    public static void removeTask(String[] inputParts) throws IOException {
+        Integer index = tryParseInt(inputParts, true);
 
         // check if index is valid
         if (index == null) {
@@ -130,12 +153,16 @@ public abstract class Task {
      * @param inputParts The input string array containing the task index to be marked.
      * @param isDone     Boolean to set the task as done or not done.
      */
-    public static void markTask(String[] inputParts, boolean isDone) {
-        Integer index = tryParseInt(inputParts);
+    public static void markTask(String[] inputParts, boolean isDone, boolean isNotSaveLoad) throws IOException {
+        Integer index = tryParseInt(inputParts, isNotSaveLoad);
 
         // check if index is valid
         if (index == null) {
-            return;
+            if (isNotSaveLoad) {
+                return;
+            } else {
+                throw new IOException();
+            }
         }
 
         // check if number is in bounds
@@ -143,8 +170,11 @@ public abstract class Task {
             System.out.println(Text.TASK_MARK_OOB);
         } else {
             TrashpanMain.tasks.get(index - 1).setDone(isDone);
-            System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
-            printTask(index);
+            if (isNotSaveLoad) {
+                System.out.println(isDone ? Text.TASK_MARK_DONE : Text.TASK_MARK_UNDONE);
+                printTask(index);
+                Save.updateFile(TrashpanMain.filePath);
+            }
         }
     }
 }

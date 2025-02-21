@@ -1,8 +1,10 @@
 package trashpanbot;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 import trashpanbot.task.*;
+import trashpanbot.save.*;
 
 import java.util.ArrayList;
 
@@ -12,6 +14,7 @@ public class TrashpanMain {
     static boolean isRunning = true;
 
     public static ArrayList<Task> tasks = new ArrayList<>();
+    public static final String filePath = "data/TaskList.txt";
 
     /**
      * Reads in an input and parses it into command and parameter.
@@ -35,7 +38,7 @@ public class TrashpanMain {
     /**
      * Calls methods for the task list application based on the command inputted.
      */
-    public static void parseTaskListCommand() {
+    public static void parseTaskListCommand() throws IOException {
         String[] inputParts;
         String command;
 
@@ -50,9 +53,12 @@ public class TrashpanMain {
             case "deadline" -> Deadline.addDeadline(inputParts);
             case "event" -> Event.addEvent(inputParts);
             case "remove" -> Task.removeTask(inputParts);
+            case "todo" -> Todo.addTodo(inputParts, true);
+            case "deadline" -> Deadline.addDeadline(inputParts, true);
+            case "event" -> Event.addEvent(inputParts, true);
             case "list" -> Task.displayList();
-            case "mark" -> Task.markTask(inputParts, true);
-            case "unmark" -> Task.markTask(inputParts, false);
+            case "mark" -> Task.markTask(inputParts, true, true);
+            case "unmark" -> Task.markTask(inputParts, false, true);
             case "help" -> System.out.println(Text.TASK_LIST_COMMANDS);
             case "bye" -> exitProgram();
             default -> System.out.println(Text.COMMAND_INVALID);
@@ -64,7 +70,21 @@ public class TrashpanMain {
         System.out.println(Text.INTRO);
 
         System.out.println(Text.TASK_LIST);
+
+        try {
+            Save.readFile(filePath);
+            System.out.println(Text.FILE_READING);
+        } catch (IOException | ArrayIndexOutOfBoundsException e) {
+            System.out.println(Text.FILE_READ_ERROR);
+            return;
+        }
+
         System.out.println(Text.TASK_LIST_COMMANDS);
-        parseTaskListCommand();
+
+        try {
+            parseTaskListCommand();
+        } catch (IOException e) {
+            System.out.println(Text.COMMAND_READ_ERROR);
+        }
     }
 }
