@@ -79,11 +79,13 @@ public final class Text {
             Uh oh, I couldn't save the task list!
             Please check if the file is corrupted and delete it if you have to.""";
 
-    public static final String COMMAND_READ_ERROR = """
-            Uh oh, something wrong happened and I don't know what!""";
+    public static final String UNKNOWN_ERROR = """
+            Uh oh, something wrong happened and I don't know what!
+            This is an unexpected error. Please report to the developer if you see this message.""";
 
     public static final String INTRO = """
             __________________________________________________
+            
             This bot is based on the personality of Raki Kazuki from PixelLink.
             
                    .##+-                         -####
@@ -112,5 +114,5 @@ public final class Text {
             """;
 
     public static final String LINE =
-            "__________________________________________________";
+            "__________________________________________________" + System.lineSeparator();
 }

@@ -81,7 +81,7 @@ public class TrashpanMain {
         try {
             parseTaskListCommand();
         } catch (IOException e) {
-            System.out.println(Text.COMMAND_READ_ERROR);
+            System.out.println(Text.UNKNOWN_ERROR);
         }
     }
 }
