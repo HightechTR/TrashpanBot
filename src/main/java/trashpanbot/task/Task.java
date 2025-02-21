@@ -144,6 +144,7 @@ public abstract class Task {
         } else {
             printRemovedText(index);
             TrashpanMain.tasks.remove(index - 1);
+            Save.updateFile(TrashpanMain.filePath);
         }
     }
 
