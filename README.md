@@ -7,12 +7,12 @@ This chatbot's name and personality is based on Raki Kazuki from PixelLink.
 
 https://www.pixel-link.com/talent/raki-kazuki
 
-## Setting up in Intellij
+## Setting up in IntelliJ
 
 Prerequisites: JDK 17, update Intellij to the most recent version.
 
-1. Open Intellij (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
-2. Open the project into Intellij as follows:
+1. Open IntelliJ (if you are not in the welcome screen, click `File` > `Close Project` to close the existing project first)
+2. Open the project into IntelliJ as follows:
    i. Click `Open`.
    ii. Select the project directory, and click `OK`.
    iii. If there are any further prompts, accept the defaults.
@@ -24,20 +24,20 @@ Prerequisites: JDK 17, update Intellij to the most recent version.
 
    This bot is based on the personality of Raki Kazuki from PixelLink.
 
-         .##+-                         -####
+          .##+-                         -####
          ##   .####                  ###   .##
          ##  ##   ###################  ###  ##
          ##  #####                   #####  ##
-         ##  ##                        #  ##
-         ###                              ###
-      ###        -#####      +#####        ###
+          ##  ##                        #  ##
+          ###                              ###
+        ###        -#####      +#####        ###
       ###      -#########      #########+     ###
-   ##       ####   ###       ####   ####      ###
+     ##       ####   ###       ####   ####      ###
    ###        #########          #########       ###
-   ###        #####    ######     ###-          ##
-      ####                                    ####
-         ####                            #####
-         ##                             ##
+     ###        #####    ######     ###-          ##
+       ####                                    ####
+          ####                            #####
+           ##                             ##
 
    Raah! I'm TrashpanBot!
    What can I do for you today?
