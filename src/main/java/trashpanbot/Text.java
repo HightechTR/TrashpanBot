@@ -5,9 +5,9 @@ public final class Text {
     }
 
     public static final String TASK_LIST = """
-            Current Mode: To-do List
-            A functional to-do list, storing up to 100 tasks.
-            Note: This program does not store tasks after exiting.
+            Current Mode: Task List
+            A functional task list storing to-dos, deadlines and events.
+            This program saves automatically after every change.
             __________________________________________________
             """;
 
