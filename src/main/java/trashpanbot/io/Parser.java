@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import trashpanbot.exception.InvalidSaveFormatException;
 import trashpanbot.exception.StringArrayEmptyException;
+import trashpanbot.save.Save;
 import trashpanbot.task.*;
 
 
@@ -62,23 +63,18 @@ public class Parser {
      * @param inputParts The input string array containing the integer
      * @return The integer inputted, null if not an integer or no integer inputted
      */
-    public static Integer tryParseInt(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public static Integer tryParseInt(String[] inputParts) {
         try {
             return Integer.parseInt(checkEmpty(inputParts[1]));
+
         } catch (NumberFormatException e) { // check if number is valid
-            if (isNotSaveLoad) {
-                System.out.println(Text.TASK_MARK_NOT_NUM);
-                return null;
-            } else {
-                throw new IOException();
-            }
+            ui.showMarkInvalidIndexError();
+            return null;
+
         } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
-            if (isNotSaveLoad) {
-                System.out.println(Text.TASK_MARK_NO_NUM);
-                return null;
-            } else {
-                throw new IOException();
-            }
+            ui.showMarkMissingIndexError();
+            return null;
+
         }
     }
 
@@ -95,7 +91,7 @@ public class Parser {
             description = checkEmpty(inputParts[1]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
-                System.out.println(Text.TODO_MISSING);
+                ui.showTodoMissingError();
                 return null;
             } else {
                 throw new IOException();
@@ -122,7 +118,7 @@ public class Parser {
             deadline = checkEmpty(parameterParts[1]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
-                System.out.println(Text.DEADLINE_MISSING);
+                ui.showDeadlineMissingError();
                 return null;
             } else {
                 throw new IOException();
@@ -150,7 +146,7 @@ public class Parser {
             to = checkEmpty(parameterParts[2]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
-                System.out.println(Text.EVENT_MISSING);
+                ui.showEventMissingError();
                 return null;
             } else {
                 throw new IOException();
@@ -163,23 +159,23 @@ public class Parser {
     /**
      * Calls methods for the task list application based on the command inputted.
      */
-    public static boolean parseCommand(TaskList tasks, String[] inputParts) throws IOException {
+    public static boolean parseCommand(TaskList tasks, Save save, String[] inputParts) throws IOException {
         String command;
         boolean isRunning = true;
 
         command = inputParts[0];
 
         switch (command) {
-        case "todo" -> tasks.addTask(parseTodo(inputParts, true));
-        case "deadline" -> tasks.addTask(parseDeadline(inputParts, true));
-        case "event" -> tasks.addTask(parseEvent(inputParts, true));
-        case "remove" -> tasks.removeTask(inputParts);
-        case "list" -> tasks.displayList();
-        case "mark" -> tasks.markTask(inputParts, true, true);
-        case "unmark" -> tasks.markTask(inputParts, false, true);
-        case "help" -> System.out.println(Text.TASK_LIST_COMMANDS);
+        case "todo" -> tasks.addTask(parseTodo(inputParts, true), save);
+        case "deadline" -> tasks.addTask(parseDeadline(inputParts, true), save);
+        case "event" -> tasks.addTask(parseEvent(inputParts, true), save);
+        case "remove" -> tasks.removeTask(inputParts, save);
+        case "list" -> ui.displayList(tasks.getTasks());
+        case "mark" -> tasks.markTask(inputParts, save, true);
+        case "unmark" -> tasks.markTask(inputParts, save, false);
+        case "help" -> ui.displayCommands();
         case "bye" -> isRunning = false;
-        default -> System.out.println(Text.COMMAND_INVALID);
+        default -> ui.showInvalidCommandError();
         }
 
         return isRunning;

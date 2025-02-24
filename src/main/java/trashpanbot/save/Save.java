@@ -12,7 +12,13 @@ import java.util.Scanner;
 public class Save {
     private final Ui ui = new Ui();
 
-    public void createFile(String filePath) {
+    private final String filePath;
+
+    public Save(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public void createFile() {
         File saveFile = new File(filePath);
 
         try {
@@ -28,12 +34,12 @@ public class Save {
         }
     }
 
-    public ArrayList<Task> readFile(String filePath) throws IOException {
+    public ArrayList<Task> readFile() throws IOException {
         File saveFile = new File(filePath);
         ArrayList<Task> output = new ArrayList<>();
 
         if (!saveFile.exists()) {
-            createFile(filePath);
+            createFile();
             return output;
         }
 
@@ -47,7 +53,7 @@ public class Save {
         return output;
     }
 
-    public void writeToFile(ArrayList<Task> tasks, String filePath) throws IOException {
+    private void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(filePath);
 
         for (Task task : tasks) {
@@ -71,9 +77,9 @@ public class Save {
         fw.close();
     }
 
-    public void updateFile(ArrayList<Task> tasks, String filePath) {
+    public void updateFile(ArrayList<Task> tasks) {
         try {
-            writeToFile(tasks, filePath);
+            writeToFile(tasks);
         } catch (IOException e) {
             ui.showFileWriteError();
         }

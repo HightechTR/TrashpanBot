@@ -9,6 +9,7 @@ import trashpanbot.save.*;
 public class TrashpanBot {
     private final Ui ui = new Ui();
     private TaskList tasks;
+    private final Save save;
 
     public static final String filePath = "data/TaskList.txt";
 
@@ -21,13 +22,13 @@ public class TrashpanBot {
     }
 
     public TrashpanBot(String filePath) {
-        Save save = new Save();
+        save = new Save(filePath);
         ui.showIntro();
 
         try {
-            tasks = new TaskList(save.readFile(filePath));
+            tasks = new TaskList(save.readFile());
         } catch (IOException e) {
-            save.createFile(filePath);
+            save.createFile();
             tasks = new TaskList();
         }
     }
@@ -39,7 +40,7 @@ public class TrashpanBot {
         while (isRunning) {
             try {
                 String[] userInput = ui.readInput();
-                isRunning = Parser.parseCommand(tasks, userInput);
+                isRunning = Parser.parseCommand(tasks, save, userInput);
             } catch (IOException ignored) {
                 // IOException should only be thrown in save load
             }

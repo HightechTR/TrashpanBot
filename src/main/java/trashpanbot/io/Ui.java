@@ -9,6 +9,12 @@ public class Ui {
 
     private static final Scanner in = new Scanner(System.in);
 
+    /*
+    =================================================================================
+    Input UI
+    =================================================================================
+     */
+
     /**
      * Reads in an input and parses it into command and parameter.
      *
@@ -19,6 +25,26 @@ public class Ui {
         String userInput = in.nextLine();
         showLine();
         return userInput.split(" ", 2);
+    }
+
+    /*
+    =================================================================================
+    General Task-related Text UI
+    =================================================================================
+     */
+
+    /**
+     * Displays task list to the output.
+     */
+    public void displayList(ArrayList<Task> tasks) {
+        if (tasks.isEmpty()) {
+            System.out.println(Text.TASK_LIST_EMPTY);
+            return;
+        }
+        System.out.println(Text.TASK_LIST_DISPLAY);
+        for (int i = 1; i <= tasks.size(); i++) {
+            printTask(tasks, i);
+        }
     }
 
     /**
@@ -53,10 +79,49 @@ public class Ui {
         System.out.println(tasks.size() - 1 == 1 ? "task now!" : "tasks now!");
     }
 
-    public void showIntro() {
-        System.out.println(Text.INTRO);
-        System.out.println(Text.TASK_LIST);
+    public void showTaskDone() {
+        System.out.println(Text.TASK_MARK_DONE);
     }
+
+    public void showTaskUndone() {
+        System.out.println(Text.TASK_MARK_UNDONE);
+    }
+
+    /*
+    =================================================================================
+    Task Input Error Text UI
+    =================================================================================
+     */
+
+    public void showOutOfBoundsError() {
+        System.out.println(Text.TASK_OOB);
+    }
+
+    public void showMarkMissingIndexError() {
+        System.out.println(Text.TASK_MARK_NO_NUM);
+    }
+
+    public void showMarkInvalidIndexError() {
+        System.out.println(Text.TASK_MARK_NOT_NUM);
+    }
+
+    public void showTodoMissingError() {
+        System.out.println(Text.TODO_MISSING);
+    }
+
+    public void showDeadlineMissingError() {
+        System.out.println(Text.DEADLINE_MISSING);
+    }
+
+    public void showEventMissingError() {
+        System.out.println(Text.EVENT_MISSING);
+    }
+
+    /*
+    =================================================================================
+    Command-related Text UI
+    =================================================================================
+     */
 
     public void showCommandInput() {
         System.out.println(Text.LINE);
@@ -66,6 +131,16 @@ public class Ui {
     public void displayCommands() {
         System.out.println(Text.TASK_LIST_COMMANDS);
     }
+
+    public void showInvalidCommandError() {
+        System.out.println(Text.COMMAND_INVALID);
+    }
+
+    /*
+    =================================================================================
+    File-related Text UI
+    =================================================================================
+     */
 
     public void showFileReading() {
         System.out.println(Text.FILE_READING);
@@ -85,6 +160,17 @@ public class Ui {
 
     public void showFileWriteError() {
         System.out.println(Text.FILE_WRITE_ERROR);
+    }
+
+    /*
+    =================================================================================
+    General Usage Text UI
+    =================================================================================
+     */
+
+    public void showIntro() {
+        System.out.println(Text.INTRO);
+        System.out.println(Text.TASK_LIST);
     }
 
     public void showLine() {
