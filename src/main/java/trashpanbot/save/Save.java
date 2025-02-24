@@ -1,69 +1,68 @@
 package trashpanbot.save;
 
-import trashpanbot.*;
+import trashpanbot.io.*;
 import trashpanbot.task.*;
-import trashpanbot.exception.InvalidSaveFormatException;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Save {
+    private final Ui ui = new Ui();
 
-    public static void readFile(String filePath) throws IOException, ArrayIndexOutOfBoundsException {
+    public void createFile(String filePath) {
         File saveFile = new File(filePath);
 
-        // create a new save file if it doesn't exist
-        if (saveFile.createNewFile()) {
-            System.out.println(Text.FILE_CREATE);
-            return;
-        }
-
-        System.out.println(Text.FILE_READING);
-        Scanner s = new Scanner(saveFile);
-
-        while (s.hasNextLine()) {
-            String[] inputParts = s.nextLine().split(" \\| ", 2);
-            String[] parameter = inputParts[1].split(" \\| ", 2);
-
-            // check if parameters in save file are valid
-            if (parameter[0].isEmpty()  || parameter[1].isEmpty()) {
-                throw new InvalidSaveFormatException();
+        try {
+            if (saveFile.createNewFile()){
+                ui.showFileCreation();
+            } else {
+                ui.showFileCorrupted();
             }
 
-            // add task based on task icon
-            switch (inputParts[0]) {
-            case "T" -> Todo.addTodo(parameter, false);
-            case "D" -> Deadline.addDeadline(parameter, false);
-            case "E" -> Event.addEvent(parameter, false);
-            default -> throw new InvalidSaveFormatException();
-            }
-
-            // mark task done if status icon is X
-            String[] mark = {"mark", Integer.toString(TrashpanMain.tasks.size())};
-            if (parameter[0].equals("X")) {
-                Task.markTask(mark, true, false);
-            }
+        } catch (IOException e) {
+            ui.showFileDirectoryError();
+            System.exit(1);
         }
     }
 
-    public static void writeToFile(String filePath) throws IOException {
+    public ArrayList<Task> readFile(String filePath) throws IOException {
+        File saveFile = new File(filePath);
+        ArrayList<Task> output = new ArrayList<>();
+
+        if (!saveFile.exists()) {
+            createFile(filePath);
+            return output;
+        }
+
+        ui.showFileReading();
+        Scanner s = new Scanner(saveFile);
+
+        while (s.hasNextLine()) {
+            output.add(Parser.parseFile(s.nextLine().split(" \\| ", 2)));
+        }
+
+        return output;
+    }
+
+    public void writeToFile(ArrayList<Task> tasks, String filePath) throws IOException {
         FileWriter fw = new FileWriter(filePath);
 
-        for (int i = 0; i < TrashpanMain.tasks.size(); i++) {
-            fw.write(TrashpanMain.tasks.get(i).getTypeIcon() + " | ");
-            fw.write(TrashpanMain.tasks.get(i).getStatusIcon() + " | ");
-            fw.write(TrashpanMain.tasks.get(i).getDescription());
+        for (Task task : tasks) {
+            fw.write(task.getTypeIcon() + " | ");
+            fw.write(task.getStatusIcon() + " | ");
+            fw.write(task.getDescription());
 
             // save deadline for deadline class
-            fw.write(TrashpanMain.tasks.get(i).getClass() == Deadline.class
-                    ? " /by " + TrashpanMain.tasks.get(i).getDeadline()
+            fw.write(task.getClass() == Deadline.class
+                    ? " /by " + task.getDeadline()
                     : "");
 
             // save dates for event class
-            fw.write(TrashpanMain.tasks.get(i).getClass() == Event.class
-                    ? " /from " + TrashpanMain.tasks.get(i).getFrom() + " /to " + TrashpanMain.tasks.get(i).getTo()
+            fw.write(task.getClass() == Event.class
+                    ? " /from " + task.getFrom() + " /to " + task.getTo()
                     : "");
 
             fw.write(System.lineSeparator());
@@ -72,11 +71,11 @@ public class Save {
         fw.close();
     }
 
-    public static void updateFile(String filePath) {
+    public void updateFile(ArrayList<Task> tasks, String filePath) {
         try {
-            writeToFile(filePath);
+            writeToFile(tasks, filePath);
         } catch (IOException e) {
-            System.out.println(Text.FILE_WRITE_ERROR);
+            ui.showFileWriteError();
         }
     }
 }

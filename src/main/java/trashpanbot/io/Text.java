@@ -1,4 +1,4 @@
-package trashpanbot;
+package trashpanbot.io;
 
 public final class Text {
     private Text() {
@@ -73,15 +73,18 @@ public final class Text {
 
     public static final String FILE_READ_ERROR = """
             Uh oh, I couldn't read the save file!
-            Please check if the file is corrupted and delete it if you have to.""";
+            Here, I'll create a new one for you.
+            """;
 
     public static final String FILE_WRITE_ERROR = """
-            Uh oh, I couldn't save the task list!
-            Please check if the file is corrupted and delete it if you have to.""";
+            Uh oh, I couldn't save the save file!
+            Please check if the data folder exists or the file is corrupted!
+            """;
 
-    public static final String UNKNOWN_ERROR = """
-            Uh oh, something wrong happened and I don't know what!
-            This is an unexpected error. Please report to the developer if you see this message.""";
+    public static final String FILE_DIRECTORY_MISSING = """
+            Uh oh, the data folder is missing!
+            Please create a data folder in the same directory as the .jar file before starting again!.
+            """;
 
     public static final String INTRO = """
             __________________________________________________
