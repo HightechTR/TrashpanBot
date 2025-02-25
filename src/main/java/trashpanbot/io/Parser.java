@@ -21,7 +21,7 @@ public class Parser {
      */
     public static String checkEmpty(String input) {
         if (input.isEmpty()) {
-            throw new StringArrayEmptyException();
+            throw new StringArrayEmptyException("String is empty");
         }
         return input;
     }
@@ -33,7 +33,7 @@ public class Parser {
 
         // check if parameters in save file are valid
         if (parameter[0].isEmpty() || parameter[1].isEmpty()) {
-            throw new InvalidSaveFormatException();
+            throw new InvalidSaveFormatException("Save file corrupted");
         }
 
         // add task based on task icon
@@ -41,11 +41,11 @@ public class Parser {
         case "T" -> output = parseTodo(parameter, false);
         case "D" -> output = parseDeadline(parameter, false);
         case "E" -> output = parseEvent(parameter, false);
-        default -> throw new InvalidSaveFormatException();
+        default -> throw new InvalidSaveFormatException("Save file corrupted");
         }
 
         if (output == null) {
-            throw new InvalidSaveFormatException();
+            throw new InvalidSaveFormatException("Save file corrupted");
         }
 
         // mark task done if status icon is X
