@@ -2,9 +2,10 @@ package trashpanbot;
 
 import java.io.IOException;
 
-import trashpanbot.io.*;
-import trashpanbot.task.*;
-import trashpanbot.save.*;
+import trashpanbot.common.*;
+import trashpanbot.data.io.*;
+import trashpanbot.data.task.*;
+import trashpanbot.data.save.*;
 
 public class TrashpanBot {
     private final Ui ui = new Ui();
@@ -12,14 +13,6 @@ public class TrashpanBot {
     private final Save save;
 
     public static final String filePath = "data/TaskList.txt";
-
-    /**
-     * Exits the program.dd
-     */
-    public void exitProgram() {
-        System.out.println(Text.BYE);
-        System.exit(0);
-    }
 
     public TrashpanBot(String filePath) {
         save = new Save(filePath);
@@ -31,6 +24,14 @@ public class TrashpanBot {
             save.createFile();
             tasks = new TaskList();
         }
+    }
+
+    /**
+     * Exits the program.
+     */
+    public void exitProgram() {
+        System.out.println(Text.BYE);
+        System.exit(0);
     }
 
     public void run() {

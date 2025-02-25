@@ -1,4 +1,4 @@
-package trashpanbot.task;
+package trashpanbot.data.task;
 
 public class Event extends Task {
     private final String from;

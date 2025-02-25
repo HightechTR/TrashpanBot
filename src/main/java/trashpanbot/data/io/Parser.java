@@ -1,30 +1,16 @@
-package trashpanbot.io;
+package trashpanbot.data.io;
 
 import java.io.IOException;
 
-import trashpanbot.exception.InvalidSaveFormatException;
-import trashpanbot.exception.StringArrayEmptyException;
-import trashpanbot.save.Save;
-import trashpanbot.task.*;
+import trashpanbot.common.Utils;
+import trashpanbot.data.exception.InvalidSaveFormatException;
+import trashpanbot.data.save.Save;
+import trashpanbot.data.task.*;
 
 
 public class Parser {
 
     private static final Ui ui = new Ui();
-
-    /**
-     * Checks if a string is empty.
-     *
-     * @param input The input string to be checked.
-     * @return The input string if it is non-empty.
-     * @throws StringArrayEmptyException if string is empty.
-     */
-    public static String checkEmpty(String input) {
-        if (input.isEmpty()) {
-            throw new StringArrayEmptyException("String is empty");
-        }
-        return input;
-    }
 
     public static Task parseFile(String[] inputParts) throws IOException {
         Task output;
@@ -63,9 +49,9 @@ public class Parser {
      * @param inputParts The input string array containing the integer
      * @return The integer inputted, null if not an integer or no integer inputted
      */
-    public static Integer tryParseInt(String[] inputParts) {
+    public static Integer parseInt(String[] inputParts) {
         try {
-            return Integer.parseInt(checkEmpty(inputParts[1]));
+            return Integer.parseInt(Utils.checkEmpty(inputParts[1]));
 
         } catch (NumberFormatException e) { // check if number is valid
             ui.showMarkInvalidIndexError();
@@ -82,13 +68,14 @@ public class Parser {
      * Adds a to-do to the task list.
      *
      * @param inputParts The input string array containing the task to be added to the list.
+     * @return To-do object with components defined
      */
     public static Task parseTodo(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String description;
 
         // check if parameter is non-empty
         try {
-            description = checkEmpty(inputParts[1]);
+            description = Utils.checkEmpty(inputParts[1]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
                 ui.showTodoMissingError();
@@ -105,6 +92,7 @@ public class Parser {
      * Adds a deadline to the task list.
      *
      * @param inputParts The input string array containing the task to be added to the list.
+     * @return Deadline object with components defined
      */
     public static Task parseDeadline(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String[] parameterParts;
@@ -114,8 +102,8 @@ public class Parser {
         // check if parameters are non-empty
         try {
             parameterParts = inputParts[1].split(" /by ", 2);
-            description = checkEmpty(parameterParts[0]);
-            deadline = checkEmpty(parameterParts[1]);
+            description = Utils.checkEmpty(parameterParts[0]);
+            deadline = Utils.checkEmpty(parameterParts[1]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
                 ui.showDeadlineMissingError();
@@ -132,6 +120,7 @@ public class Parser {
      * Adds an event to the list.
      *
      * @param inputParts The input string array containing the task to be added to the list.
+     * @return Event object with components defined.
      */
     public static Task parseEvent(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String[] parameterParts;
@@ -141,9 +130,9 @@ public class Parser {
 
         try {
             parameterParts = inputParts[1].split(" /from | /to ", 3);
-            description = checkEmpty(parameterParts[0]);
-            from = checkEmpty(parameterParts[1]);
-            to = checkEmpty(parameterParts[2]);
+            description = Utils.checkEmpty(parameterParts[0]);
+            from = Utils.checkEmpty(parameterParts[1]);
+            to = Utils.checkEmpty(parameterParts[2]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
                 ui.showEventMissingError();
@@ -158,6 +147,8 @@ public class Parser {
 
     /**
      * Calls methods for the task list application based on the command inputted.
+     *
+     * @return True if program is to continue running, false if program is to exit.
      */
     public static boolean parseCommand(TaskList tasks, Save save, String[] inputParts) throws IOException {
         String command;

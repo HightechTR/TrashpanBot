@@ -1,7 +1,7 @@
-package trashpanbot.save;
+package trashpanbot.data.save;
 
-import trashpanbot.io.*;
-import trashpanbot.task.*;
+import trashpanbot.data.io.*;
+import trashpanbot.data.task.*;
 
 import java.io.File;
 import java.io.FileWriter;

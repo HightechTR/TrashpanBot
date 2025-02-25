@@ -1,9 +1,10 @@
-package trashpanbot.io;
+package trashpanbot.data.io;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import trashpanbot.task.*;
+import trashpanbot.common.*;
+import trashpanbot.data.task.*;
 
 public class Ui {
 

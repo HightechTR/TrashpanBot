@@ -1,4 +1,4 @@
-package trashpanbot.io;
+package trashpanbot.common;
 
 public final class Text {
     private Text() {

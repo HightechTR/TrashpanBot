@@ -1,4 +1,4 @@
-package trashpanbot.exception;
+package trashpanbot.data.exception;
 
 import java.io.IOException;
 

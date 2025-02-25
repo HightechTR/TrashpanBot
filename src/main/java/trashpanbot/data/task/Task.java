@@ -1,4 +1,4 @@
-package trashpanbot.task;
+package trashpanbot.data.task;
 
 public abstract class Task {
     private final String description;

@@ -1,9 +1,9 @@
-package trashpanbot.task;
+package trashpanbot.data.task;
 
 import java.util.ArrayList;
 
-import trashpanbot.io.*;
-import trashpanbot.save.Save;
+import trashpanbot.data.io.*;
+import trashpanbot.data.save.Save;
 
 public class TaskList {
 
@@ -33,7 +33,7 @@ public class TaskList {
     }
 
     public void removeTask(String[] inputParts, Save save) {
-        Integer index = Parser.tryParseInt(inputParts);
+        Integer index = Parser.parseInt(inputParts);
 
         // check if index is valid
         if (index == null) {
@@ -57,7 +57,7 @@ public class TaskList {
      * @param isDone     Boolean to set the task as done or not done.
      */
     public void markTask(String[] inputParts, Save save, boolean isDone) {
-        Integer index = Parser.tryParseInt(inputParts);
+        Integer index = Parser.parseInt(inputParts);
 
         // check if index is valid
         if (index == null) {

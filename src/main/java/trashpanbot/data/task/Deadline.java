@@ -1,4 +1,4 @@
-package trashpanbot.task;
+package trashpanbot.data.task;
 
 public class Deadline extends Task {
     private final String deadline;

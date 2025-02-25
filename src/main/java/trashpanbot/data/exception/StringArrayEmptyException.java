@@ -1,4 +1,4 @@
-package trashpanbot.exception;
+package trashpanbot.data.exception;
 
 public class StringArrayEmptyException extends IndexOutOfBoundsException {
     // Exception thrown when a String in a parsed String input array is empty.
