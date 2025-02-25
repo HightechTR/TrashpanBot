@@ -150,7 +150,7 @@ public class Parser {
      *
      * @return The command object corresponding to the command inputted.
      */
-    public static Command parseCommand(String[] inputParts) throws IOException {
+    public static Command parseCommand(String[] inputParts) {
         String command = inputParts[0];
         Command c;
 

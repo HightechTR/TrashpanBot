@@ -40,14 +40,10 @@ public class TrashpanBot {
         ui.displayCommands();
 
         while (isRunning) {
-            try {
-                String[] userInput = ui.readInput();
-                Command c = Parser.parseCommand(userInput);
-                c.execute(tasks, ui, save);
-                isRunning = !c.isExit();
-            } catch (IOException ignored) {
-                // IOException should only be thrown in save load
-            }
+            String[] userInput = ui.readInput();
+            Command c = Parser.parseCommand(userInput);
+            c.execute(tasks, ui, save);
+            isRunning = !c.isExit();
         }
         exitProgram();
     }
