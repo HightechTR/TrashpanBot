@@ -2,9 +2,9 @@ package trashpanbot.data.io;
 
 import java.io.IOException;
 
-import trashpanbot.common.Utils;
+import trashpanbot.command.*;
+import trashpanbot.common.*;
 import trashpanbot.data.exception.InvalidSaveFormatException;
-import trashpanbot.data.save.Save;
 import trashpanbot.data.task.*;
 
 
@@ -146,29 +146,25 @@ public class Parser {
     }
 
     /**
-     * Calls methods for the task list application based on the command inputted.
+     * Creates a command object for the task list application based on the command inputted.
      *
-     * @return True if program is to continue running, false if program is to exit.
+     * @return The command object corresponding to the command inputted.
      */
-    public static boolean parseCommand(TaskList tasks, Save save, String[] inputParts) throws IOException {
-        String command;
-        boolean isRunning = true;
-
-        command = inputParts[0];
+    public static Command parseCommand(String[] inputParts) throws IOException {
+        String command = inputParts[0];
+        Command c;
 
         switch (command) {
-        case "todo" -> tasks.addTask(parseTodo(inputParts, true), save);
-        case "deadline" -> tasks.addTask(parseDeadline(inputParts, true), save);
-        case "event" -> tasks.addTask(parseEvent(inputParts, true), save);
-        case "remove" -> tasks.removeTask(inputParts, save);
-        case "list" -> ui.displayList(tasks.getTasks());
-        case "mark" -> tasks.markTask(inputParts, save, true);
-        case "unmark" -> tasks.markTask(inputParts, save, false);
-        case "help" -> ui.displayCommands();
-        case "bye" -> isRunning = false;
-        default -> ui.showInvalidCommandError();
+        case "todo", "deadline", "event" -> c = new AddCommand(inputParts);
+        case "remove" -> c = new RemoveCommand(inputParts);
+        case "list" -> c = new ListCommand(inputParts);
+        case "mark" -> c = new MarkCommand(inputParts, true);
+        case "unmark" -> c = new MarkCommand(inputParts, false);
+        case "help" -> c = new HelpCommand(inputParts);
+        case "bye" -> c = new ExitCommand(inputParts);
+        default -> c = new InvalidCommand(inputParts);
         }
 
-        return isRunning;
+        return c;
     }
 }

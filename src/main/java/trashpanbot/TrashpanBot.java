@@ -2,6 +2,7 @@ package trashpanbot;
 
 import java.io.IOException;
 
+import trashpanbot.command.*;
 import trashpanbot.common.*;
 import trashpanbot.data.io.*;
 import trashpanbot.data.task.*;
@@ -41,7 +42,9 @@ public class TrashpanBot {
         while (isRunning) {
             try {
                 String[] userInput = ui.readInput();
-                isRunning = Parser.parseCommand(tasks, save, userInput);
+                Command c = Parser.parseCommand(userInput);
+                c.execute(tasks, ui, save);
+                isRunning = !c.isExit();
             } catch (IOException ignored) {
                 // IOException should only be thrown in save load
             }

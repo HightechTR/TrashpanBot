@@ -26,6 +26,7 @@ public class TaskList {
         if (task == null) {
             return;
         }
+
         tasks.add(task);
 
         ui.printAddedText(tasks);
