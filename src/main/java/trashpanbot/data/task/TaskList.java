@@ -7,14 +7,19 @@ import trashpanbot.data.save.Save;
 
 public class TaskList {
 
-    private final Ui ui = new Ui();
-    private final ArrayList<Task> tasks;
+    private ArrayList<Task> tasks;
+    private Ui ui;
+    private Parser parser;
 
-    public TaskList() {
-        tasks = new ArrayList<>();
+    public TaskList(Parser parser, Ui ui) {
+        this.parser = parser;
+        this.ui = ui;
+        this.tasks = new ArrayList<>();
     }
 
-    public TaskList(ArrayList<Task> tasks) {
+    public TaskList(Parser parser, Ui ui, ArrayList<Task> tasks) {
+        this.parser = parser;
+        this.ui = ui;
         this.tasks = tasks;
     }
 
@@ -34,7 +39,7 @@ public class TaskList {
     }
 
     public void removeTask(String[] inputParts, Save save) {
-        Integer index = Parser.parseInt(inputParts);
+        Integer index = parser.parseInt(inputParts);
 
         // check if index is valid
         if (index == null) {
@@ -58,7 +63,7 @@ public class TaskList {
      * @param isDone     Boolean to set the task as done or not done.
      */
     public void markTask(String[] inputParts, Save save, boolean isDone) {
-        Integer index = Parser.parseInt(inputParts);
+        Integer index = parser.parseInt(inputParts);
 
         // check if index is valid
         if (index == null) {

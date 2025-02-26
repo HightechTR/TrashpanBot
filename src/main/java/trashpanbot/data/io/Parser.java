@@ -10,9 +10,13 @@ import trashpanbot.data.task.*;
 
 public class Parser {
 
-    private static final Ui ui = new Ui();
+    private Ui ui;
 
-    public static Task parseFile(String[] inputParts) throws IOException {
+    public Parser(Ui ui) {
+        this.ui = ui;
+    }
+
+    public Task parseFile(String[] inputParts) throws IOException {
         Task output;
 
         String[] parameter = inputParts[1].split(" \\| ", 2);
@@ -49,7 +53,7 @@ public class Parser {
      * @param inputParts The input string array containing the integer
      * @return The integer inputted, null if not an integer or no integer inputted
      */
-    public static Integer parseInt(String[] inputParts) {
+    public Integer parseInt(String[] inputParts) {
         try {
             return Integer.parseInt(Utils.checkEmpty(inputParts[1]));
 
@@ -70,7 +74,7 @@ public class Parser {
      * @param inputParts The input string array containing the task to be added to the list.
      * @return To-do object with components defined
      */
-    public static Task parseTodo(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public Task parseTodo(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String description;
 
         // check if parameter is non-empty
@@ -94,7 +98,7 @@ public class Parser {
      * @param inputParts The input string array containing the task to be added to the list.
      * @return Deadline object with components defined
      */
-    public static Task parseDeadline(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public Task parseDeadline(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String[] parameterParts;
         String description;
         String deadline;
@@ -122,7 +126,7 @@ public class Parser {
      * @param inputParts The input string array containing the task to be added to the list.
      * @return Event object with components defined.
      */
-    public static Task parseEvent(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public Task parseEvent(String[] inputParts, boolean isNotSaveLoad) throws IOException {
         String[] parameterParts;
         String description;
         String from;
@@ -150,12 +154,12 @@ public class Parser {
      *
      * @return The command object corresponding to the command inputted.
      */
-    public static Command parseCommand(String[] inputParts) {
+    public Command parseCommand(String[] inputParts, Parser parser) {
         String command = inputParts[0];
         Command c;
 
         switch (command) {
-        case "todo", "deadline", "event" -> c = new AddCommand(inputParts);
+        case "todo", "deadline", "event" -> c = new AddCommand(inputParts, parser);
         case "remove" -> c = new RemoveCommand(inputParts);
         case "list" -> c = new ListCommand(inputParts);
         case "mark" -> c = new MarkCommand(inputParts, true);

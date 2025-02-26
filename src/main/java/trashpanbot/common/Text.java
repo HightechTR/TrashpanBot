@@ -88,9 +88,8 @@ public final class Text {
             Please check if the data folder exists or the file is corrupted!
             """;
 
-    public static final String FILE_DIRECTORY_MISSING = """
-            Hey, the data folder is missing!
-            Please create a data folder in the same directory as the .jar file before trying again!.
+    public static final String FILE_UNKNOWN_ERROR = """
+            Uh oh, I couldn't create a new save file for some reason!
             """;
 
     /*

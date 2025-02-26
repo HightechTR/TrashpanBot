@@ -10,18 +10,22 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Save {
-    private final Ui ui = new Ui();
+    private Ui ui;
+    private String filePath;
+    private Parser parser;
 
-    private final String filePath;
-
-    public Save(String filePath) {
+    public Save(String filePath, Parser parser, Ui ui) {
         this.filePath = filePath;
+        this.parser = parser;
+        this.ui = ui;
     }
 
     public void createFile() {
         File saveFile = new File(filePath);
+        File directory = saveFile.getParentFile();
 
         try {
+            directory.mkdir();
             if (saveFile.createNewFile()){
                 ui.showFileCreation();
             } else {
@@ -29,7 +33,7 @@ public class Save {
             }
 
         } catch (IOException e) {
-            ui.showFileDirectoryError();
+            ui.showFileUnknownError();
             System.exit(1);
         }
     }
@@ -47,7 +51,7 @@ public class Save {
         Scanner s = new Scanner(saveFile);
 
         while (s.hasNextLine()) {
-            output.add(Parser.parseFile(s.nextLine().split(" \\| ", 2)));
+            output.add(parser.parseFile(s.nextLine().split(" \\| ", 2)));
         }
 
         return output;

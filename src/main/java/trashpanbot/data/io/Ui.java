@@ -155,7 +155,7 @@ public class Ui {
         System.out.println(Text.FILE_CREATE);
     }
 
-    public void showFileDirectoryError() {
+    public void showFileUnknownError() {
         System.out.println(Text.FILE_DIRECTORY_MISSING);
     }
 
