@@ -2,6 +2,8 @@ package trashpanbot.data.task;
 
 import java.util.ArrayList;
 
+import trashpanbot.command.MarkCommand;
+import trashpanbot.command.RemoveCommand;
 import trashpanbot.data.io.*;
 import trashpanbot.data.save.Save;
 
@@ -39,7 +41,7 @@ public class TaskList {
     }
 
     public void removeTask(String[] inputParts, Save save) {
-        Integer index = parser.parseInt(inputParts);
+        Integer index = parser.parseInt(inputParts, RemoveCommand.COMMAND_USAGE);
 
         // check if index is valid
         if (index == null) {
@@ -63,7 +65,8 @@ public class TaskList {
      * @param isDone     Boolean to set the task as done or not done.
      */
     public void markTask(String[] inputParts, Save save, boolean isDone) {
-        Integer index = parser.parseInt(inputParts);
+        Integer index = parser.parseInt(inputParts,
+                isDone ? MarkCommand.MARK_USAGE : MarkCommand.UNMARK_USAGE);
 
         // check if index is valid
         if (index == null) {

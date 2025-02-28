@@ -5,6 +5,9 @@ import trashpanbot.data.save.Save;
 import trashpanbot.data.task.TaskList;
 
 public class ExitCommand extends Command{
+    public static final String COMMAND_USAGE = """
+            "bye": Exits the program
+                e.g. bye""";
 
     public ExitCommand(String[] inputParts) {
         super(inputParts);
