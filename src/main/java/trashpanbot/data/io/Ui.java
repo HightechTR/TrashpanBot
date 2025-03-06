@@ -45,7 +45,6 @@ public class Ui {
      */
     public void displayList(ArrayList<Task> tasks, ArrayList<Integer> list) {
         if (tasks.isEmpty()) {
-            System.out.println(Text.TASK_LIST_EMPTY);
             return;
         }
         for (Integer i : list) {
@@ -57,8 +56,16 @@ public class Ui {
         System.out.println(Text.TASK_LIST_DISPLAY);
     }
 
+    public void showListEmpty() {
+        System.out.println(Text.TASK_LIST_EMPTY);
+    }
+
     public void showSearchResult() {
         System.out.println(Text.FIND_LIST_DISPLAY);
+    }
+
+    public void showSearchEmpty() {
+        System.out.println(Text.SEARCH_LIST_EMPTY);
     }
 
     /**
@@ -125,10 +132,6 @@ public class Ui {
 
     public void showDateFormatError(String usage) {
         System.out.println(Text.TASK_DATE_FORMAT_ERROR + System.lineSeparator() + usage);
-    }
-
-    public void showFindMissingError() {
-        System.out.println(Text.FIND_MISSING);
     }
 
     /*

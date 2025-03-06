@@ -73,13 +73,13 @@ public class Parser {
         }
     }
 
-    public String parseFind(String[] inputParts) {
+    public String parseFind(String[] inputParts, String usage) {
         String description;
 
         try {
             description = Utils.checkEmpty(inputParts[1]);
         } catch (IndexOutOfBoundsException e) {
-            ui.showFindMissingError();
+            ui.showParamMissingError(usage);
             return null;
         }
 

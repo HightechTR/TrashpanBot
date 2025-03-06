@@ -9,6 +9,11 @@ import trashpanbot.data.task.*;
 public class FindCommand extends Command {
     private Parser parser;
 
+    public static final String COMMAND_USAGE = """
+            "find <keyword>": Searches for tasks with the keyword and prints them out
+                <keyword> - The keyword to be searched
+                e.g. find book""";
+
     public FindCommand(String[] inputParts, Parser parser) {
         super(inputParts);
         this.parser = parser;
@@ -16,7 +21,7 @@ public class FindCommand extends Command {
 
     @Override
     public void execute(TaskList tasks, Ui ui, Save save) {
-        String keyword = parser.parseFind(inputParts);
+        String keyword = parser.parseFind(inputParts, COMMAND_USAGE);
         if (keyword == null) {
             return;
         }
@@ -31,8 +36,12 @@ public class FindCommand extends Command {
             }
         }
 
-        ui.showSearchResult();
-        ui.displayList(originalList, searchResult);
+        if (searchResult.isEmpty()) {
+            ui.showSearchEmpty();
+        } else {
+            ui.showSearchResult();
+            ui.displayList(originalList, searchResult);
+        }
     }
 
     @Override

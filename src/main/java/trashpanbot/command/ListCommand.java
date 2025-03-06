@@ -23,8 +23,12 @@ public class ListCommand extends Command {
             indexList.add(i);
         }
 
-        ui.showFullList();
-        ui.displayList(taskList, indexList);
+        if (taskList.isEmpty()) {
+            ui.showListEmpty();
+        } else {
+            ui.showFullList();
+            ui.displayList(taskList, indexList);
+        }
     }
 
     @Override

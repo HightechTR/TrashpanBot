@@ -12,7 +12,7 @@ public final class Text {
 
     public static final String TASK_LIST_DISPLAY = "Okay, here's your list:";
 
-    public static final String FIND_LIST_DISPLAY = "Okay, here's what I found:";
+    public static final String FIND_LIST_DISPLAY = "Look, here's what I found:";
 
     public static final String TASK_ADDED = "Okay! I added this to the list:";
 
@@ -29,6 +29,9 @@ public final class Text {
      */
 
     public static final String TASK_LIST_EMPTY = "Your list is empty! Try adding a task!";
+
+    public static final String SEARCH_LIST_EMPTY =
+            "I couldn't find any task with that keyword! I hope I didn't lose it...";
 
     public static final String TASK_OOB = "Hey, that's not in your list!";
 
