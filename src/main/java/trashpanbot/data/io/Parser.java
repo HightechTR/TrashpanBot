@@ -73,6 +73,19 @@ public class Parser {
         }
     }
 
+    public String parseFind(String[] inputParts, String usage) {
+        String description;
+
+        try {
+            description = Utils.checkEmpty(inputParts[1]);
+        } catch (IndexOutOfBoundsException e) {
+            ui.showParamMissingError(usage);
+            return null;
+        }
+
+        return description;
+    }
+
     /**
      * Adds a to-do to the task list.
      *
@@ -171,6 +184,7 @@ public class Parser {
         case "todo", "deadline", "event" -> c = new AddCommand(inputParts, parser);
         case "remove" -> c = new RemoveCommand(inputParts);
         case "list" -> c = new ListCommand(inputParts);
+        case "find" -> c = new FindCommand(inputParts, parser);
         case "mark" -> c = new MarkCommand(inputParts, true);
         case "unmark" -> c = new MarkCommand(inputParts, false);
         case "help" -> c = new HelpCommand(inputParts);

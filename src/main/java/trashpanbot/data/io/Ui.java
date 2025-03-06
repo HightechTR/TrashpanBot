@@ -43,15 +43,29 @@ public class Ui {
     /**
      * Displays task list to the output.
      */
-    public void displayList(ArrayList<Task> tasks) {
+    public void displayList(ArrayList<Task> tasks, ArrayList<Integer> list) {
         if (tasks.isEmpty()) {
-            System.out.println(Text.TASK_LIST_EMPTY);
             return;
         }
-        System.out.println(Text.TASK_LIST_DISPLAY);
-        for (int i = 1; i <= tasks.size(); i++) {
+        for (Integer i : list) {
             printTask(tasks, i);
         }
+    }
+
+    public void showFullList() {
+        System.out.println(Text.TASK_LIST_DISPLAY);
+    }
+
+    public void showListEmpty() {
+        System.out.println(Text.TASK_LIST_EMPTY);
+    }
+
+    public void showSearchResult() {
+        System.out.println(Text.FIND_LIST_DISPLAY);
+    }
+
+    public void showSearchEmpty() {
+        System.out.println(Text.SEARCH_LIST_EMPTY);
     }
 
     /**
