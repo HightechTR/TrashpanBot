@@ -1,6 +1,9 @@
 package trashpanbot.data.io;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import trashpanbot.command.*;
 import trashpanbot.common.*;
@@ -10,6 +13,8 @@ import trashpanbot.data.task.*;
 
 public class Parser {
 
+    public static final DateTimeFormatter DATE_INPUT_FORMAT =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private Ui ui;
 
     public Parser(Ui ui) {
@@ -28,9 +33,9 @@ public class Parser {
 
         // add task based on task icon
         switch (inputParts[0]) {
-        case "T" -> output = parseTodo(parameter, false);
-        case "D" -> output = parseDeadline(parameter, false);
-        case "E" -> output = parseEvent(parameter, false);
+        case "T" -> output = parseTodo(parameter, "", false);
+        case "D" -> output = parseDeadline(parameter, "", false);
+        case "E" -> output = parseEvent(parameter, "", false);
         default -> throw new InvalidSaveFormatException("Save file corrupted");
         }
 
@@ -53,16 +58,16 @@ public class Parser {
      * @param inputParts The input string array containing the integer
      * @return The integer inputted, null if not an integer or no integer inputted
      */
-    public Integer parseInt(String[] inputParts) {
+    public Integer parseInt(String[] inputParts, String usage) {
         try {
             return Integer.parseInt(Utils.checkEmpty(inputParts[1]));
 
         } catch (NumberFormatException e) { // check if number is valid
-            ui.showMarkInvalidIndexError();
+            ui.showMarkInvalidIndexError(usage);
             return null;
 
         } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
-            ui.showMarkMissingIndexError();
+            ui.showMarkMissingIndexError(usage);
             return null;
 
         }
@@ -74,7 +79,8 @@ public class Parser {
      * @param inputParts The input string array containing the task to be added to the list.
      * @return To-do object with components defined
      */
-    public Task parseTodo(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public Task parseTodo(String[] inputParts, String usage, boolean isNotSaveLoad)
+            throws IOException {
         String description;
 
         // check if parameter is non-empty
@@ -82,7 +88,7 @@ public class Parser {
             description = Utils.checkEmpty(inputParts[1]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
-                ui.showTodoMissingError();
+                ui.showParamMissingError(usage);
                 return null;
             } else {
                 throw new IOException();
@@ -98,7 +104,8 @@ public class Parser {
      * @param inputParts The input string array containing the task to be added to the list.
      * @return Deadline object with components defined
      */
-    public Task parseDeadline(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public Task parseDeadline(String[] inputParts, String usage, boolean isNotSaveLoad)
+            throws IOException, DateTimeParseException {
         String[] parameterParts;
         String description;
         String deadline;
@@ -110,14 +117,14 @@ public class Parser {
             deadline = Utils.checkEmpty(parameterParts[1]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
-                ui.showDeadlineMissingError();
+                ui.showParamMissingError(usage);
                 return null;
             } else {
                 throw new IOException();
             }
         }
 
-        return new Deadline(description, deadline);
+        return new Deadline(description, LocalDateTime.parse(deadline, DATE_INPUT_FORMAT));
     }
 
     /**
@@ -126,7 +133,8 @@ public class Parser {
      * @param inputParts The input string array containing the task to be added to the list.
      * @return Event object with components defined.
      */
-    public Task parseEvent(String[] inputParts, boolean isNotSaveLoad) throws IOException {
+    public Task parseEvent(String[] inputParts, String usage, boolean isNotSaveLoad)
+            throws IOException, DateTimeParseException {
         String[] parameterParts;
         String description;
         String from;
@@ -139,14 +147,15 @@ public class Parser {
             to = Utils.checkEmpty(parameterParts[2]);
         } catch (IndexOutOfBoundsException e) {
             if (isNotSaveLoad) {
-                ui.showEventMissingError();
+                ui.showParamMissingError(usage);
                 return null;
             } else {
                 throw new IOException();
             }
         }
 
-        return new Event(description, from, to);
+        return new Event(description, LocalDateTime.parse(from, DATE_INPUT_FORMAT),
+                LocalDateTime.parse(to, DATE_INPUT_FORMAT));
     }
 
     /**
