@@ -42,7 +42,6 @@ public class TrashpanBot {
 
     public static void run() {
         boolean isRunning = true;
-        ui.displayCommands();
 
         while (isRunning) {
             String[] userInput = ui.readInput();

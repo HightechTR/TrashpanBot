@@ -3,6 +3,12 @@ package trashpanbot.data.io;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import trashpanbot.command.AddCommand;
+import trashpanbot.command.ExitCommand;
+import trashpanbot.command.HelpCommand;
+import trashpanbot.command.ListCommand;
+import trashpanbot.command.MarkCommand;
+import trashpanbot.command.RemoveCommand;
 import trashpanbot.common.*;
 import trashpanbot.data.task.*;
 
@@ -105,24 +111,20 @@ public class Ui {
         System.out.println(Text.TASK_OOB);
     }
 
-    public void showMarkMissingIndexError() {
-        System.out.println(Text.TASK_MARK_NO_NUM);
+    public void showMarkMissingIndexError(String usage) {
+        System.out.println(Text.TASK_PARAMETER_MISSING + System.lineSeparator() + usage);
     }
 
-    public void showMarkInvalidIndexError() {
-        System.out.println(Text.TASK_MARK_NOT_NUM);
+    public void showMarkInvalidIndexError(String usage) {
+        System.out.println(Text.TASK_MARK_INVALID_NUM + System.lineSeparator() + usage);
     }
 
-    public void showTodoMissingError() {
-        System.out.println(Text.TODO_MISSING);
+    public void showParamMissingError(String usage) {
+        System.out.println(Text.TASK_PARAMETER_MISSING + System.lineSeparator() + usage);
     }
 
-    public void showDeadlineMissingError() {
-        System.out.println(Text.DEADLINE_MISSING);
-    }
-
-    public void showEventMissingError() {
-        System.out.println(Text.EVENT_MISSING);
+    public void showDateFormatError(String usage) {
+        System.out.println(Text.TASK_DATE_FORMAT_ERROR + System.lineSeparator() + usage);
     }
 
     public void showFindMissingError() {
@@ -141,7 +143,16 @@ public class Ui {
     }
 
     public void displayCommands() {
-        System.out.println(Text.TASK_LIST_COMMANDS);
+        System.out.println("List of Commands" + System.lineSeparator()
+                + AddCommand.TODO_USAGE + System.lineSeparator()
+                + AddCommand.DEADLINE_USAGE + System.lineSeparator()
+                + AddCommand.EVENT_USAGE + System.lineSeparator()
+                + ListCommand.COMMAND_USAGE + System.lineSeparator()
+                + RemoveCommand.COMMAND_USAGE + System.lineSeparator()
+                + MarkCommand.MARK_USAGE + System.lineSeparator()
+                + MarkCommand.UNMARK_USAGE + System.lineSeparator()
+                + HelpCommand.COMMAND_USAGE + System.lineSeparator()
+                + ExitCommand.COMMAND_USAGE);
     }
 
     public void showInvalidCommandError() {

@@ -1,22 +1,24 @@
 package trashpanbot.data.task;
 
-public class Event extends Task {
-    private final String from;
-    private final String to;
+import java.time.LocalDateTime;
 
-    public Event(String description, String from, String to) {
+public class Event extends Task {
+    private LocalDateTime from;
+    private LocalDateTime to;
+
+    public Event(String description, LocalDateTime from, LocalDateTime to) {
         super(description);
         this.from = from;
         this.to = to;
     }
 
     @Override
-    public String getFrom() {
+    public LocalDateTime getFrom() {
         return from;
     }
 
     @Override
-    public String getTo() {
+    public LocalDateTime getTo() {
         return to;
     }
 
@@ -27,6 +29,8 @@ public class Event extends Task {
 
     @Override
     public String getDate() {
-        return " (from: " + from + " to: " + to + ")";
+        return " (from: "
+                + from.format(DATE_OUTPUT_FORMAT) + " to: "
+                + to.format(DATE_OUTPUT_FORMAT) + ")";
     }
 }

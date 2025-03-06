@@ -5,6 +5,10 @@ import trashpanbot.data.save.Save;
 import trashpanbot.data.task.TaskList;
 
 public class HelpCommand extends Command {
+    public static final String COMMAND_USAGE = """
+            "help": Displays this command list
+                e.g. help""";
+
     public HelpCommand(String[] inputParts) {
         super(inputParts);
     }

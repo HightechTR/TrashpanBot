@@ -1,8 +1,14 @@
 package trashpanbot.data.task;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public abstract class Task {
     private final String description;
     private boolean isDone;
+
+    protected static final DateTimeFormatter DATE_OUTPUT_FORMAT =
+            DateTimeFormatter.ofPattern("d MMM yyyy HH:mm");
 
     public Task(String description) {
         this.description = description;
@@ -17,16 +23,16 @@ public abstract class Task {
         return isDone ? "X" : " ";
     }
 
-    public String getDeadline() {
-        return "";
+    public LocalDateTime getDeadline() {
+        return null;
     }
 
-    public String getFrom() {
-        return "";
+    public LocalDateTime getFrom() {
+        return null;
     }
 
-    public String getTo() {
-        return "";
+    public LocalDateTime getTo() {
+        return null;
     }
 
     public abstract String getTypeIcon();

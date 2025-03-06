@@ -1,15 +1,17 @@
 package trashpanbot.data.task;
 
-public class Deadline extends Task {
-    private final String deadline;
+import java.time.LocalDateTime;
 
-    public Deadline(String description, String deadline) {
+public class Deadline extends Task {
+    private LocalDateTime deadline;
+
+    public Deadline(String description, LocalDateTime deadline) {
         super(description);
         this.deadline = deadline;
     }
 
     @Override
-    public String getDeadline() {
+    public LocalDateTime getDeadline() {
         return deadline;
     }
 
@@ -20,6 +22,6 @@ public class Deadline extends Task {
 
     @Override
     public String getDate() {
-        return " (by: " + deadline + ")";
+        return " (by: " + deadline.format(DATE_OUTPUT_FORMAT) + ")";
     }
 }
