@@ -12,6 +12,8 @@ public final class Text {
 
     public static final String TASK_LIST_DISPLAY = "Okay, here's your list:";
 
+    public static final String FIND_LIST_DISPLAY = "Okay, here's what I found:";
+
     public static final String TASK_ADDED = "Okay! I added this to the list:";
 
     public static final String TASK_REMOVED = "Okay! I threw this task into the bin:";
@@ -61,6 +63,12 @@ public final class Text {
     public static final String COMMAND_INVALID = """
             Eh? I don't know what that means...
             Try running help for the list of commands!""";
+
+    public static final String FIND_MISSING = """
+            Eh? Something is missing...
+            Command format: find <keyword>
+                <description> - The keyword to search
+            """;
 
     /*
     =================================================================================
@@ -142,6 +150,8 @@ public final class Text {
                 <start date> - The start date of the deadline
                 <end date> - The end date of the deadline
             "list": Displays full list of tasks
+            "find" <keyword": Finds tasks in the list
+                <keyword>: The keyword to search
             "remove <number>": Removes the task labelled with the number
                 <number> - The number of the task in the last shown list
             "mark <number>": Marks the task labelled with the number as done

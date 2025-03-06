@@ -37,15 +37,22 @@ public class Ui {
     /**
      * Displays task list to the output.
      */
-    public void displayList(ArrayList<Task> tasks) {
+    public void displayList(ArrayList<Task> tasks, ArrayList<Integer> list) {
         if (tasks.isEmpty()) {
             System.out.println(Text.TASK_LIST_EMPTY);
             return;
         }
-        System.out.println(Text.TASK_LIST_DISPLAY);
-        for (int i = 1; i <= tasks.size(); i++) {
+        for (Integer i : list) {
             printTask(tasks, i);
         }
+    }
+
+    public void showFullList() {
+        System.out.println(Text.TASK_LIST_DISPLAY);
+    }
+
+    public void showSearchResult() {
+        System.out.println(Text.FIND_LIST_DISPLAY);
     }
 
     /**
@@ -118,6 +125,10 @@ public class Ui {
         System.out.println(Text.EVENT_MISSING);
     }
 
+    public void showFindMissingError() {
+        System.out.println(Text.FIND_MISSING);
+    }
+
     /*
     =================================================================================
     Command-related Text UI
@@ -156,7 +167,7 @@ public class Ui {
     }
 
     public void showFileUnknownError() {
-        System.out.println(Text.FILE_DIRECTORY_MISSING);
+        System.out.println(Text.FILE_UNKNOWN_ERROR);
     }
 
     public void showFileWriteError() {
