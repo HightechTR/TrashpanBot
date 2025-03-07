@@ -4,4 +4,4 @@ description: >-
   It is able to store tasks of various types and has many functions to aid in managing tasks.
   It can also save your tasks automatically and reload them.
 theme: jekyll-theme-minimal
-markdown: kramdown
+markdown: GFM
