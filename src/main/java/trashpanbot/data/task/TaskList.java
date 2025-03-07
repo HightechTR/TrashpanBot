@@ -7,6 +7,11 @@ import trashpanbot.command.RemoveCommand;
 import trashpanbot.data.io.*;
 import trashpanbot.data.save.Save;
 
+/**
+ * Represents the entire Task List.
+ * Contains the ArrayList of Task objects, and methods to handle
+ * adding, removing and marking tasks.
+ */
 public class TaskList {
 
     private ArrayList<Task> tasks;
@@ -52,7 +57,7 @@ public class TaskList {
         if (index > tasks.size()) {
             ui.showOutOfBoundsError();
         } else {
-            ui.printRemovedText(tasks, index);
+            ui.printRemovedText(tasks, index - 1);
             tasks.remove(index - 1);
             save.updateFile(tasks);
         }
@@ -85,7 +90,7 @@ public class TaskList {
                 ui.showTaskUndone();
             }
 
-            ui.printTask(tasks, index);
+            ui.printTask(tasks, index - 1);
             save.updateFile(tasks);
         }
     }

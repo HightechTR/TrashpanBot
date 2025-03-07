@@ -7,6 +7,9 @@ import trashpanbot.data.io.*;
 import trashpanbot.data.save.Save;
 import trashpanbot.data.task.*;
 
+/**
+ * Represents the to-do, deadline and event commands.
+ */
 public class AddCommand extends Command {
     private Task task;
     private Parser parser;

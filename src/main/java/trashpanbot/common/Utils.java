@@ -2,6 +2,9 @@ package trashpanbot.common;
 
 import trashpanbot.data.exception.StringArrayEmptyException;
 
+/**
+ * Represents general utilities used by TrashpanBot.
+ */
 public class Utils {
 
     /**

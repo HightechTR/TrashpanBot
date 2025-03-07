@@ -4,6 +4,9 @@ import trashpanbot.data.io.Ui;
 import trashpanbot.data.save.Save;
 import trashpanbot.data.task.TaskList;
 
+/**
+ * Represents the bye command.
+ */
 public class ExitCommand extends Command{
     public static final String COMMAND_USAGE = """
             "bye": Exits the program

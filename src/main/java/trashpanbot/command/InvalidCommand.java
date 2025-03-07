@@ -4,6 +4,9 @@ import trashpanbot.data.io.Ui;
 import trashpanbot.data.save.Save;
 import trashpanbot.data.task.TaskList;
 
+/**
+ * Represents invalid commands.
+ */
 public class InvalidCommand extends Command {
     public InvalidCommand(String[] inputParts) {
         super(inputParts);

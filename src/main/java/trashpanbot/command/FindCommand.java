@@ -6,6 +6,9 @@ import trashpanbot.data.io.*;
 import trashpanbot.data.save.*;
 import trashpanbot.data.task.*;
 
+/**
+ * Represents the find command.
+ */
 public class FindCommand extends Command {
     private Parser parser;
 
@@ -32,7 +35,7 @@ public class FindCommand extends Command {
         for (int i = 0; i < originalList.size(); i++) {
             String description = originalList.get(i).getDescription();
             if (description.contains(keyword)) {
-                searchResult.add(i + 1);
+                searchResult.add(i);
             }
         }
 

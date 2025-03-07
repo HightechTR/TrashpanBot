@@ -23,6 +23,12 @@ public class TrashpanBot {
         run();
     }
 
+    /**
+     * Loads the save file.
+     *
+     * @param parser The Parser object
+     * @param save The Save object
+     */
     public static void loadSave(Parser parser, Save save) {
         try {
             tasks = new TaskList(parser, ui, save.readFile());
@@ -36,10 +42,13 @@ public class TrashpanBot {
      * Exits the program.
      */
     public static void exitProgram() {
-        System.out.println(Text.BYE);
+        System.out.println(Text.EXIT);
         System.exit(0);
     }
 
+    /**
+     * Main running function of the program.
+     */
     public static void run() {
         boolean isRunning = true;
 
