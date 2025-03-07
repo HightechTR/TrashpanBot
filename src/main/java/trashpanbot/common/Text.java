@@ -34,7 +34,7 @@ public final class Text {
     public static final String TASK_LIST_EMPTY = "Your list is empty! Try adding a task!";
 
     public static final String TASK_FIND_LIST_EMPTY =
-            "I couldn't find any task with that keyword! I hope I didn't lose it...";
+            "I couldn't find any tasks with that keyword! I hope I didn't lose them...";
 
     public static final String TASK_OOB = "Hey, that's not in your list!";
 

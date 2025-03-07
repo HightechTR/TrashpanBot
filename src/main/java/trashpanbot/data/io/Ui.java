@@ -219,9 +219,9 @@ public class Ui {
                 + AddCommand.EVENT_USAGE + System.lineSeparator()
                 + ListCommand.COMMAND_USAGE + System.lineSeparator()
                 + FindCommand.COMMAND_USAGE + System.lineSeparator()
-                + RemoveCommand.COMMAND_USAGE + System.lineSeparator()
                 + MarkCommand.MARK_USAGE + System.lineSeparator()
                 + MarkCommand.UNMARK_USAGE + System.lineSeparator()
+                + RemoveCommand.COMMAND_USAGE + System.lineSeparator()
                 + HelpCommand.COMMAND_USAGE + System.lineSeparator()
                 + ExitCommand.COMMAND_USAGE);
     }

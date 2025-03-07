@@ -22,14 +22,14 @@ public class AddCommand extends Command {
     public static final String DEADLINE_USAGE = """
             "deadline <description> /by <due>": Adds a deadline task to the list
                 <description> - The description of the task to be added
-                <due> - The due date & time, in format yyyy-mm-dd hh:mm
+                <due> - The due date & time, in format yyyy-mm-dd HH:MM
                 e.g. deadline Finish Cover Song /by 2025-09-12 18:30""";
 
     public static final String EVENT_USAGE = """
             "event <description> /from <start> /to <end>": Adds a event task to the list
                 <description> - The description of the task to be added
-                <start> - The start date of the event, in format yyyy-mm-dd hh:mm
-                <end> - The end date of the event, in format yyyy-mm-dd hh:mm
+                <start> - The start date of the event, in format yyyy-mm-dd HH:MM
+                <end> - The end date of the event, in format yyyy-mm-dd HH:MM
                 e.g. event Raki Birthday!! /from 2025-10-24 12:00 /to 2025-10-24 18:00""";
 
     public AddCommand(String[] inputParts, Parser parser) {
