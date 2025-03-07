@@ -2,6 +2,11 @@ package trashpanbot.data.task;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents event tasks.
+ * A <code>Event</code> object corresponds to a task with a description, a start date
+ * and an end date.
+ */
 public class Event extends Task {
     private LocalDateTime from;
     private LocalDateTime to;

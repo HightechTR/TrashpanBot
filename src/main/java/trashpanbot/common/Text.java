@@ -1,5 +1,8 @@
 package trashpanbot.common;
 
+/**
+ * Represents almost all text printed to the output.
+ */
 public final class Text {
     private Text() {
     }

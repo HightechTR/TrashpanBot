@@ -4,6 +4,9 @@ import trashpanbot.data.io.*;
 import trashpanbot.data.save.Save;
 import trashpanbot.data.task.TaskList;
 
+/**
+ * Represents the help command.
+ */
 public class HelpCommand extends Command {
     public static final String COMMAND_USAGE = """
             "help": Displays this command list

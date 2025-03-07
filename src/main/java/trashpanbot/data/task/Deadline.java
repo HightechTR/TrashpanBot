@@ -2,6 +2,10 @@ package trashpanbot.data.task;
 
 import java.time.LocalDateTime;
 
+/**
+ * Represents deadline tasks.
+ * A <code>Deadline</code> object corresponds to a task with a description and a due date.
+ */
 public class Deadline extends Task {
     private LocalDateTime deadline;
 

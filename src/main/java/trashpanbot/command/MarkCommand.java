@@ -4,6 +4,9 @@ import trashpanbot.data.io.*;
 import trashpanbot.data.save.Save;
 import trashpanbot.data.task.*;
 
+/**
+ * Represents the mark and unmark commands.
+ */
 public class MarkCommand extends Command {
     private final boolean isDone;
 

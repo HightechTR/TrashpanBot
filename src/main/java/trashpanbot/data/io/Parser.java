@@ -10,7 +10,10 @@ import trashpanbot.common.*;
 import trashpanbot.data.exception.InvalidSaveFormatException;
 import trashpanbot.data.task.*;
 
-
+/**
+ * Represents the parser functions.
+ * Contains methods to handle parsing of input commands, parameters and save files.
+ */
 public class Parser {
 
     public static final DateTimeFormatter DATE_INPUT_FORMAT =
@@ -21,6 +24,14 @@ public class Parser {
         this.ui = ui;
     }
 
+    /**
+     * Parses a single line of file contents during a save load.
+     * Takes in the content after the last bar "|" and parses it into a Task object.
+     *
+     * @param inputParts The String array containing the parts of each line in the save file.
+     * @return A Task class corresponding to the task in the save file.
+     * @throws IOException If the input format is invalid, i.e. the save file is corrupted
+     */
     public Task parseFile(String[] inputParts) throws IOException {
         Task output;
 
@@ -52,11 +63,13 @@ public class Parser {
     }
 
     /**
-     * Parses an integer value from input, returns the integer inputted
-     * Displays message and returns null if no integer inputted or input is not an integer
+     * Parses an integer value from input and returns the integer inputted.
+     * Displays message and returns null if no integer is inputted
+     * or the input is not an integer.
      *
-     * @param inputParts The input string array containing the integer
-     * @return The integer inputted, null if not an integer or no integer inputted
+     * @param inputParts The input string array containing the integer.
+     * @param usage The usage text of the command that calls this method.
+     * @return The integer inputted if the integer is valid, null if invalid or missing.
      */
     public Integer parseInt(String[] inputParts, String usage) {
         try {
@@ -73,24 +86,34 @@ public class Parser {
         }
     }
 
+    /**
+     * Parses the parameters for the find command.
+     *
+     * @param inputParts The input string array containing the keyword.
+     * @param usage The usage text of the find command.
+     * @return The keyword string.
+     */
     public String parseFind(String[] inputParts, String usage) {
-        String description;
+        String keyword;
 
         try {
-            description = Utils.checkEmpty(inputParts[1]);
+            keyword = Utils.checkEmpty(inputParts[1]);
         } catch (IndexOutOfBoundsException e) {
             ui.showParamMissingError(usage);
             return null;
         }
 
-        return description;
+        return keyword;
     }
 
     /**
-     * Adds a to-do to the task list.
+     * Parses the parameters for the to-do command.
      *
-     * @param inputParts The input string array containing the task to be added to the list.
-     * @return To-do object with components defined
+     * @param inputParts The input string array containing the description.
+     * @param usage The usage text of the to-do command.
+     * @param isNotSaveLoad True if not called in a save load, false otherwise.
+     * @return To-do object with the description parsed.
+     * @throws IOException During save load if format is invalid.
      */
     public Task parseTodo(String[] inputParts, String usage, boolean isNotSaveLoad)
             throws IOException {
@@ -112,10 +135,14 @@ public class Parser {
     }
 
     /**
-     * Adds a deadline to the task list.
+     * Parses the parameters for the deadline command.
      *
-     * @param inputParts The input string array containing the task to be added to the list.
-     * @return Deadline object with components defined
+     * @param inputParts The input string array containing the description and deadline.
+     * @param usage The usage text of the deadline command.
+     * @param isNotSaveLoad True if not called in a save load, false otherwise.
+     * @return Deadline object with the description and deadline parsed.
+     * @throws IOException During save load if format is invalid.
+     * @throws DateTimeParseException If deadline is in an invalid format.
      */
     public Task parseDeadline(String[] inputParts, String usage, boolean isNotSaveLoad)
             throws IOException, DateTimeParseException {
@@ -141,10 +168,14 @@ public class Parser {
     }
 
     /**
-     * Adds an event to the list.
+     * Parses the parameters for the event command.
      *
-     * @param inputParts The input string array containing the task to be added to the list.
-     * @return Event object with components defined.
+     * @param inputParts The input string array containing the description, start and end date.
+     * @param usage The usage text of the event command.
+     * @param isNotSaveLoad True if not called in a save load, false otherwise.
+     * @return Event object with the description and dates parsed.
+     * @throws IOException During save load if format is invalid.
+     * @throws DateTimeParseException If either the start or end date is in an invalid format.
      */
     public Task parseEvent(String[] inputParts, String usage, boolean isNotSaveLoad)
             throws IOException, DateTimeParseException {
@@ -174,7 +205,9 @@ public class Parser {
     /**
      * Creates a command object for the task list application based on the command inputted.
      *
-     * @return The command object corresponding to the command inputted.
+     * @param inputParts The String array containing the parameters for the command.
+     * @param parser The Parser object.
+     * @return The Command object corresponding to the input command.
      */
     public Command parseCommand(String[] inputParts, Parser parser) {
         String command = inputParts[0];
