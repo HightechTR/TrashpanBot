@@ -42,7 +42,7 @@ public class TrashpanBot {
      * Exits the program.
      */
     public static void exitProgram() {
-        System.out.println(Text.BYE);
+        System.out.println(Text.EXIT);
         System.exit(0);
     }
 

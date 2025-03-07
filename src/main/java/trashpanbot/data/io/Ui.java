@@ -79,14 +79,14 @@ public class Ui {
      * Displays the text for the find command.
      */
     public void showSearchResult() {
-        System.out.println(Text.FIND_LIST_DISPLAY);
+        System.out.println(Text.TASK_FIND_LIST_DISPLAY);
     }
 
     /**
      * Displays the text for an empty list when the find command is run.
      */
     public void showSearchEmpty() {
-        System.out.println(Text.SEARCH_LIST_EMPTY);
+        System.out.println(Text.TASK_FIND_LIST_EMPTY);
     }
 
     /**
@@ -264,7 +264,7 @@ public class Ui {
      * Displays text when an unknown IOException is thrown in the file creation process.
      */
     public void showFileUnknownError() {
-        System.out.println(Text.FILE_UNKNOWN_ERROR);
+        System.out.println(Text.FILE_CREATE_ERROR);
     }
 
     /**
@@ -285,7 +285,7 @@ public class Ui {
      */
     public void showIntro() {
         System.out.println(Text.INTRO);
-        System.out.println(Text.TASK_LIST);
+        System.out.println(Text.TASK_LIST_DESCRIPTION);
     }
 
     /**

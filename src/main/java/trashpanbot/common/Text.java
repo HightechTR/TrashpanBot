@@ -15,7 +15,7 @@ public final class Text {
 
     public static final String TASK_LIST_DISPLAY = "Okay, here's your list:";
 
-    public static final String FIND_LIST_DISPLAY = "Look, here's what I found:";
+    public static final String TASK_FIND_LIST_DISPLAY = "Look, here's what I found:";
 
     public static final String TASK_ADDED = "Okay! I added this to the list:";
 
@@ -33,7 +33,7 @@ public final class Text {
 
     public static final String TASK_LIST_EMPTY = "Your list is empty! Try adding a task!";
 
-    public static final String SEARCH_LIST_EMPTY =
+    public static final String TASK_FIND_LIST_EMPTY =
             "I couldn't find any task with that keyword! I hope I didn't lose it...";
 
     public static final String TASK_OOB = "Hey, that's not in your list!";
@@ -70,7 +70,7 @@ public final class Text {
             Hey, I couldn't save to the save file!
             Please check if the data folder exists or the file is corrupted!""";
 
-    public static final String FILE_UNKNOWN_ERROR =
+    public static final String FILE_CREATE_ERROR =
             "Uh oh, I couldn't create a new save file for some reason!";
 
     /*
@@ -104,7 +104,7 @@ public final class Text {
             __________________________________________________
             """;
 
-    public static final String TASK_LIST = """
+    public static final String TASK_LIST_DESCRIPTION = """
             Current Mode: Task List
             I'll keep track of a list of to-dos, deadlines and events for you!
             Don't worry about your data, I'll save it automatically for you!
@@ -113,7 +113,7 @@ public final class Text {
             __________________________________________________
             """;
 
-    public static final String BYE = """
+    public static final String EXIT = """
             Otsuraki! See you soon!
             __________________________________________________
             """;
