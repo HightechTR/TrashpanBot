@@ -1,4 +1,4 @@
-# TrashpanBot User Guide
+# User Guide
 
            .##+-                         -####
           ##   .####                  ###   .##
