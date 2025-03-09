@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>User Guide | TrashpanBot</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="User Guide" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="TrashpanBot is an interactive task list manager. It is able to store tasks of various types and has many functions to aid in managing tasks. It can also save your tasks automatically and reload them." />
+<meta property="og:description" content="TrashpanBot is an interactive task list manager. It is able to store tasks of various types and has many functions to aid in managing tasks. It can also save your tasks automatically and reload them." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="TrashpanBot" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="User Guide" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","description":"TrashpanBot is an interactive task list manager. It is able to store tasks of various types and has many functions to aid in managing tasks. It can also save your tasks automatically and reload them.","headline":"User Guide","name":"TrashpanBot","url":"http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="TrashpanBot" />
+<style>.markdown-alert{padding:.5rem 1rem;margin-bottom:1rem;color:inherit;border-left:.25em solid #30363d}.markdown-alert>:first-child{margin-top:0}.markdown-alert>:last-child{margin-bottom:0}.markdown-alert .markdown-alert-title{display:flex;font-weight:500;align-items:center;line-height:1}.markdown-alert svg{margin-right:.5rem!important}.markdown-alert svg path{fill:currentColor}.markdown-alert.markdown-alert-note{border-left-color:#4493f8}.markdown-alert.markdown-alert-note .markdown-alert-title{color:#4493f8}.markdown-alert.markdown-alert-important{border-left-color:#ab7df8}.markdown-alert.markdown-alert-important .markdown-alert-title{color:#ab7df8}.markdown-alert.markdown-alert-warning{border-left-color:#9e6a03}.markdown-alert.markdown-alert-warning .markdown-alert-title{color:#d29922}.markdown-alert.markdown-alert-tip{border-left-color:#238636}.markdown-alert.markdown-alert-tip .markdown-alert-title{color:#3fb950}.markdown-alert.markdown-alert-caution{border-left-color:#da3633}.markdown-alert.markdown-alert-caution .markdown-alert-title{color:#f85149}</style></head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">TrashpanBot</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/">User Guide</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="home"><h1 class="page-heading">User Guide</h1><pre><code>           .##+-                         -####
+          ##   .####                  ###   .##
+          ##  ##   ###################  ###  ##
+          ##  #####                   #####  ##
+           ##  ##                        #  ##
+           ###                              ###
+         ###        -#####      +#####        ###
+       ###      -#########      #########+     ###
+      ##       ####   ###       ####   ####      ###
+    ###        #########          #########       ###
+      ###        #####    ######     ###-          ##
+        ####                                    ####
+           ####                            #####
+            ##                             ##
+</code></pre>
+<p>TrashpanBot is an interactive task list manager.
+It is able to store tasks of various types and has many functions to aid in managing tasks.
+It can also save your tasks automatically and reload them.</p>
+<p>It is optimised for a Command-Line Interface (CLI).</p>
+<p>This bot is based on the personality of <a href="https://www.youtube.com/@RakiKazuki">Raki Kazuki</a>, a Virtual YouTuber formerly from
+PixelLink.</p>
+<h2 id="quick-start">Quick Start</h2>
+<p>This section will guide you through first-time installation of TrashpanBot.</p>
+<h3 id="check-the-java-version-on-your-device">1. Check the Java version on your device</h3>
+<p>This bot runs on the Java 17 JDK.</p>
+<p>To check if you have Java installed on your device, open a Terminal window
+and run the command: <code>java -version</code></p>
+<p>The output should appear like this:</p>
+<pre><code>java version &quot;17.0.12&quot; 2024-07-16 LTS
+Java(TM) SE Runtime Environment (build 17.0.12+8-LTS-286)
+</code></pre>
+<p>Ensure the Java version listed begins with &quot;17&quot;.</p>
+<p>You may skip step 2 if you have Java 17 installed.</p>
+<h3 id="install-java-17">2. Install Java 17</h3>
+<p>If you get an error or see a different version in the previous step,
+Java 17 may not be installed.</p>
+<p>You may download Java from <a href="https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html">here</a>.</p>
+<p><strong>Installation Instructions:</strong></p>
+<ul>
+<li>For Windows Users</li>
+</ul>
+<p>Any Windows installer will work, but the Windows x64 Installer is recommended for ease of use.</p>
+<ul>
+<li>For Mac Users</li>
+</ul>
+<p>The DMG installer is recommended. However, please note down the CPU of your Mac.</p>
+<p>Use the macOS x64 DMG Installer if your Mac has an Intel CPU, or the macOS Arm 64 DMG Installer if your Max has an Apple M-series CPU.</p>
+<ul>
+<li>For Linux Users</li>
+</ul>
+<p>Check instructions for your distribution as installation may differ between distros.</p>
+<p>Generally, use the Debian Package for Debian-based distros (Ubuntu, Linux Mint) and the RPM Package for Red Hat-based distros (Fedora, CentOS).</p>
+<h3 id="download-the-latest-jar-file-of-trashpanbot">3. Download the latest .jar file of TrashpanBot</h3>
+<p>Download the latest .jar file release of TrashpanBot <a href="https://github.com/HightechTR/ip/releases">here</a>.</p>
+<h3 id="place-the-jar-file-in-a-desired-home-folder">4. Place the .jar file in a desired home folder</h3>
+<p>Move or copy the file to any desired folder on your computer.<br />
+The folder it will be in will serve as the working home folder for TrashpanBot.</p>
+<h3 id="run-the-application-from-the-terminal">5. Run the application from the terminal</h3>
+<p>Right-click an empty space in the home folder and select Open in Terminal.
+Alternatively, you may open a Terminal window and <code>cd</code> into the home folder.</p>
+<p>Run the command <code>java -jar TrashpanBot.jar</code> to start the application in the terminal.</p>
+<p>You should get this in the output:</p>
+<pre><code>__________________________________________________
+            
+This bot is based on the personality of Raki Kazuki from PixelLink.
+
+       .##+-                         -####
+      ##   .####                  ###   .##
+      ##  ##   ###################  ###  ##
+      ##  #####                   #####  ##
+       ##  ##                        #  ##
+       ###                              ###
+     ###        -#####      +#####        ###
+   ###      -#########      #########+     ###
+  ##       ####   ###       ####   ####      ###
+###        #########          #########       ###
+  ###        #####    ######     ###-          ##
+    ####                                    ####
+       ####                            #####
+        ##                             ##
+    
+Raah! I'm TrashpanBot!
+What can I do for you today?
+__________________________________________________
+</code></pre>
+<p>When the bot runs for the first time, it will create a <code>data</code> folder/directory in the
+home folder. This folder contains the save data for TrashpanBot.
+Do not modify or delete this folder to prevent loss of save data.</p>
+<h2 id="features">Features</h2>
+<h3 id="notes-about-the-command-format">Notes about the command format</h3>
+<p>The command format for examples below will be displayed in a format
+that resembles this:</p>
+<pre><code>deadline &lt;description&gt; /by &lt;due&gt;
+</code></pre>
+<p>Any component in angle brackets <code>&lt;&gt;</code> denote parameters. They must be defined when you run the command.</p>
+<p>For example, in the command <code>todo &lt;description&gt;</code>, <code>&lt;description&gt;</code> is a parameter.
+It may be used as <code>todo Read Book</code>.</p>
+<p>Unless otherwise specified, parameters are accepted simply as strings or plain text with no specific format.</p>
+<p>Components with a forward slash <code>/</code> separate different parts of some commands.
+They must be included as-is when running the command.</p>
+<p>For commands that do not take in parameters, such as <code>list</code>, any extraneous parameters added to
+the command will be ignored.</p>
+<h3 id="notes-about-task-types-and-format">Notes about Task Types and Format</h3>
+<p>TrashpanBot can store three types of tasks: <code>todo</code>, <code>deadline</code> and <code>event</code>.</p>
+<h4 id="todo-task">Todo Task</h4>
+<p>A <code>todo</code> is a task that only contains a description. It does not have any date attached to it.<br />
+It is represented in the task list like this:</p>
+<pre><code>1.[T][ ] Example
+</code></pre>
+<h4 id="deadline-task">Deadline Task</h4>
+<p>A <code>deadline</code> is a task that contains a description and a due date.<br />
+It is represented in the task list like this:</p>
+<pre><code>1.[D][ ] Example (by: 12 June 2025 13:00)
+</code></pre>
+<h4 id="event-task">Event Task</h4>
+<p>An <code>event</code> is a task that contains a description and two dates, a start and an end date.<br />
+It is represented in the task list like this:</p>
+<pre><code>1.[E][ ] Example (from: 12 June 2025 13:00 to: 14 June 2025 15:00)
+</code></pre>
+<h4 id="marked-tasks">Marked Tasks</h4>
+<p>Tasks that are marked as done will have an additional <code>X</code> shown in the box next to the type icon:</p>
+<pre><code>1.[T][X] Example
+</code></pre>
+<h3 id="adding-tasks-codetodocode-codedeadlinecode-amp-codeeventcode">Adding Tasks: <code>todo</code>, <code>deadline</code> &amp; <code>event</code></h3>
+<h4 id="todo-task-1">Todo Task</h4>
+<p>This command adds a <code>todo</code> task to the list.</p>
+<p><strong>Format</strong>: <code>todo &lt;description&gt;</code></p>
+<p><strong>Parameters</strong>:<br />
+<code>&lt;description&gt;</code>: Refers to the description of the todo task.</p>
+<p><strong>Example Usage</strong>:<br />
+<code>todo Play Muse Dash</code></p>
+<pre><code>Okay! I added this to the list:
+1.[T][ ] Play Muse Dash
+You have 1 task now!
+</code></pre>
+<h4 id="deadline-task-1">Deadline Task</h4>
+<p>This command adds a <code>deadline</code> task to the list.</p>
+<p><strong>Format</strong>: <code>deadline &lt;description&gt; /by &lt;due&gt;</code></p>
+<p><strong>Parameters</strong>:<br />
+<code>&lt;description&gt;</code>: The description of the deadline task.</p>
+<p><code>&lt;due&gt;</code>: Refers to the due date of the deadline task.</p>
+<ul>
+<li><code>&lt;due&gt;</code> must be in the format <code>yyyy-mm-dd HH:MM</code></li>
+<li><code>yyyy</code> is the year, <code>mm</code> is the month, <code>dd</code> is the day, <code>HH:MM</code> is the time in the 24-hour format.</li>
+</ul>
+<p><strong>Example Usage</strong>:<br />
+<code>deadline Finish Cover Song /by 2025-09-12 18:30</code></p>
+<pre><code>Okay! I added this to the list:
+1.[D][ ] Finish Cover Song (by: 12 Sep 2025 18:30)
+You have 1 task now!
+</code></pre>
+<h4 id="event-task-1">Event Task</h4>
+<p>This command adds an <code>event</code> task to the list.</p>
+<p><strong>Format</strong>: <code>event &lt;description&gt; /from &lt;start&gt; /to &lt;end&gt;</code></p>
+<p><strong>Parameters</strong>:<br />
+<code>&lt;description&gt;</code>: The description of the event task.</p>
+<p><code>&lt;start&gt;</code>: Refers to the start date of the event task.</p>
+<p><code>&lt;end&gt;</code>: Refers to the end date of the event task.</p>
+<ul>
+<li>Both <code>&lt;start&gt;</code> and <code>&lt;end&gt;</code> must be in the format <code>yyyy-mm-dd HH:MM</code></li>
+<li><code>yyyy</code> is the year, <code>mm</code> is the month, <code>dd</code> is the day, <code>HH:MM</code> is the time in the 24-hour format.</li>
+</ul>
+<p><strong>Example Usage</strong>:<br />
+<code>deadline Raki Birthday!! /from 2025-10-24 12:00 /to 2025-10-24 18:00</code></p>
+<pre><code>Okay! I added this to the list:
+1.[E][ ] Raki Birthday!! (from: 24 Oct 2025 12:00 to: 24 Oct 2025 18:00)
+You have 1 task now!
+</code></pre>
+<h3 id="listing-tasks-codelistcode">Listing Tasks: <code>list</code></h3>
+<p>This command lists all the tasks that are in the list.</p>
+<p><strong>Format</strong>: <code>list</code></p>
+<p><strong>Example Usage</strong>:<br />
+<code>list</code></p>
+<pre><code>Okay, here's your list:
+1.[T][ ] Play Muse Dash
+2.[D][ ] Finish Cover Song (by: 12 Sep 2025 18:30)
+3.[E][ ] Raki Birthday!! (from: 24 Oct 2025 12:00 to: 24 Oct 2025 18:00)
+</code></pre>
+<p>If the task list is empty, this message will be shown:</p>
+<pre><code>Your list is empty! Try adding a task!
+</code></pre>
+<h3 id="finding-tasks-codefindcode">Finding Tasks: <code>find</code></h3>
+<p>This command will search for tasks in the list and list them to you.</p>
+<p><strong>Format:</strong> <code>find &lt;keyword&gt;</code></p>
+<p><strong>Parameters:</strong><br />
+<code>&lt;keyword&gt;</code>: The keyword to be searched.</p>
+<p><strong>Example Usage:</strong><br />
+<code>find book</code></p>
+<p>For a full task list like this:</p>
+<pre><code>1.[T][ ] Read book
+2.[T][ ] Play Muse Dash
+3.[D][ ] Return book (by: 31 Aug 2025 14:00)
+</code></pre>
+<p>This will search for the tasks containing the word <code>book</code> and list them:</p>
+<pre><code>Look, here's what I found:
+1.[T][ ] Read book
+3.[D][ ] Return book (by: 31 Aug 2025 14:00)
+</code></pre>
+<p>Note that the index of the tasks listed in this list match that in the full list.
+This allows for easy use of the <code>mark</code>, <code>unmark</code> and <code>remove</code> commands (more information below).</p>
+<p>If there are no tasks containing the given keyword, this message will be shown:</p>
+<pre><code>I couldn't find any tasks with that keyword! I hope I didn't lose them...
+</code></pre>
+<h3 id="marking-tasks-codemarkcode-amp-codeunmarkcode">Marking Tasks: <code>mark</code> &amp; <code>unmark</code></h3>
+<h4 id="marking-as-done">Marking as Done</h4>
+<p>This command marks a task as done.</p>
+<p><strong>Format</strong>: <code>mark &lt;number&gt;</code></p>
+<p><strong>Parameters</strong>:<br />
+<code>&lt;number&gt;</code>: Refers to the index number shown in the displayed list.</p>
+<ul>
+<li><code>&lt;number&gt;</code> must be a whole number, i.e. <code>1</code>, <code>2</code>, <code>3</code>, ...</li>
+</ul>
+<p><strong>Example Usage</strong>:<br />
+<code>mark 1</code></p>
+<p>This marks the first task in the full list as done.</p>
+<pre><code>Yay! I've marked this task as done:
+1.[T][X] Play Muse Dash
+</code></pre>
+<h4 id="marking-as-not-done">Marking as Not Done</h4>
+<p>This command marks a task as not done.</p>
+<p><strong>Format</strong>: <code>unmark &lt;number&gt;</code></p>
+<p><strong>Parameters</strong>:<br />
+<code>&lt;number&gt;</code>: Refers to the index number shown in the displayed list.</p>
+<ul>
+<li><code>&lt;number&gt;</code> must be a whole number, i.e. <code>1</code>, <code>2</code>, <code>3</code>, ...</li>
+</ul>
+<p><strong>Example Usage</strong>:<br />
+<code>unmark 1</code></p>
+<p>This marks the first task in the full list as not done.</p>
+<pre><code>Ganbaraki! I've marked this task as not done:
+1.[T][ ] Play Muse Dash
+</code></pre>
+<h3 id="removing-tasks-coderemovecode">Removing Tasks: <code>remove</code></h3>
+<p>This command removes a specified task from the list.</p>
+<p><strong>Format</strong>: <code>remove &lt;number&gt;</code></p>
+<p><strong>Parameters</strong>:<br />
+<code>&lt;number&gt;</code>: Refers to the index number shown in the displayed list.</p>
+<ul>
+<li>It must be a positive whole number, i.e. <code>1</code>, <code>2</code>, <code>3</code>, ...</li>
+</ul>
+<p><strong>Example Usage</strong>:<br />
+<code>remove 1</code></p>
+<p>This removes the first task in the full list.</p>
+<pre><code>Okay! I threw this task into the bin:
+1.[T][ ] Play Muse Dash
+You have 2 tasks now!
+</code></pre>
+<h3 id="listing-commands-codehelpcode">Listing Commands: <code>help</code></h3>
+<p>This command lists all the commands you can run.</p>
+<p><strong>Format</strong>: <code>help</code></p>
+<h3 id="exiting-the-program-codebyecode">Exiting the Program: <code>bye</code></h3>
+<p>This command exits the program.</p>
+<p><strong>Format</strong>: <code>bye</code></p>
+<h3 id="saving-the-task-list">Saving the Task List</h3>
+<p>TrashpanBot automatically saves the task list every time it is changed.<br />
+When the bot starts, it will automatically load data from the save file.</p>
+<h4 id="creating-a-new-save-file">Creating a New Save File</h4>
+<p>If there is no save file (i.e. when the bot starts for the first time), this message is shown at startup:</p>
+<pre><code>Uh...I couldn't find a save file...
+No worries, I'll create one for you!
+</code></pre>
+<p>TrashpanBot will automatically create the data folder and the save file.</p>
+<h4 id="loading-an-existing-save-file">Loading an Existing Save File</h4>
+<p>If there is a save file, it will begin loading it and will show this message:</p>
+<pre><code>Look, I found a save file!
+Loading it for you...
+</code></pre>
+<p>If the load is successful, it will immediately start the program.</p>
+<h3 id="editing-the-save-file">Editing the Save File</h3>
+<p>TrashpanBot stores its save file in plaintext using a .txt file
+in <code>[JAR file location]/data/TaskList.txt</code>.<br />
+Advanced users may edit the save file directly.</p>
+<div class='markdown-alert markdown-alert-caution'><p class='markdown-alert-title'><svg class="octicon octicon-stop" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M4.47.22A.749.749 0 0 1 5 0h6c.199 0 .389.079.53.22l4.25 4.25c.141.14.22.331.22.53v6a.749.749 0 0 1-.22.53l-4.25 4.25A.749.749 0 0 1 11 16H5a.749.749 0 0 1-.53-.22L.22 11.53A.749.749 0 0 1 0 11V5c0-.199.079-.389.22-.53Zm.84 1.28L1.5 5.31v5.38l3.81 3.81h5.38l3.81-3.81V5.31L10.69 1.5ZM8 4a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 4Zm0 8a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> Caution</p><p>If your edits to the save file makes its format invalid, TrashpanBot will discard
+all data and start from a fresh save file.<br />
+If this occurs, this message will be shown after loading the save:</p>
+<pre><code>Eh? Something's wrong with the save file, it's all gibberish!
+Here, I'll create a new one for you.
+</code></pre>
+<p>It is recommended to back up the save file before editing it.</p>
+</div>
+<h2 id="command-summary">Command Summary</h2>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Format &amp; Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Add Todo Task</td>
+<td><code>todo &lt;description&gt;</code><br>e.g. <code>todo Play Muse Dash</code></td>
+</tr>
+<tr>
+<td>Add Deadline Task</td>
+<td><code>deadline &lt;description&gt; /by &lt;due&gt;</code><br>e.g. <code>deadline Finish Cover Song /by 2025-09-12 18:30</code></td>
+</tr>
+<tr>
+<td>Add Event Task</td>
+<td><code>event &lt;description&gt; /from &lt;start&gt; /to &lt;end&gt;</code><br>e.g. <code>event Raki Birthday!! /from 2025-10-24 12:00 /to 2025-10-24 18:00</code></td>
+</tr>
+<tr>
+<td>List Tasks</td>
+<td><code>list</code></td>
+</tr>
+<tr>
+<td>Find Tasks</td>
+<td><code>find &lt;keyword&gt;</code><br>e.g. <code>find book</code></td>
+</tr>
+<tr>
+<td>Mark Task as Done</td>
+<td><code>mark &lt;number&gt;</code><br>e.g. <code>mark 1</code></td>
+</tr>
+<tr>
+<td>Mark Task as Not Done</td>
+<td><code>unmark &lt;number&gt;</code><br>e.g. <code>unmark 1</code></td>
+</tr>
+<tr>
+<td>Remove Task</td>
+<td><code>remove &lt;number&gt;</code><br>e.g. <code>remove 1</code></td>
+</tr>
+<tr>
+<td>List Commands</td>
+<td><code>help</code></td>
+</tr>
+<tr>
+<td>Exit Program</td>
+<td><code>bye</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+  </div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="http://localhost:4000/feed.xml">
+            <svg class="svg-icon orange">
+              <path d="M12.8 16C12.8 8.978 7.022 3.2 0 3.2V0c8.777 0 16 7.223 16 16h-3.2zM2.194
+                11.61c1.21 0 2.195.985 2.195 2.196 0 1.21-.99 2.194-2.2 2.194C.98 16 0 15.017 0
+                13.806c0-1.21.983-2.195 2.194-2.195zM10.606
+                16h-3.11c0-4.113-3.383-7.497-7.496-7.497v-3.11c5.818 0 10.606 4.79 10.606 10.607z"
+              />
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>TrashpanBot is an interactive task list manager. It is able to store tasks of various types and has many functions to aid in managing tasks. It can also save your tasks automatically and reload them.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+
+</body>
+
+</html>
