@@ -1,5 +1,6 @@
 # User Guide
 
+```
            .##+-                         -####
           ##   .####                  ###   .##
           ##  ##   ###################  ###  ##
@@ -14,6 +15,7 @@
         ####                                    ####
            ####                            #####
             ##                             ##
+```
 
 TrashpanBot is an interactive task list manager.
 It is able to store tasks of various types and has many functions to aid in managing tasks.

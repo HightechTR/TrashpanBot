@@ -51,5 +51,4 @@ Prerequisites: JDK 17
 
 1. Download the latest .jar file from Releases.
 2. Copy .jar file into any folder. This folder will serve as the home directory for the application.
-3. Create a data folder in the home directory. This folder will store the save data from the application. The application will not run if you do not have this folder.
-4. Open Terminal, cd into the home directory and run ```java -jar TrashpanBot.jar```
+3. Open Terminal, cd into the home directory and run ```java -jar TrashpanBot.jar```
