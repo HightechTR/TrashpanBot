@@ -115,7 +115,7 @@ Do not modify or delete this folder to prevent loss of save data.
 
 ## Features
 
-### \> Notes about the command format
+### \# Notes about the command format
 
 The command format for examples below will be displayed in a format
 that resembles this:
@@ -135,52 +135,46 @@ They must be included as-is when running the command.
 For commands that do not take in parameters, such as `list`, any extraneous parameters added to
 the command will be ignored.
 
-### \> Notes about Task Types and Format
+### \# Notes about Task Types and Format
 
 TrashpanBot can store three types of tasks: `todo`, `deadline` and `event`.
 
-**> Todo Task**
-
+#### \> Todo Task
 A `todo` is a task that only contains a description. It does not have any date attached to it.\
 It is represented in the task list like this:
 ```
 1.[T][ ] Example
 ```
 
-**> Deadline Task**
-
+#### \> Deadline Task
 A `deadline` is a task that contains a description and a due date.\
 It is represented in the task list like this:
 ```
 1.[D][ ] Example (by: 12 June 2025 13:00)
 ```
 
-**> Event Task**
-
+#### \> Event Task
 An `event` is a task that contains a description and two dates, a start and an end date.\
 It is represented in the task list like this:
 ```
 1.[E][ ] Example (from: 12 June 2025 13:00 to: 14 June 2025 15:00)
 ```
 
-**> Marked Tasks**
-
+#### \> Marked Tasks
 Tasks that are marked as done will have an additional `X` shown in the box next to the type icon:
 ```
 1.[T][X] Example
 ```
 
 
-### \> Adding Tasks: `todo`, `deadline` & `event`
+### \# Adding Tasks: `todo`, `deadline` & `event`
 
-**> Todo Task**
-
+#### \> Todo Task
 This command adds a `todo` task to the list.
 
 **Format**: `todo <description>`
 
-**Parameters**:
-
+**Parameters**:\
 `<description>`: Refers to the description of the todo task.
 
 **Example Usage**:\
@@ -192,14 +186,12 @@ Okay! I added this to the list:
 You have 1 task now!
 ```
 
-**> Deadline Task**
-
+#### \> Deadline Task
 This command adds a `deadline` task to the list.
 
 **Format**: `deadline <description> /by <due>`
 
-**Parameters**:
-
+**Parameters**:\
 `<description>`: The description of the deadline task.
 
 `<due>`: Refers to the due date of the deadline task. 
@@ -216,14 +208,12 @@ Okay! I added this to the list:
 You have 1 task now!
 ```
 
-**> Event Task**
-
+#### \> Event Task
 This command adds an `event` task to the list.
 
 **Format**: `event <description> /from <start> /to <end>`
 
-**Parameters**:
-
+**Parameters**:\
 `<description>`: The description of the event task.
 
 `<start>`: Refers to the start date of the event task.
@@ -242,7 +232,7 @@ Okay! I added this to the list:
 You have 1 task now!
 ```
 
-### \> Listing Tasks: `list`
+### \# Listing Tasks: `list`
 
 This command lists all the tasks that are in the list.
 
@@ -263,14 +253,13 @@ If the task list is empty, this message will be shown:
 Your list is empty! Try adding a task!
 ```
 
-### \> Finding Tasks: `find`
+### \# Finding Tasks: `find`
 
 This command will search for tasks in the list and list them to you.
 
 **Format:** `find <keyword>`
 
-**Parameters:**
-
+**Parameters:**\
 `<keyword>`: The keyword to be searched.
 
 **Example Usage:**\
@@ -297,16 +286,14 @@ If there are no tasks containing the given keyword, this message will be shown:
 I couldn't find any tasks with that keyword! I hope I didn't lose them...
 ```
 
-### \> Marking Tasks: `mark` & `unmark`
+### \# Marking Tasks: `mark` & `unmark`
 
-**> Marking as Done**
-
+#### \> Marking as Done
 This command marks a task as done.
 
 **Format**: `mark <number>`
 
-**Parameters**:
-
+**Parameters**:\
 `<number>`: Refers to the index number shown in the displayed list.
 
 - `<number>` must be a whole number, i.e. `1`, `2`, `3`, ...
@@ -320,14 +307,12 @@ Yay! I've marked this task as done:
 1.[T][X] Play Muse Dash
 ```
 
-**> Marking as Not Done**
-
+#### \> Marking as Not Done
 This command marks a task as not done.
 
 **Format**: `unmark <number>`
 
-**Parameters**:
-
+**Parameters**:\
 `<number>`: Refers to the index number shown in the displayed list.
 
 - `<number>` must be a whole number, i.e. `1`, `2`, `3`, ...
@@ -341,14 +326,13 @@ Ganbaraki! I've marked this task as not done:
 1.[T][ ] Play Muse Dash
 ```
 
-### \> Removing Tasks: `remove`
+### \# Removing Tasks: `remove`
 
 This command removes a specified task from the list.
 
 **Format**: `remove <number>`
 
-**Parameters**:
-
+**Parameters**:\
 `<number>`: Refers to the index number shown in the displayed list.
 
 - It must be a positive whole number, i.e. `1`, `2`, `3`, ...
@@ -363,25 +347,24 @@ Okay! I threw this task into the bin:
 You have 2 tasks now!
 ```
 
-### \> Listing Commands: `help`
+### \# Listing Commands: `help`
 
 This command lists all the commands you can run.
 
 **Format**: `help`
 
-### \> Exiting the Program: `bye`
+### \# Exiting the Program: `bye`
 
 This command exits the program.
 
 **Format**: `bye`
 
-### \> Saving the Task List
+### \# Saving the Task List
 
 TrashpanBot automatically saves the task list every time it is changed.\
 When the bot starts, it will automatically load data from the save file.
 
-**> Creating a New Save File**
-
+#### \> Creating a New Save File
 If there is no save file (i.e. when the bot starts for the first time), this message is shown at startup:
 ```
 Uh...I couldn't find a save file...
@@ -389,8 +372,7 @@ No worries, I'll create one for you!
 ```
 TrashpanBot will automatically create the data folder and the save file.
 
-**> Loading an Existing Save File**
-
+#### \> Loading an Existing Save File
 If there is a save file, it will begin loading it and will show this message:
 ```
 Look, I found a save file!
@@ -399,13 +381,13 @@ Loading it for you...
 
 If the load is successful, it will immediately start the program.
 
-### \> Editing the Save File
+### \# Editing the Save File
 
 TrashpanBot stores its save file in plaintext using a .txt file
 in `[JAR file location]/data/TaskList.txt`.\
 Advanced users may edit the save file directly.
 
-> [!CAUTION]
+> [! NOTES]
 > If your edits to the save file makes its format invalid, TrashpanBot will discard
 > all data and start from a fresh save file.\
 > If this occurs, this message will be shown after loading the save:
