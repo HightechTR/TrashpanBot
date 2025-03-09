@@ -160,7 +160,7 @@ It is represented in the task list like this:
 An `event` is a task that contains a description and two dates, a start and an end date.\
 It is represented in the task list like this:
 ```
-1.[E][ ] Example (from: 12 June 2025 13:00 to: 14 June 2025 15:00
+1.[E][ ] Example (from: 12 June 2025 13:00 to: 14 June 2025 15:00)
 ```
 
 **> Marked Tasks**
@@ -387,6 +387,7 @@ If there is no save file (i.e. when the bot starts for the first time), this mes
 Uh...I couldn't find a save file...
 No worries, I'll create one for you!
 ```
+TrashpanBot will automatically create the data folder and the save file.
 
 **> Loading an Existing Save File**
 
@@ -400,7 +401,8 @@ If the load is successful, it will immediately start the program.
 
 ### \> Editing the Save File
 
-TrashpanBot stores its save file in plaintext using a .txt file.\
+TrashpanBot stores its save file in plaintext using a .txt file
+in `[JAR file location]/data/TaskList.txt`.\
 Advanced users may edit the save file directly.
 
 > [!CAUTION]
@@ -412,8 +414,6 @@ Advanced users may edit the save file directly.
 > Here, I'll create a new one for you.
 > ```
 > It is recommended to back up the save file before editing it.
-
-
 
 ## Command Summary
 | Action                |                                                     Format & Examples                                                     |
