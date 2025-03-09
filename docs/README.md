@@ -387,26 +387,27 @@ TrashpanBot stores its save file in plaintext using a .txt file
 in `[JAR file location]/data/TaskList.txt`.\
 Advanced users may edit the save file directly.
 
-> [!WARNING]
-> If your edits to the save file makes its format invalid, TrashpanBot will discard
-> all data and start from a fresh save file.\
-> If this occurs, this message will be shown after loading the save:
-> ```
-> Eh? Something's wrong with the save file, it's all gibberish!
-> Here, I'll create a new one for you.
-> ```
-> It is recommended to back up the save file before editing it.
+<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
+If your edits to the save file makes its format invalid, TrashpanBot will discard
+all data and start from a fresh save file.\
+If this occurs, this message will be shown after loading the save:
+```
+Eh? Something's wrong with the save file, it's all gibberish!
+Here, I'll create a new one for you.
+```
+It is recommended to back up the save file before editing it.
+</div>
 
 ## Command Summary
-| Action                |                                                     Format & Examples                                                     |
-|-----------------------|:-------------------------------------------------------------------------------------------------------------------------:|
-| Add Todo Task         |                                    `todo <description>`<br>e.g. `todo Play Muse Dash`                                     |
-| Add Deadline Task     |               `deadline <description> /by <due>`<br>e.g. `deadline Finish Cover Song /by 2025-09-12 18:30`                |
-| Add Event Task        | `event <description> /from <start> /to <end>`<br>e.g. `event Raki Birthday!! /from 2025-10-24 12:00 /to 2025-10-24 18:00` |
-| List Tasks            |                                                          `list`                                                           |
-| Find Tasks            |                                           `find <keyword>`<br>e.g. `find book`                                            |
-| Mark Task as Done     |                                             `mark <number>`<br>e.g. `mark 1`                                              |
-| Mark Task as Not Done |                                           `unmark <number>`<br>e.g. `unmark 1`                                            |
-| Remove Task           |                                           `remove <number>`<br>e.g. `remove 1`                                            |
-| List Commands         |                                                          `help`                                                           |
-| Exit Program          |                                                           `bye`                                                           |
+ Action                |                                                                                                         Format & Examples
+-----------------------|--------------------------------------------------------------------------------------------------------------------------
+ Add Todo Task         |                                                                        `todo <description>`<br>e.g. `todo Play Muse Dash` 
+ Add Deadline Task     |                              `deadline <description> /by <due>`<br>e.g. `deadline Finish Cover Song /by 2025-09-12 18:30` 
+ Add Event Task        | `event <description> /from <start> /to <end>`<br>e.g. `event Raki Birthday!! /from 2025-10-24 12:00 /to 2025-10-24 18:00` 
+ List Tasks            |                                                                                                                    `list` 
+ Find Tasks            |                                                                                      `find <keyword>`<br>e.g. `find book` 
+ Mark Task as Done     |                                                                                          `mark <number>`<br>e.g. `mark 1` 
+ Mark Task as Not Done |                                                                                      `unmark <number>`<br>e.g. `unmark 1` 
+ Remove Task           |                                                                                      `remove <number>`<br>e.g. `remove 1` 
+ List Commands         |                                                                                                                    `help` 
+ Exit Program          |                                                                                                                     `bye` 
