@@ -5,3 +5,7 @@ description: >-
   It can also save your tasks automatically and reload them.
 theme: minima
 markdown: GFM
+titles_from_headings:
+  enabled: true
+  strip_title: true
+  collections: true
