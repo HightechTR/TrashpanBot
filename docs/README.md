@@ -387,16 +387,15 @@ TrashpanBot stores its save file in plaintext using a .txt file
 in `[JAR file location]/data/TaskList.txt`.\
 Advanced users may edit the save file directly.
 
-<div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
-If your edits to the save file makes its format invalid, TrashpanBot will discard
-all data and start from a fresh save file.\
-If this occurs, this message will be shown after loading the save:
-```
-Eh? Something's wrong with the save file, it's all gibberish!
-Here, I'll create a new one for you.
-```
-It is recommended to back up the save file before editing it.
-</div>
+> [!CAUTION]
+> If your edits to the save file makes its format invalid, TrashpanBot will discard
+> all data and start from a fresh save file.\
+> If this occurs, this message will be shown after loading the save:
+> ```
+> Eh? Something's wrong with the save file, it's all gibberish!
+> Here, I'll create a new one for you.
+> ```
+> It is recommended to back up the save file before editing it.
 
 ## Command Summary
 | Action                | Format & Examples                                                                                                         |
