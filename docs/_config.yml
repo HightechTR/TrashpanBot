@@ -3,5 +3,5 @@ description: >-
   TrashpanBot is an interactive task list manager.
   It is able to store tasks of various types and has many functions to aid in managing tasks.
   It can also save your tasks automatically and reload them.
-theme: jekyll-theme-minima
+remote_theme: "jekyll/minima@1e8a445"
 markdown: GFM
