@@ -12,12 +12,12 @@ public class MarkCommand extends Command {
 
     public static final String MARK_USAGE = """
             "mark <number>": Marks the task labelled with the number as done
-                <number> - The index of the task in the last shown list
+                <number> - The index of the task in the full list
                 e.g. mark 1""";
 
     public static final String UNMARK_USAGE = """
             "unmark <number>": Marks the task labelled with the number as not done
-                <number> - The index of the task in the last shown list
+                <number> - The index of the task in the full list
                 e.g. unmark 1""";
 
     public MarkCommand(String[] inputParts, boolean isDone) {

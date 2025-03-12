@@ -10,7 +10,7 @@ import trashpanbot.data.task.TaskList;
 public class RemoveCommand extends Command {
     public static final String COMMAND_USAGE = """
             "remove <number>": Removes the task labelled with the number
-                <number> - The index of the task in the last shown list
+                <number> - The index of the task in the full list
                 e.g. remove 1""";
 
     public RemoveCommand(String[] inputParts) {

@@ -82,7 +82,6 @@ public class Parser {
         } catch (IndexOutOfBoundsException e) { // check if parameter is non-empty
             ui.showMarkMissingIndexError(usage);
             return null;
-
         }
     }
 

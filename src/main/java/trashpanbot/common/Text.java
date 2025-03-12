@@ -100,16 +100,15 @@ public final class Text {
                     ##                             ##
             
             Raah! I'm TrashpanBot!
-            What can I do for you today?
             __________________________________________________
             """;
 
     public static final String TASK_LIST_DESCRIPTION = """
-            Current Mode: Task List
             I'll keep track of a list of to-dos, deadlines and events for you!
             Don't worry about your data, I'll save it automatically for you!
             
             Run the command "help" to see the list of things I can do!
+            For more info on how to use me, go to hightechtr.github.io/ip
             __________________________________________________
             """;
 

@@ -20,6 +20,7 @@ import trashpanbot.data.task.*;
 public class Ui {
 
     private static final Scanner in = new Scanner(System.in);
+    public static final int INDEX_OFFSET = 1;
 
     /*
     =================================================================================
@@ -96,7 +97,7 @@ public class Ui {
      * @param i Index corresponding to the task to be printed.
      */
     public void printTask(ArrayList<Task> tasks, int i) {
-        System.out.print((i + 1) + ".[" + tasks.get(i).getTypeIcon() + "]");
+        System.out.print((i + INDEX_OFFSET) + ".[" + tasks.get(i).getTypeIcon() + "]");
         System.out.print("[" + tasks.get(i).getStatusIcon() + "] ");
         System.out.println(tasks.get(i).getDescription()
                 + tasks.get(i).getDate());
