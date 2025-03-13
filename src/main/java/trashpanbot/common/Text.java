@@ -60,7 +60,8 @@ public final class Text {
 
     public static final String FILE_CREATE = """
             Uh...I couldn't find a save file...
-            No worries, I'll create one for you!""";
+            No worries, I'll create one for you!
+            (It's located in [JAR FILE LOCATION]/data/TaskList.txt)""";
 
     public static final String FILE_READ_ERROR = """
             Eh? Something's wrong with the save file, it's all gibberish!
@@ -82,7 +83,7 @@ public final class Text {
     public static final String INTRO = """
             __________________________________________________
             
-            This bot is based on the personality of Raki Kazuki from PixelLink.
+            This bot is based on the personality of Raki Kazuki, formerly from PixelLink.
             
                    .##+-                         -####
                   ##   .####                  ###   .##
