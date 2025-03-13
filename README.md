@@ -1,9 +1,9 @@
 # TrashpanBot
 
 This is the CS2113 Individual Project from Joel Chin.
-It is a Command Line Interface (CLI) chatbot and task list tracker based on the Java project _Duke_.
+It is a Command-Line Interface (CLI) task list tracker based on the Java project _Duke_.
 
-This chatbot's name and personality is based on Raki Kazuki from PixelLink.
+This chatbot's name and personality are based on Raki Kazuki, a Virtual YouTuber formerly from PixelLink.
 
 https://www.pixel-link.com/talent/raki-kazuki
 
@@ -40,7 +40,6 @@ Prerequisites: JDK 17, update Intellij to the most recent version.
            ##                             ##
 
    Raah! I'm TrashpanBot!
-   What can I do for you today?
    ```
 
 **Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
