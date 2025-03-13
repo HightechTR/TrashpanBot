@@ -1,6 +1,7 @@
 package trashpanbot;
 
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 
 import trashpanbot.command.*;
 import trashpanbot.common.*;
@@ -32,7 +33,7 @@ public class TrashpanBot {
     public static void loadSave(Parser parser, Save save) {
         try {
             tasks = new TaskList(parser, ui, save.readFile());
-        } catch (IOException e) {
+        } catch (IOException | DateTimeParseException e) {
             save.createFile();
             tasks = new TaskList(parser, ui);
         }

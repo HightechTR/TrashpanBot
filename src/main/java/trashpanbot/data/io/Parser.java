@@ -197,6 +197,13 @@ public class Parser {
             }
         }
 
+        // swap from and to if /to is written before /from in input
+        if (inputParts[1].indexOf("/from") > inputParts[1].indexOf("/to")) {
+            String temp = to;
+            to = from;
+            from = temp;
+        }
+
         return new Event(description, LocalDateTime.parse(from, DATE_INPUT_FORMAT),
                 LocalDateTime.parse(to, DATE_INPUT_FORMAT));
     }

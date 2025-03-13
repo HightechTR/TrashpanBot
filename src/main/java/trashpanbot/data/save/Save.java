@@ -6,6 +6,8 @@ import trashpanbot.data.task.*;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,6 +19,9 @@ public class Save {
     private Ui ui;
     private String filePath;
     private Parser parser;
+
+    public static final DateTimeFormatter DATE_INPUT_FORMAT =
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public Save(String filePath, Parser parser, Ui ui) {
         this.filePath = filePath;
@@ -51,7 +56,7 @@ public class Save {
      * @return An ArrayList of Task objects loaded from the save file.
      * @throws IOException If the save file format is invalid, i.e. the save file is corrupted.
      */
-    public ArrayList<Task> readFile() throws IOException {
+    public ArrayList<Task> readFile() throws IOException, DateTimeParseException {
         File saveFile = new File(filePath);
         ArrayList<Task> output = new ArrayList<>();
 
@@ -86,12 +91,12 @@ public class Save {
 
             // save deadline for deadline class
             fw.write(task.getClass() == Deadline.class
-                    ? " /by " + task.getDeadline()
+                    ? " /by " + task.getDeadline().format(DATE_INPUT_FORMAT)
                     : "");
 
             // save dates for event class
             fw.write(task.getClass() == Event.class
-                    ? " /from " + task.getFrom() + " /to " + task.getTo()
+                    ? " /from " + task.getFrom().format(DATE_INPUT_FORMAT) + " /to " + task.getTo().format(DATE_INPUT_FORMAT)
                     : "");
 
             fw.write(System.lineSeparator());
