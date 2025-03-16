@@ -8,7 +8,7 @@ This chatbot's name and personality are based on Raki Kazuki, a Virtual YouTuber
 ## Installation and Usage
 
 Visit the user guide for an overview of installing and using TrashpanBot:
-hightechtr.github.io/ip
+https://hightechtr.github.io/ip
 
 ## Setting up in IntelliJ
 
