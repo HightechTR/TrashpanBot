@@ -1,11 +1,14 @@
 # TrashpanBot
 
-This is the CS2113 Individual Project from Joel Chin.
+This is the CS2113 Individual Project from Joel (Hightech_TR).
 It is a Command-Line Interface (CLI) task list tracker based on the Java project _Duke_.
 
 This chatbot's name and personality are based on Raki Kazuki, a Virtual YouTuber formerly from PixelLink.
 
-https://www.pixel-link.com/talent/raki-kazuki
+## Installation and Usage
+
+Visit the user guide for an overview of installing and using TrashpanBot:
+hightechtr.github.io/ip
 
 ## Setting up in IntelliJ
 
@@ -43,11 +46,3 @@ Prerequisites: JDK 17, update Intellij to the most recent version.
    ```
 
 **Warning:** Keep the `src\main\java` folder as the root folder for Java files (i.e., don't rename those folders or move Java files to another folder outside of this folder path), as this is the default location some tools (e.g., Gradle) expect to find Java files.
-
-## Running the .jar file
-
-Prerequisites: JDK 17
-
-1. Download the latest .jar file from Releases.
-2. Copy .jar file into any folder. This folder will serve as the home directory for the application.
-3. Open Terminal, cd into the home directory and run ```java -jar TrashpanBot.jar```
