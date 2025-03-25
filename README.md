@@ -10,6 +10,9 @@ This chatbot's name and personality are based on Raki Kazuki, a Virtual YouTuber
 Visit the user guide for an overview of installing and using TrashpanBot:
 https://hightechtr.github.io/ip
 
+## Achievement Get: Notice Me Senpai
+![Raki_Noticed](https://github.com/user-attachments/assets/60712881-1239-4f7d-8778-7f7b606ac258)
+
 ## Setting up in IntelliJ
 
 Prerequisites: JDK 17, update Intellij to the most recent version.
