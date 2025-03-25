@@ -63,7 +63,7 @@ Any Windows installer will work, but the Windows x64 Installer is recommended fo
 
 The DMG installer is recommended. However, please note down the CPU of your Mac.
 
-Use the macOS x64 DMG Installer if your Mac has an Intel CPU, or the macOS Arm 64 DMG Installer if your Max has an Apple M-series CPU.
+Use the macOS x64 DMG Installer if your Mac has an Intel CPU, or the macOS Arm 64 DMG Installer if your Mac has an Apple M-series CPU.
 
 - For Linux Users
 
@@ -109,7 +109,6 @@ This bot is based on the personality of Raki Kazuki from PixelLink.
         ##                             ##
     
 Raah! I'm TrashpanBot!
-What can I do for you today?
 __________________________________________________
 ```
 
