@@ -1,5 +1,7 @@
 package trashpanbot.data.task;
 
+import trashpanbot.TrashpanBot;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,8 +12,7 @@ public abstract class Task {
     private final String description;
     private boolean isDone;
 
-    protected static final DateTimeFormatter DATE_OUTPUT_FORMAT =
-            DateTimeFormatter.ofPattern("d MMM yyyy HH:mm");
+    protected static DateTimeFormatter dateOutputFormat;
 
     public Task(String description) {
         this.description = description;
@@ -84,5 +85,16 @@ public abstract class Task {
      */
     public void setDone(boolean done) {
         this.isDone = done;
+    }
+
+    /**
+     * Sets the DateTimeFormatter for the chosen time format.
+     *
+     * @param is24Hour True if the time format is 24 Hour, false if 12 Hour.
+     */
+    public static void setDateOutputFormat(boolean is24Hour) {
+        dateOutputFormat = is24Hour ?
+                DateTimeFormatter.ofPattern("d MMM yyyy HH:mm") :
+                DateTimeFormatter.ofPattern("d MMM yyyy hh:mm a");
     }
 }

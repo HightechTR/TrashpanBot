@@ -35,7 +35,7 @@ public class Event extends Task {
     @Override
     public String getDate() {
         return " (from: "
-                + from.format(DATE_OUTPUT_FORMAT) + " to: "
-                + to.format(DATE_OUTPUT_FORMAT) + ")";
+                + from.format(dateOutputFormat) + " to: "
+                + to.format(dateOutputFormat) + ")";
     }
 }

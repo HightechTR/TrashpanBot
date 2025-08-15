@@ -3,13 +3,7 @@ package trashpanbot.data.io;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import trashpanbot.command.AddCommand;
-import trashpanbot.command.ExitCommand;
-import trashpanbot.command.FindCommand;
-import trashpanbot.command.HelpCommand;
-import trashpanbot.command.ListCommand;
-import trashpanbot.command.MarkCommand;
-import trashpanbot.command.RemoveCommand;
+import trashpanbot.command.*;
 import trashpanbot.common.*;
 import trashpanbot.data.task.*;
 
@@ -42,7 +36,7 @@ public class Ui {
 
     /*
     =================================================================================
-    General Task-related Text UI
+    General Text UI
     =================================================================================
      */
 
@@ -142,9 +136,19 @@ public class Ui {
         System.out.println(Text.TASK_MARK_UNDONE);
     }
 
+    /**
+     * Displays the text for setting the time format.
+     *
+     * @param is24Hour True if the format is set to 24 Hour, false if 12 Hour.
+     */
+    public void showHourSet(boolean is24Hour) {
+        System.out.println(Text.HOUR_SET +
+                (is24Hour ? "24 Hour" : "12 Hour") + ".");
+    }
+
     /*
     =================================================================================
-    Task Input Error Text UI
+    Input Error Text UI
     =================================================================================
      */
 
@@ -196,6 +200,16 @@ public class Ui {
         System.out.println(Text.TASK_DATE_FORMAT_ERROR + System.lineSeparator() + usage);
     }
 
+    /**
+     * Displays error text when a boolean is invalid.
+     * Used for the 24hour command.
+     *
+     * @param usage The usage text of the command calling this method.
+     */
+    public void showInvalidBooleanError (String usage) {
+        System.out.println(Text.INVALID_BOOLEAN_ERROR + System.lineSeparator() + usage);
+    }
+
     /*
     =================================================================================
     Command-related Text UI
@@ -223,6 +237,7 @@ public class Ui {
                 + MarkCommand.MARK_USAGE + System.lineSeparator()
                 + MarkCommand.UNMARK_USAGE + System.lineSeparator()
                 + RemoveCommand.COMMAND_USAGE + System.lineSeparator()
+                + HourCommand.COMMAND_USAGE + System.lineSeparator()
                 + HelpCommand.COMMAND_USAGE + System.lineSeparator()
                 + ExitCommand.COMMAND_USAGE);
     }

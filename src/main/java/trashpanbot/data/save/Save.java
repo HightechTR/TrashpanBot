@@ -1,5 +1,6 @@
 package trashpanbot.data.save;
 
+import trashpanbot.TrashpanBot;
 import trashpanbot.data.io.*;
 import trashpanbot.data.task.*;
 
@@ -37,6 +38,10 @@ public class Save {
         File directory = saveFile.getParentFile();
 
         try {
+            // default time format setting is 24 hour
+            TrashpanBot.is24Hour = true;
+            Task.setDateOutputFormat(true);
+
             directory.mkdir();
             if (saveFile.createNewFile()){
                 ui.showFileCreation();
@@ -68,6 +73,10 @@ public class Save {
         ui.showFileReading();
         Scanner s = new Scanner(saveFile);
 
+        // read in time format
+        Task.setDateOutputFormat(Boolean.parseBoolean(s.nextLine()));
+
+        // then, read the task list
         while (s.hasNextLine()) {
             output.add(parser.parseFile(s.nextLine().split(" \\| ", 2)));
         }
@@ -84,6 +93,11 @@ public class Save {
     private void writeToFile(ArrayList<Task> tasks) throws IOException {
         FileWriter fw = new FileWriter(filePath);
 
+        // first, save the time format setting
+        fw.write(String.valueOf(TrashpanBot.is24Hour));
+        fw.write(System.lineSeparator());
+
+        // then, save the task list
         for (Task task : tasks) {
             fw.write(task.getTypeIcon() + " | ");
             fw.write(task.getStatusIcon() + " | ");

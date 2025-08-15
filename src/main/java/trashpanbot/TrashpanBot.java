@@ -16,6 +16,7 @@ public class TrashpanBot {
     private static Save save;
 
     public static final String FILE_PATH = "data/TaskList.txt";
+    public static boolean is24Hour;
 
     public static void main(String[] args) {
         ui.showIntro();
@@ -28,7 +29,7 @@ public class TrashpanBot {
      * Loads the save file.
      *
      * @param parser The Parser object
-     * @param save The Save object
+     * @param save   The Save object
      */
     public static void loadSave(Parser parser, Save save) {
         try {

@@ -26,6 +26,6 @@ public class Deadline extends Task {
 
     @Override
     public String getDate() {
-        return " (by: " + deadline.format(DATE_OUTPUT_FORMAT) + ")";
+        return " (by: " + deadline.format(dateOutputFormat) + ")";
     }
 }

@@ -241,6 +241,9 @@ You have 1 task now!
 
 This command lists all the tasks that are in the list.
 
+Times are listed in the selected time format (24 or 12 Hour).
+Refer to Setting the Time Format below for more information.
+
 **Format**: `list`
 
 **Example Usage**:\
@@ -351,6 +354,21 @@ Okay! I threw this task into the bin:
 1.[T][ ] Play Muse Dash
 You have 2 tasks now!
 ```
+
+### **Setting the Time Format: `24hour`**
+
+This command sets the format for times displayed in the program.
+
+**Format**: `24hour <true/false>`
+
+**Parameters**:\
+`<true/false>`: True if you want to set the time format to 24 Hour,
+false if you want to set it to 12 Hour.
+
+The default time format when you first start the program is 24 Hour.
+
+> [!NOTE]
+> The time input format for the deadline and event commands remain in 24 Hour.
 
 ### **Listing Commands: `help`**
 

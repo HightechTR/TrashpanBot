@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Objects;
 
+import trashpanbot.TrashpanBot;
 import trashpanbot.command.*;
 import trashpanbot.common.*;
 import trashpanbot.data.exception.InvalidSaveFormatException;
@@ -17,7 +19,7 @@ import trashpanbot.data.task.*;
 public class Parser {
 
     public static final DateTimeFormatter DATE_INPUT_FORMAT =
-            DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                    DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private Ui ui;
 
     public Parser(Ui ui) {
@@ -60,6 +62,32 @@ public class Parser {
         }
 
         return output;
+    }
+
+    /**
+     * Parses a boolean value from input and sets the time format.
+     * Displays message and does not change the time format if no boolean is inputted
+     * or if the input is not a bool.
+     *
+     * @param inputParts The input string array containing the bool.
+     * @param usage The usage text of the command that calls this method.
+     */
+    public void parseTimeFormat(String[] inputParts, String usage) {
+        String input;
+
+        try {
+            input = Utils.checkEmpty(inputParts[1]);
+            if (Objects.equals(input.toLowerCase(), "true") ||
+                    Objects.equals(input.toLowerCase(), "false")) {
+                TrashpanBot.is24Hour = Boolean.parseBoolean(input);
+                Task.setDateOutputFormat(TrashpanBot.is24Hour);
+                ui.showHourSet(TrashpanBot.is24Hour);
+            } else {
+                ui.showInvalidBooleanError(usage);
+            }
+        } catch (IndexOutOfBoundsException e) {
+            ui.showParamMissingError(usage);
+        }
     }
 
     /**
@@ -226,6 +254,7 @@ public class Parser {
         case "find" -> c = new FindCommand(inputParts, parser);
         case "mark" -> c = new MarkCommand(inputParts, true);
         case "unmark" -> c = new MarkCommand(inputParts, false);
+        case "24hour" -> c = new HourCommand(inputParts, parser);
         case "help" -> c = new HelpCommand(inputParts);
         case "bye" -> c = new ExitCommand(inputParts);
         default -> c = new InvalidCommand(inputParts);

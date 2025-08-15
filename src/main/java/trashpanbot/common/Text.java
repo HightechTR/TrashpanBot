@@ -9,7 +9,7 @@ public final class Text {
 
     /*
     =================================================================================
-    Task-related Text
+    General Task Text
     =================================================================================
      */
 
@@ -25,9 +25,11 @@ public final class Text {
 
     public static final String TASK_MARK_UNDONE = "Ganbaraki! I've marked this task as not done:";
 
+    public static final String HOUR_SET = "Okay! I set the time format to ";
+
     /*
     =================================================================================
-    Task Input Error Text
+    Input Error Text
     =================================================================================
      */
 
@@ -43,6 +45,8 @@ public final class Text {
     public static final String TASK_PARAMETER_MISSING = "Eh? Something is missing...";
 
     public static final String TASK_DATE_FORMAT_ERROR = "Eh? I can't read the date...";
+
+    public static final String INVALID_BOOLEAN_ERROR = "Eh? That's not true or false...";
 
     public static final String COMMAND_INVALID = """
             Eh? I don't know what that means...
